@@ -475,6 +475,12 @@ export default function HomePage() {
       <FranchiseSection onInquiry={() => setModalOpen(true)} />
       <Footer />
       <FranchiseModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <button
+        className="fab-inquiry"
+        onClick={() => setModalOpen(true)}
+      >
+        가맹문의하기
+      </button>
     </div>
   );
 }
