@@ -95,9 +95,6 @@ function Header() {
           ))}
         </nav>
 
-        <a href="#store" className="btn btn-dark">
-          매장 찾기
-        </a>
       </div>
     </header>
   );
