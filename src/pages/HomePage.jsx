@@ -422,9 +422,9 @@ function FranchiseSection({ onInquiry }) {
               <br />
               빨간 토마토 피자의 가맹 정보를 확인해보세요.
             </p>
-            <button className="btn btn-primary" onClick={onInquiry}>
-              가맹 문의하기
-            </button>
+          <button className="btn btn-primary btn-xl" onClick={onInquiry}>
+            가맹 문의하기
+          </button>
           </div>
         </Reveal>
 
@@ -475,12 +475,6 @@ export default function HomePage() {
       <FranchiseSection onInquiry={() => setModalOpen(true)} />
       <Footer />
       <FranchiseModal open={modalOpen} onClose={() => setModalOpen(false)} />
-      <button
-        className="fab-inquiry"
-        onClick={() => setModalOpen(true)}
-      >
-        가맹문의하기
-      </button>
     </div>
   );
 }
