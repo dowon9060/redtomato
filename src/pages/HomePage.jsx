@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   navItems,
   signatureMenus,
@@ -221,7 +222,104 @@ function PromoSection() {
   );
 }
 
-function FranchiseSection() {
+function FranchiseModal({ open, onClose }) {
+  const [form, setForm] = useState({ name: "", phone: "", region: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  if (!open) return null;
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // TODO: 문자 알림 발송 연동
+    console.log("가맹 문의 접수:", form);
+    setSubmitted(true);
+  };
+
+  const handleClose = () => {
+    setSubmitted(false);
+    setForm({ name: "", phone: "", region: "" });
+    onClose();
+  };
+
+  return (
+    <div className="modal-overlay" onClick={handleClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={handleClose}>
+          &times;
+        </button>
+
+        {submitted ? (
+          <div className="modal-success">
+            <div className="modal-success-icon">&#10003;</div>
+            <h3>문의가 접수되었습니다</h3>
+            <p>빠른 시일 내에 연락드리겠습니다.</p>
+            <button className="btn btn-primary" onClick={handleClose}>
+              확인
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="modal-header">
+              <p className="eyebrow">Franchise Inquiry</p>
+              <h3>가맹 문의하기</h3>
+              <p className="modal-desc">
+                아래 정보를 입력해주시면 담당자가 연락드립니다.
+              </p>
+            </div>
+
+            <form className="modal-form" onSubmit={handleSubmit}>
+              <label className="form-field">
+                <span>이름</span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="홍길동"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label className="form-field">
+                <span>연락처</span>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="010-0000-0000"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <label className="form-field">
+                <span>희망 지역</span>
+                <input
+                  type="text"
+                  name="region"
+                  placeholder="예) 서울 강남구"
+                  value={form.region}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+
+              <button type="submit" className="btn btn-primary modal-submit">
+                문의 등록
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function FranchiseSection({ onInquiry }) {
   return (
     <section className="section section-dark" id="franchise">
       <div className="container franchise-grid">
@@ -233,9 +331,9 @@ function FranchiseSection() {
             <br />
             빨간 토마토 피자의 가맹 정보를 확인해보세요.
           </p>
-          <a href="/franchise" className="btn btn-primary">
+          <button className="btn btn-primary" onClick={onInquiry}>
             가맹 문의하기
-          </a>
+          </button>
         </div>
 
         <ul className="franchise-list">
@@ -269,6 +367,8 @@ function Footer() {
 }
 
 export default function HomePage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <div className="page">
       <Header />
@@ -278,8 +378,9 @@ export default function HomePage() {
       <BrandPoints />
       <StoreSection />
       <PromoSection />
-      <FranchiseSection />
+      <FranchiseSection onInquiry={() => setModalOpen(true)} />
       <Footer />
+      <FranchiseModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }
