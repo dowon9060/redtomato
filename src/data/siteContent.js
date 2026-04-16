@@ -63,6 +63,37 @@ export const promos = [
   },
 ];
 
+export const stores = [
+  {
+    id: 1,
+    name: "광주 본점",
+    address: "광주광역시 남구 효천2로가길 21. 108호",
+    phone: "1899-0964",
+    hours: "11:00 – 22:00",
+  },
+  {
+    id: 2,
+    name: "광주 수완점",
+    address: "광주광역시 광산구 수완로 82",
+    phone: "062-955-0964",
+    hours: "11:00 – 22:00",
+  },
+  {
+    id: 3,
+    name: "광주 첨단점",
+    address: "광주광역시 광산구 첨단중앙로 120",
+    phone: "062-975-0964",
+    hours: "11:00 – 22:00",
+  },
+  {
+    id: 4,
+    name: "나주점",
+    address: "전라남도 나주시 빛가람로 640",
+    phone: "061-332-0964",
+    hours: "11:00 – 21:30",
+  },
+];
+
 export const franchisePoints = [
   "명확한 브랜드 아이덴티티",
   "운영 동선이 단순한 매장 구조",

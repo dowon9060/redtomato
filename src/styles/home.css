@@ -24,7 +24,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
   background: var(--bg);
   color: var(--text);
 }
@@ -353,17 +353,14 @@ img {
   line-height: 1.8;
 }
 
-.store-box {
-  background: linear-gradient(135deg, #fbe4dc, #fff5f1);
-  border-radius: 34px;
-  padding: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+.store-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-.store-box h2 {
+.store-left h2 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
@@ -375,10 +372,52 @@ img {
   line-height: 1.8;
 }
 
-.store-actions {
+.store-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.store-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.store-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.12);
+}
+
+.store-card-name {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.store-card-address {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.store-card-meta {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.store-card-phone {
+  color: var(--primary);
+  font-weight: 700;
 }
 
 .promo-grid {
@@ -431,20 +470,18 @@ img {
   margin: 20px 0 28px;
 }
 
-.franchise-list {
+.franchise-list-item {
   list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 14px;
-}
-
-.franchise-list li {
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.04);
   border-radius: 20px;
   padding: 20px 22px;
+  margin-bottom: 14px;
   font-weight: 600;
+}
+
+.franchise-list-item:last-child {
+  margin-bottom: 0;
 }
 
 .footer {
@@ -633,8 +670,12 @@ img {
   .hero-grid,
   .brand-grid,
   .franchise-grid,
-  .store-box {
+  .store-layout {
     grid-template-columns: 1fr;
+  }
+
+  .store-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .menu-grid {
@@ -668,8 +709,8 @@ img {
     padding: 82px 0;
   }
 
-  .store-box {
-    padding: 28px;
+  .store-cards {
+    grid-template-columns: 1fr;
   }
 
   .footer-inner {
