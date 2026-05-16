@@ -12,7 +12,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="footer-links">
-            <Link to="/">빨토</Link>
+            <Link to="/bangto">빨토</Link>
             <Link to="/menu">메뉴</Link>
             <Link to="/franchise">창업문의</Link>
             <Link to="/store">매장</Link>

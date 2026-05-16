@@ -42,7 +42,6 @@ export default function MainLayout() {
                 className={({ isActive }) =>
                   `nav-link${isActive ? " nav-link--active" : ""}`
                 }
-                end={item.path === "/"}
               >
                 {item.label}
               </NavLink>

@@ -29,8 +29,8 @@ function Hero() {
               <Link to="/menu" className="btn btn-primary">
                 대표 메뉴 보기
               </Link>
-              <Link to="/#brand" className="btn btn-light">
-                브랜드 소개
+              <Link to="/bangto" className="btn btn-light">
+                빨토 · 브랜드 소개
               </Link>
             </div>
           </div>

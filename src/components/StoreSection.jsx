@@ -1,8 +1,15 @@
+import { useState } from "react";
 import StoreMap from "./StoreMap";
-import { stores } from "../data/siteContent";
+import { stores as storeData } from "../data/siteContent";
 import { Reveal, StaggerGroup } from "./pageMotion.jsx";
 
 export default function StoreSection() {
+  const [focusedStoreId, setFocusedStoreId] = useState(null);
+
+  const toggleStoreFocus = (id) => {
+    setFocusedStoreId((prev) => (prev === id ? null : id));
+  };
+
   return (
     <section className="section store-section">
       <div className="container store-layout">
@@ -19,27 +26,50 @@ export default function StoreSection() {
         </Reveal>
 
         <StaggerGroup className="store-cards" stagger={0.1} type="up">
-          {stores.map((store) => (
-            <article className="store-card" key={store.id}>
-              <h4 className="store-card-name">{store.name}</h4>
-              <p className="store-card-address">{store.address}</p>
-              <div className="store-card-meta">
-                <span>{store.hours}</span>
-                <a href={`tel:${store.phone.replace(/[^\d]/g, "")}`} className="store-card-phone">
-                  {store.phone}
-                </a>
-              </div>
-            </article>
-          ))}
+          {storeData.map((store) => {
+            const expanded = focusedStoreId === store.id;
+            return (
+              <article
+                className={`store-card store-card-interactive${expanded ? " store-card--focused" : ""}`}
+                key={store.id}
+                role="button"
+                tabIndex={0}
+                aria-pressed={expanded}
+                aria-label={`${store.name}, 지도에서 위치 보기`}
+                onClick={() => toggleStoreFocus(store.id)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    toggleStoreFocus(store.id);
+                  }
+                }}
+              >
+                <h4 className="store-card-name">{store.name}</h4>
+                <p className="store-card-address">{store.address}</p>
+                <div className="store-card-meta">
+                  <span>{store.hours}</span>
+                  <a
+                    href={`tel:${store.phone.replace(/[^\d]/g, "")}`}
+                    className="store-card-phone"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {store.phone}
+                  </a>
+                </div>
+              </article>
+            );
+          })}
         </StaggerGroup>
-
-        <Reveal type="up" delay={0.08}>
-          <div className="store-map-wrap">
-            <p className="store-map-label eyebrow">매장 위치</p>
-            <StoreMap stores={stores} />
-          </div>
-        </Reveal>
       </div>
+
+      <Reveal type="up" delay={0.06}>
+        <div className="store-map-bleed">
+          <div className="store-map-bleed-inner">
+            <p className="store-map-label eyebrow">매장 위치</p>
+            <StoreMap stores={storeData} focusedStoreId={focusedStoreId} />
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
