@@ -18,7 +18,7 @@ export default function BangtoPage() {
               창업 · 성장 히스토리
             </h2>
             <p className="bangto-history-lead">
-              매장 하나하나가 브랜드의 시작과 확장입니다. 시간 순으로 정리한 주요 마일스톤입니다.
+              매장 하나하나가 브랜드의 시작과 확장입니다. 연도 순으로 정리한 주요 마일스톤입니다.
             </p>
           </Reveal>
 

@@ -12,7 +12,7 @@ export default function FranchiseHighlight({ footer = null }) {
             <p className="franchise-text">
               브랜드 경쟁력과 운영 효율을 함께 갖춘 피자 창업.
               <br />
-              빨간 토마토 피자의 가맹 정보를 확인해보세요.
+              빨간 토마토 피자의 가맹 정보를 확인해 보세요.
             </p>
             {footer}
           </div>

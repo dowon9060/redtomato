@@ -35,11 +35,11 @@ export default function MenuCatalog() {
           <h2 className="menu-catalog-title">
             이름처럼 선명한 토마토,
             <br />
-            피자와 사이드를 한곳에서
+            피자와 사이드를 한 곳에서
           </h2>
           <p className="menu-catalog-lead">
             빨간 토마토 피자의 인기 라인업과 매장별로 함께 즐길 수 있는 사이드를
-            탭으로 골라보세요.
+            탭으로 골라 보세요.
           </p>
           <p className="menu-catalog-price-hint" role="note">
             가격 숫자는 <strong>천 원 단위</strong>입니다. (예: 23.9 → 23,900원)

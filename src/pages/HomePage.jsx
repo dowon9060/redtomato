@@ -126,7 +126,7 @@ function PromoSection() {
           <SectionTitle
             eyebrow="Promotion"
             title="더 맛있게 즐기는 방법"
-            desc="프로모션과 추천 구성을 한눈에 확인하세요."
+            desc="프로모션과 추천 구성을 한눈에 확인해 보세요."
           />
         </Reveal>
 

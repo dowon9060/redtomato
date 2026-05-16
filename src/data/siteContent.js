@@ -1,7 +1,7 @@
 export const mainNav = [
   { label: "빨토", path: "/bangto" },
   { label: "메뉴", path: "/menu" },
-  { label: "창업문의", path: "/franchise" },
+  { label: "창업 문의", path: "/franchise" },
   { label: "매장", path: "/store" },
 ];
 
@@ -9,29 +9,39 @@ export const mainNav = [
 export const bangtoHistoryIntro = {
   eyebrow: "Bangto Story",
   title: "빨간 토마토 피자, 빨토",
-  desc: "브랜드가 걸어온 길을 연도별로 소개합니다. 지역과 함께 성장한 창업 히스토리입니다.",
+  desc: "2002년 5월 창업부터 이어온 브랜드의 길을 연도별로 소개합니다. 지역과 함께 성장한 창업 히스토리입니다.",
 };
 
 export const bangtoHistory = [
   {
+    year: "2002",
+    title: "5월 브랜드 창업 · 1호점 오픈",
+    desc: "선명한 토마토 풍미를 중심으로 한 피자 콘셉트로 브랜드를 시작하고 첫 매장 운영에 나섰습니다.",
+  },
+  {
+    year: "2010",
+    title: "다점포 운영 기반 및 메뉴 체계 정착",
+    desc: "교육·발주 노하우를 쌓고 핵심 메뉴 구조를 정리해 점포마다 재현 가능한 맛과 서비스의 토대를 다졌습니다.",
+  },
+  {
     year: "2019",
     title: "브랜드 기획 & 시그니처 도우 레시피 확정",
-    desc: "선명한 토마토 풍미를 중심으로 한 브랜드 콘셉트와 핵심 도우 레시피 연구가 시작되었습니다.",
+    desc: "선명한 토마토 풍미를 중심으로 한 브랜드 콘셉트를 다시 세우고 핵심 도우 레시피 연구와 확정 작업을 본격화했습니다.",
   },
   {
     year: "2020",
-    title: "시그니처 메뉴 라인 업 완성",
-    desc: "레드 라인 업과 운영 동선 테스트를 통해 매장에 바로 적용 가능한 표준 메뉴 구조를 갖추었습니다.",
+    title: "시그니처 메뉴 라인업 완성",
+    desc: "레드 라인업과 운영 동선 테스트를 통해 매장에 바로 적용 가능한 표준 메뉴 구조를 갖추었습니다.",
   },
   {
     year: "2021",
-    title: "광주 첫 매장 론칭",
-    desc: "광주 남구 효천 인근 독립 매장 오픈. 지역 고객과의 접점에서 리뷰와 재구매 패턴을 본격 검증했습니다.",
+    title: "광주 효천 본점(남구) 거점 확보",
+    desc: "광주 남구 효천 인근 독립 매장을 거점으로 정비하며 지역 고객과의 접점에서 리뷰와 재구매 패턴을 본격 검증했습니다.",
   },
   {
     year: "2022",
     title: "광산권 진출 및 운영 표준화",
-    desc: "수완 인근 신규 매장 추가. 교육·발주·CS 프로세스를 표준 매뉴얼화해 재현 가능한 운영을 구축했습니다.",
+    desc: "수완 인근 신규 매장 추가. 교육·발주·CS 프로세스를 표준 매뉴얼 형태로 정비해 재현 가능한 운영을 구축했습니다.",
   },
   {
     year: "2023",
@@ -45,8 +55,13 @@ export const bangtoHistory = [
   },
   {
     year: "2025",
-    title: "나주 진출 및 수도권 론칭 준비",
-    desc: "나주 빛가람점 오픈. 서울 송파 일대 등 신규 상권 조사 및 오픈 일정 준비를 진행 중입니다.",
+    title: "나주 빛가람점 오픈",
+    desc: "전남 나주 빛가람 상권에 매장을 열었습니다.",
+  },
+  {
+    year: "2026",
+    title: "수도권 진출 · 송파 상권 오픈 준비",
+    desc: "서울시 송파구 일대 오픈 일정을 준비하고 있습니다.",
   },
 ];
 
@@ -223,7 +238,7 @@ export const menuCatalog = [
     category: "side",
     featured: false,
     eng: "Mozzarella Cheese Sticks",
-    name: "모짜렐라 치즈스틱",
+    name: "모짜렐라 치즈 스틱",
     desc: "",
     image: "/images/menu-4.png",
     badge: null,
@@ -266,8 +281,8 @@ export const menuCatalog = [
 
 export const menuPageNotes = [
   "메뉴 및 가격은 매장별로 상이할 수 있습니다.",
-  "상품 이미지는 연출컷으로 실제 조리·제공 시 다소 차이가 있을 수 있습니다.",
-  "영업시간 종료 또는 재고에 따라 일부 메뉴가 조기 종료될 수 있습니다.",
+  "상품 이미지는 연출 컷으로 실제 조리·제공 시 다소 차이가 있을 수 있습니다.",
+  "영업 시간 종료 또는 재고에 따라 일부 메뉴가 조기 종료될 수 있습니다.",
 ];
 
 export const signatureMenus = menuCatalog
@@ -298,7 +313,7 @@ export const brandPoints = [
 export const promos = [
   {
     title: "오늘의 혜택",
-    desc: "매장별 프로모션과 사이드 혜택을 간편하게 확인하세요.",
+    desc: "매장별 프로모션과 사이드 혜택을 간편하게 확인해 보세요.",
   },
   {
     title: "추천 세트",
@@ -352,23 +367,23 @@ export const homeLayerPopups = [
     imageAlt: "오픈 예정 매장 안내 이미지",
     kicker: "Notice",
     title: "오픈 예정 매장",
-    desc: "서울시 송파구 6월 오픈 예정",
+    desc: "서울시 송파구, 6월 오픈 예정",
   },
   {
     id: "award",
     image: "/images/popup-brand-award.svg",
-    imageAlt: "소비자브랜드 대상 수상 이미지",
+    imageAlt: "소비자 브랜드 대상 수상 이미지",
     kicker: "Award",
-    title: "소비자브랜드 대상",
+    title: "소비자 브랜드 대상",
     desc: "고객의 선택에 감사드립니다.",
   },
   {
     id: "new-menu",
     image: "/images/popup-new-menu.svg",
-    imageAlt: "신메뉴 출시 이미지",
+    imageAlt: "신 메뉴 출시 이미지",
     kicker: "New menu",
-    title: "신메뉴 출시",
-    desc: "새롭게 선보이는 한 판을 만나보세요.",
+    title: "신 메뉴 출시",
+    desc: "새롭게 선보이는 한 판을 만나 보세요.",
   },
 ];
 

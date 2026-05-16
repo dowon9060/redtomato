@@ -1157,8 +1157,8 @@ img {
 .home-layer-popups-inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 14px;
+  align-items: stretch;
+  gap: 0;
   max-width: min(1180px, 100%);
   pointer-events: none;
 }
@@ -1180,58 +1180,6 @@ img {
   pointer-events: auto;
 }
 
-.home-popup-toolbar {
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(14px, 3vw, 22px);
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 10px 20px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 253, 250, 0.97);
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.home-popup-hide-today {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0;
-  cursor: pointer;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: var(--text);
-  user-select: none;
-}
-
-.home-popup-hide-today input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--primary);
-  cursor: pointer;
-}
-
-.home-popup-dismiss-all {
-  font: inherit;
-  font-weight: 700;
-  font-size: 0.84rem;
-  padding: 8px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(229, 57, 53, 0.35);
-  background: transparent;
-  color: var(--primary-dark);
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-
-.home-popup-dismiss-all:hover {
-  background: rgba(229, 57, 53, 0.08);
-  color: var(--primary);
-}
 
 .home-popup-card {
   scroll-snap-align: start;
@@ -1311,6 +1259,34 @@ img {
   margin-bottom: 6px;
 }
 
+.home-popup-card-actions {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+}
+
+.home-popup-hide-this-today {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(229, 57, 53, 0.28);
+  background: rgba(229, 57, 53, 0.04);
+  color: var(--primary-dark);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.home-popup-hide-this-today:hover {
+  background: rgba(229, 57, 53, 0.1);
+  border-color: rgba(229, 57, 53, 0.45);
+}
+
 .home-popup-title {
   margin: 0 0 8px;
   font-size: 1.22rem;
@@ -1342,11 +1318,6 @@ img {
 
   .home-popup-card {
     flex-basis: min(276px, 88vw);
-  }
-
-  .home-popup-toolbar {
-    padding: 10px 16px;
-    border-radius: 18px;
   }
 }
 

@@ -10,7 +10,7 @@ export default function MenuSection({ showCta = true }) {
           <SectionTitle
             eyebrow="Best Menu"
             title="지금 가장 인기 있는 메뉴"
-            desc="처음 주문해도 만족도 높은 시그니처 메뉴부터 만나보세요."
+            desc="처음 주문해도 만족도가 높은 시그니처 메뉴부터 만나 보세요."
           />
         </Reveal>
 

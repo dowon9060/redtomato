@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { homeLayerPopups } from "../data/siteContent";
 
-const STORAGE_KEY = "rt_home_popups_hide_date";
+const STORAGE_PREFIX = "rt_home_popup_hide_";
 
 function localDateKey(d = new Date()) {
   const y = d.getFullYear();
@@ -10,20 +10,29 @@ function localDateKey(d = new Date()) {
   return `${y}-${m}-${day}`;
 }
 
-function isHiddenToday() {
+/** 오늘 날짜에 숨김 설정되지 않은 팝업 id만 포함 */
+function getInitialOpenIds() {
+  const today = localDateKey();
+  const ids = new Set();
   try {
-    return typeof localStorage !== "undefined" && localStorage.getItem(STORAGE_KEY) === localDateKey();
+    if (typeof localStorage === "undefined") {
+      homeLayerPopups.forEach((p) => ids.add(p.id));
+      return ids;
+    }
+    for (const p of homeLayerPopups) {
+      const saved = localStorage.getItem(STORAGE_PREFIX + p.id);
+      if (saved !== today) ids.add(p.id);
+    }
   } catch {
-    return false;
+    homeLayerPopups.forEach((p) => ids.add(p.id));
   }
+  return ids;
 }
 
 export default function HomeLayerPopups() {
-  const [skipTodayByStorage, setSkipTodayByStorage] = useState(() => isHiddenToday());
-  const [open, setOpen] = useState(() => new Set(homeLayerPopups.map((p) => p.id)));
-  const [dontShowToday, setDontShowToday] = useState(false);
+  const [open, setOpen] = useState(() => getInitialOpenIds());
 
-  const close = useCallback((id) => {
+  const closeOnce = useCallback((id) => {
     setOpen((prev) => {
       const next = new Set(prev);
       next.delete(id);
@@ -31,28 +40,26 @@ export default function HomeLayerPopups() {
     });
   }, []);
 
-  const closeAll = useCallback(() => {
-    if (dontShowToday) {
-      try {
-        localStorage.setItem(STORAGE_KEY, localDateKey());
-      } catch {}
-      setSkipTodayByStorage(true);
-    }
-    setOpen(new Set());
-  }, [dontShowToday]);
+  const closeTodayOnly = useCallback((id) => {
+    try {
+      localStorage.setItem(STORAGE_PREFIX + id, localDateKey());
+    } catch (_) {}
+    closeOnce(id);
+  }, [closeOnce]);
 
   const visible = homeLayerPopups.filter((p) => open.has(p.id));
 
+  const headPopupId = visible[0]?.id;
+
   useEffect(() => {
-    if (visible.length === 0) return;
+    if (headPopupId == null) return;
     const onKey = (e) => {
-      if (e.key === "Escape") closeAll();
+      if (e.key === "Escape") closeOnce(headPopupId);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [visible.length, closeAll]);
+  }, [headPopupId, closeOnce]);
 
-  if (skipTodayByStorage) return null;
   if (visible.length === 0) return null;
 
   return (
@@ -64,8 +71,8 @@ export default function HomeLayerPopups() {
               <button
                 type="button"
                 className="home-popup-close"
-                aria-label={`${p.title} 창 닫기`}
-                onClick={() => close(p.id)}
+                aria-label={`${p.title} 닫기 (다음 방문까지 다시 표시 가능)`}
+                onClick={() => closeOnce(p.id)}
               >
                 ×
               </button>
@@ -76,27 +83,19 @@ export default function HomeLayerPopups() {
                 <p className="eyebrow">{p.kicker}</p>
                 <h3 className="home-popup-title">{p.title}</h3>
                 <p className="home-popup-desc">{p.desc}</p>
+
+                <div className="home-popup-card-actions">
+                  <button
+                    type="button"
+                    className="home-popup-hide-this-today"
+                    onClick={() => closeTodayOnly(p.id)}
+                  >
+                    오늘 하루 열지 않기
+                  </button>
+                </div>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="home-popup-toolbar">
-          <label className="home-popup-hide-today">
-            <input
-              type="checkbox"
-              checked={dontShowToday}
-              onChange={(e) => setDontShowToday(e.target.checked)}
-            />
-            오늘 하루 열지 않기
-          </label>
-          <button
-            type="button"
-            className="home-popup-dismiss-all"
-            onClick={closeAll}
-          >
-            모두 닫기
-          </button>
         </div>
       </div>
     </aside>
