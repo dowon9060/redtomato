@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="t">
+  <title id="t">àTt tøÀ t¤@T</title>
+  <defs>
+    <linearGradient id="food" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffcc80"/>
+      <stop offset="100%" stop-color="#e53935"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="#1a1a1a"/>
+  <ellipse cx="320" cy="195" rx="140" ry="38" fill="url(#food)" opacity="0.9"/>
+  <circle cx="320" cy="145" r="72" fill="#ffeb3b" opacity="0.95"/>
+  <circle cx="320" cy="145" r="58" fill="#c62828"/>
+  <text x="320" y="290" fill="#fff" font-family="system-ui,sans-serif" font-size="36" font-weight="800" text-anchor="middle">NEW MENU</text>
+  <text x="320" y="325" fill="rgba(255,255,255,0.65)" font-family="system-ui,sans-serif" font-size="17" text-anchor="middle">Tt ¬Ä<\ P´t ü8”</text>
+</svg>

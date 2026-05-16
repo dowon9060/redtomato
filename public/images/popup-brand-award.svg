@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="t">
+  <title id="t">œÜ Á tøÀ t¤@T</title>
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="50%" stop-color="#ffd54f"/>
+      <stop offset="100%" stop-color="#ff8f00"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="#2c1810"/>
+  <circle cx="320" cy="170" r="88" fill="url(#gold)" opacity="0.95"/>
+  <path d="M260 250 L320 300 L380 250 L360 220 L320 240 L280 220 Z" fill="url(#gold)"/>
+  <text x="320" y="178" fill="#3e2723" font-family="system-ui,sans-serif" font-size="28" font-weight="800" text-anchor="middle">AWARD</text>
+  <text x="320" y="335" fill="rgba(255,255,255,0.75)" font-family="system-ui,sans-serif" font-size="18" text-anchor="middle">t¤@T  ä Á tøÀ\ P´</text>
+</svg>
