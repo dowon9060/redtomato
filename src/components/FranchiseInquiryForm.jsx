@@ -3,15 +3,49 @@ import { useState } from "react";
 export default function FranchiseInquiryForm({ onDismiss }) {
   const [form, setForm] = useState({ name: "", phone: "", region: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("가맹 문의 접수:", form);
-    setSubmitted(true);
+    setSubmitError(null);
+    setPending(true);
+
+    try {
+      const res = await fetch("/api/franchise-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        const msg =
+          typeof data?.error === "string"
+            ? data.error
+            : "접수에 실패했습니다. 잠시 후 다시 시도해 주세요.";
+        throw new Error(msg);
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      if (err instanceof TypeError) {
+        setSubmitError(
+          "네트워크 오류로 접수하지 못했습니다. 연결을 확인하거나 잠시 후 다시 시도해 주세요."
+        );
+      } else if (err instanceof Error) {
+        setSubmitError(err.message);
+      } else {
+        setSubmitError("접수에 실패했습니다.");
+      }
+    } finally {
+      setPending(false);
+    }
   };
 
   if (submitted) {
@@ -39,6 +73,7 @@ export default function FranchiseInquiryForm({ onDismiss }) {
           placeholder="홍길동"
           value={form.name}
           onChange={handleChange}
+          disabled={pending}
           required
         />
       </label>
@@ -51,6 +86,7 @@ export default function FranchiseInquiryForm({ onDismiss }) {
           placeholder="010-0000-0000"
           value={form.phone}
           onChange={handleChange}
+          disabled={pending}
           required
         />
       </label>
@@ -63,12 +99,15 @@ export default function FranchiseInquiryForm({ onDismiss }) {
           placeholder="예) 서울 강남구"
           value={form.region}
           onChange={handleChange}
+          disabled={pending}
           required
         />
       </label>
 
-      <button type="submit" className="btn btn-primary modal-submit">
-        문의 등록
+      {submitError ? <p className="form-submit-error">{submitError}</p> : null}
+
+      <button type="submit" className="btn btn-primary modal-submit" disabled={pending}>
+        {pending ? "접수 중…" : "문의 등록"}
       </button>
     </form>
   );

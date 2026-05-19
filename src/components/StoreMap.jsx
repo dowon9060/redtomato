@@ -11,6 +11,25 @@ const markerIcon = L.divIcon({
   popupAnchor: [0, -24],
 });
 
+/** 페이지 전환 등으로 컨테이너가 제거된 뒤에도 RAF/observer가 실행되며 Leaflet 예외 방지 */
+function mapIsMounted(map) {
+  try {
+    const c = map.getContainer();
+    return Boolean(c && c.isConnected);
+  } catch {
+    return false;
+  }
+}
+
+function safeMapExec(map, fn) {
+  if (!mapIsMounted(map)) return;
+  try {
+    fn();
+  } catch {
+    /* map 제거 진행 중 */
+  }
+}
+
 function MapInvalidateOnResize() {
   const map = useMap();
 
@@ -18,7 +37,7 @@ function MapInvalidateOnResize() {
     const el = map.getContainer();
     if (!el || typeof ResizeObserver === "undefined") return;
     const ro = new ResizeObserver(() =>
-      queueMicrotask(() => map.invalidateSize())
+      queueMicrotask(() => safeMapExec(map, () => map.invalidateSize()))
     );
     ro.observe(el);
     return () => ro.disconnect();
@@ -33,45 +52,80 @@ function MapCameraSync({ stores, focusedStoreId, markerRefs }) {
   useLayoutEffect(() => {
     if (!stores.length) return;
 
-    const bounds = () =>
-      L.latLngBounds(stores.map((s) => [s.lat, s.lng]));
-
-    const run = () => {
-      const store = stores.find((s) => s.id === focusedStoreId);
-
-      Object.values(markerRefs.current).forEach((m) => {
-        try {
-          m?.closePopup?.();
-        } catch (_) {}
-      });
-
-      if (!store) {
-        map.flyToBounds(bounds(), {
-          padding: [52, 52],
-          duration: 0.45,
-          maxZoom: 13,
-        });
-        return;
-      }
-
-      map.flyTo(L.latLng(store.lat, store.lng), 15, {
-        duration: 0.45,
-        animate: true,
-      });
-
-      const open = () => {
-        const marker = markerRefs.current[focusedStoreId];
-        if (marker?.openPopup) marker.openPopup();
-      };
-      queueMicrotask(() =>
-        requestAnimationFrame(() =>
-          requestAnimationFrame(open)
-        )
-      );
+    let disposed = false;
+    const sched = {
+      outer: /** @type {number | undefined} */ (undefined),
+      inner: /** @type {number | undefined} */ (undefined),
     };
 
-    requestAnimationFrame(run);
-  }, [focusedStoreId, stores, map]);
+    const cancelSched = () => {
+      if (sched.outer != null) cancelAnimationFrame(sched.outer);
+      if (sched.inner != null) cancelAnimationFrame(sched.inner);
+      sched.outer = undefined;
+      sched.inner = undefined;
+    };
+
+    const runOuter = () => {
+      sched.outer = undefined;
+      if (disposed) return;
+
+      safeMapExec(map, () => {
+        let bounds;
+        try {
+          bounds = L.latLngBounds(stores.map((s) => [s.lat, s.lng]));
+        } catch {
+          return;
+        }
+        if (!bounds.isValid()) return;
+
+        for (const m of Object.values(markerRefs.current ?? {})) {
+          try {
+            m?.closePopup?.();
+          } catch {
+            /* */
+          }
+        }
+
+        const store = focusedStoreId
+          ? stores.find((s) => s.id === focusedStoreId)
+          : null;
+
+        if (!store) {
+          map.flyToBounds(bounds, {
+            padding: [52, 52],
+            duration: 0.45,
+            maxZoom: 13,
+          });
+          return;
+        }
+
+        map.flyTo(L.latLng(store.lat, store.lng), 15, {
+          duration: 0.45,
+          animate: true,
+        });
+
+        sched.inner = requestAnimationFrame(() => {
+          sched.inner = undefined;
+          if (disposed) return;
+          safeMapExec(map, () => {
+            const marker = markerRefs.current?.[focusedStoreId];
+            try {
+              marker?.openPopup?.();
+            } catch {
+              /* */
+            }
+          });
+        });
+      });
+    };
+
+    sched.outer = requestAnimationFrame(runOuter);
+
+    return () => {
+      disposed = true;
+      cancelSched();
+    };
+  }, [focusedStoreId, stores, map, markerRefs]);
 
   return null;
 }

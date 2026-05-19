@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -27,6 +29,9 @@ body {
   font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
   background: var(--bg);
   color: var(--text);
+  /* 한글 문장: 단어·어절 단위 줄바꿈 우선 (모바일·앱 웹뷰에서 과도한 음절 분리 완화) */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 a {
@@ -286,6 +291,26 @@ img {
 #menus,
 #promo {
   scroll-margin-top: 92px;
+}
+
+/* 좁은 화면·앱: 한글 제목 자간 완화 (과도한 ‘띄어쓰기 틀림’ 같은 인상 감소) */
+@media (max-width: 768px) {
+  .page-hero-inner h1 {
+    letter-spacing: 0;
+  }
+
+  .bangto-history-heading,
+  .bangto-year,
+  .bangto-mile-title,
+  .section-title h2,
+  .menu-catalog-title,
+  .section-dark h2,
+  .menu-content h3,
+  .menu-catalog-name,
+  .promo-card h3,
+  .home-popup-title {
+    letter-spacing: 0;
+  }
 }
 
 .home-subpage-link {
@@ -1384,6 +1409,17 @@ img {
   display: flex;
   flex-direction: column;
   gap: 18px;
+}
+
+.form-submit-error {
+  margin: -4px 0 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(229, 57, 53, 0.08);
+  color: var(--primary-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .form-field {

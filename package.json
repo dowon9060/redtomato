@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -k \"node scripts/local-api.mjs\" \"vite\" --names api,vite --prefix-colors blue,green",
+    "dev:vite-only": "vite",
+    "dev:api-only": "node scripts/local-api.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -19,6 +21,7 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "concurrently": "^9.2.1",
     "vite": "^6.3.2"
   }
 }

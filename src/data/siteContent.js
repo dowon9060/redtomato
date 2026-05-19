@@ -364,15 +364,15 @@ export const homeLayerPopups = [
   {
     id: "opening",
     image: "/images/popup-opening.svg",
-    imageAlt: "오픈 예정 매장 안내 이미지",
+    imageAlt: "오픈 예정 매장 안내",
     kicker: "Notice",
     title: "오픈 예정 매장",
     desc: "서울시 송파구, 6월 오픈 예정",
   },
   {
     id: "award",
-    image: "/images/popup-brand-award.svg",
-    imageAlt: "소비자 브랜드 대상 수상 이미지",
+    image: "/brand_tro.jpeg",
+    imageAlt: "소비자 브랜드 대상 수상",
     kicker: "Award",
     title: "소비자 브랜드 대상",
     desc: "고객의 선택에 감사드립니다.",
@@ -380,7 +380,7 @@ export const homeLayerPopups = [
   {
     id: "new-menu",
     image: "/images/popup-new-menu.svg",
-    imageAlt: "신 메뉴 출시 이미지",
+    imageAlt: "신 메뉴 출시",
     kicker: "New menu",
     title: "신 메뉴 출시",
     desc: "새롭게 선보이는 한 판을 만나 보세요.",
