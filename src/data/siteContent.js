@@ -1,5 +1,5 @@
 export const mainNav = [
-  { label: "빨토", path: "/bangto" },
+  { label: "빨토 히스토리", path: "/bangto" },
   { label: "메뉴", path: "/menu" },
   { label: "창업 문의", path: "/franchise" },
   { label: "매장", path: "/store" },

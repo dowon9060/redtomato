@@ -66,12 +66,6 @@ export default function FranchiseInquiryForm({ onDismiss }) {
 
   return (
     <form className="modal-form franchise-inline-form" onSubmit={handleSubmit}>
-      <p className="franchise-inquiry-hotline">
-        문의 전화{" "}
-        <a className="text-link" href={franchiseInquiryHotline.telHref}>
-          {franchiseInquiryHotline.display}
-        </a>
-      </p>
       <label className="form-field">
         <span>이름</span>
         <input
@@ -116,6 +110,14 @@ export default function FranchiseInquiryForm({ onDismiss }) {
       <button type="submit" className="btn btn-primary modal-submit" disabled={pending}>
         {pending ? "접수 중…" : "문의 등록"}
       </button>
+
+      <div className="franchise-inquiry-hotline-card">
+        <p className="franchise-inquiry-hotline-card-kicker">연락처</p>
+        <a className="franchise-inquiry-hotline-card-phone" href={franchiseInquiryHotline.telHref}>
+          {franchiseInquiryHotline.display}
+        </a>
+        <p className="franchise-inquiry-hotline-card-hint">번호를 누르면 전화로 연결됩니다.</p>
+      </div>
     </form>
   );
 }
