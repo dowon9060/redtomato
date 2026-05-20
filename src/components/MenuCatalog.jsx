@@ -11,7 +11,7 @@ function formatThousandDisplay(won) {
 }
 
 export default function MenuCatalog() {
-  const [tab, setTab] = useState("pizza");
+  const [tab, setTab] = useState("signature");
   const [page, setPage] = useState(1);
   const pageSize = 8;
 
@@ -21,7 +21,7 @@ export default function MenuCatalog() {
 
   const filtered = useMemo(() => {
     if (tab === "all") return menuCatalog;
-    return menuCatalog.filter((m) => m.category === tab);
+    return menuCatalog.filter((m) => m.menuGroup === tab);
   }, [tab]);
 
   const visible = filtered.slice(0, page * pageSize);
@@ -38,7 +38,7 @@ export default function MenuCatalog() {
             피자와 사이드를 한 곳에서
           </h2>
           <p className="menu-catalog-lead">
-            빨간 토마토 피자의 인기 라인업과 매장별로 함께 즐길 수 있는 사이드를
+            빨간 토마토 피자의 라인업과 매장별로 함께 즐길 수 있는 메뉴를
             탭으로 골라 보세요.
           </p>
           <p className="menu-catalog-price-hint" role="note">
@@ -69,14 +69,20 @@ export default function MenuCatalog() {
           {visible.map((item) => (
             <li key={item.id} className="menu-catalog-card">
               <div className="menu-catalog-photo">
-                <img src={item.image} alt="" loading="lazy" />
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  loading="lazy"
+                />
                 {item.badge && (
                   <span className="menu-catalog-badge">{item.badge}</span>
                 )}
               </div>
 
               <div className="menu-catalog-body">
-                <p className="menu-catalog-eng">{item.eng}</p>
+                {item.eng ? (
+                  <p className="menu-catalog-eng">{item.eng}</p>
+                ) : null}
                 <h3 className="menu-catalog-name">{item.name}</h3>
 
                 <div className="menu-catalog-prices">

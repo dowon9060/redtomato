@@ -22,8 +22,8 @@ export default function MenuSection({ showCta = true }) {
               </div>
               <div className="menu-content">
                 <h3>{menu.name}</h3>
-                <p className="menu-eng">{menu.eng}</p>
-                <p className="menu-desc">{menu.desc}</p>
+                {menu.eng ? <p className="menu-eng">{menu.eng}</p> : null}
+                {menu.desc ? <p className="menu-desc">{menu.desc}</p> : null}
               </div>
             </article>
           ))}

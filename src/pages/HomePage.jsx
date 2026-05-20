@@ -40,7 +40,7 @@ function Hero() {
           <div className="hero-visual">
             <div className="hero-badge">Best of Red</div>
             <img
-              src="/images/hero-pizza.png"
+              src="/1_메인화면_220715/메인1.jpg"
               alt="빨간 토마토 피자 대표 비주얼"
               className="hero-image"
             />

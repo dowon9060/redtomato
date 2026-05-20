@@ -65,218 +65,149 @@ export const bangtoHistory = [
   },
 ];
 
-export const menuPageTabs = [
-  { id: "pizza", label: "피자" },
-  { id: "side", label: "사이드 · 음료" },
-  { id: "all", label: "전체" },
+/** public 하위 디렉터리·파일명(한글·공백 포함) URL */
+function menuAssetUrl(directory, filename) {
+  return `/${encodeURIComponent(directory)}/${encodeURIComponent(filename)}`;
+}
+
+function menuNameFromImageFile(file) {
+  return file
+    .replace(/\.(jpe?g|png|webp)$/i, "")
+    .replace(/_/g, " ");
+}
+
+function priceRowsForCategory(category) {
+  if (category === "pizza") {
+    return [
+      { size: "P", won: null },
+      { size: "R", won: null },
+      { size: "L", won: null },
+    ];
+  }
+  return [{ size: "", won: null }];
+}
+
+/**
+ * `public/{folder}/{filename}` 이미지와 1:1 대응합니다. 메뉴명은 파일명(확장자 제외, `_`→공백)입니다.
+ */
+export const MENU_IMAGE_GROUPS = [
+  {
+    groupId: "signature",
+    folder: "시그니쳐메뉴",
+    tabLabel: "시그니처 메뉴",
+    category: "pizza",
+    files: [
+      "베이컨쉬프림피자.jpg",
+      "쉬프림큐브스테이크피자.jpg",
+      "스윗고구마무스피자.jpg",
+      "체다치즈프라이피자.jpg",
+      "핫칠리쉬프림올인피자.jpg",
+    ],
+  },
+  {
+    groupId: "best",
+    folder: "베스트피자",
+    tabLabel: "베스트 피자",
+    category: "pizza",
+    files: [
+      "베이컨리치피자.jpg",
+      "스위트리치피자.jpg",
+      "스테이크불갈비피자.jpg",
+    ],
+  },
+  {
+    groupId: "special",
+    folder: "스폐셜피자",
+    tabLabel: "스폐셜 피자",
+    category: "pizza",
+    files: [
+      "고구마리치피자.jpg",
+      "매콤불고기피자.jpg",
+      "베이컨체다피자.jpg",
+      "토마토스페셜피자.jpg",
+      "포테이토피자.jpg",
+    ],
+  },
+  {
+    groupId: "original",
+    folder: "오리지널피자",
+    tabLabel: "오리지널 피자",
+    category: "pizza",
+    files: [
+      "불고기피자1.jpg",
+      "야채피자.jpg",
+      "이탈리언피자.jpg",
+      "컴비네이션피자.jpg",
+      "페파로니피자.jpg",
+    ],
+  },
+  {
+    groupId: "half",
+    folder: "반반피자 네가지피자",
+    tabLabel: "반반 · 네가지",
+    category: "pizza",
+    files: [
+      "네가지_스페셜피자.jpg",
+      "네가지_오리지널피자.jpg",
+      "반반피자.jpg",
+    ],
+  },
+  {
+    groupId: "set",
+    folder: "세트메뉴",
+    tabLabel: "세트 메뉴",
+    category: "pizza",
+    files: ["세트A.jpg", "세트B.jpg", "세트C.jpg", "세트D.jpg", "세트E.jpg"],
+  },
+  {
+    groupId: "side",
+    folder: "사이드메뉴",
+    tabLabel: "사이드 메뉴",
+    category: "side",
+    files: [
+      "버팔로스틱.jpg",
+      "새우링.jpg",
+      "웨지감자.jpg",
+      "치즈오븐스파게티.jpg",
+      "치츠스틱.jpg",
+      "해쉬브라운.jpg",
+    ],
+  },
+  {
+    groupId: "drink",
+    folder: "음료",
+    tabLabel: "음료",
+    category: "side",
+    files: ["사이다.jpg", "얼음컵.jpg", "콜라.jpg"],
+  },
 ];
 
-export const menuCatalog = [
-  {
-    id: 1,
-    category: "pizza",
-    featured: true,
-    eng: "Red Signature",
-    name: "레드 시그니처",
-    desc: "토마토의 풍미와 치즈 밸런스가 가장 선명하게 느껴지는 대표 메뉴",
-    image: "/images/menu-1.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 18900 },
-      { size: "R", won: 25900 },
-      { size: "L", won: 32900 },
-    ],
-  },
-  {
-    id: 2,
-    category: "pizza",
-    featured: true,
-    eng: "Pepper Red",
-    name: "페퍼 레드",
-    desc: "짭짤한 페퍼로니와 진한 치즈가 조화로운 베스트 조합",
-    image: "/images/menu-2.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 17900 },
-      { size: "R", won: 24900 },
-      { size: "L", won: 31900 },
-    ],
-  },
-  {
-    id: 3,
-    category: "pizza",
-    featured: true,
-    eng: "Cheese Garden",
-    name: "치즈 가든",
-    desc: "부드러운 치즈 풍미를 가볍고 깔끔하게 즐길 수 있는 메뉴",
-    image: "/images/menu-3.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 16900 },
-      { size: "R", won: 23900 },
-      { size: "L", won: 29900 },
-    ],
-  },
-  {
-    id: 4,
-    category: "pizza",
-    featured: true,
-    eng: "Hot Spicy",
-    name: "핫 스파이시",
-    desc: "입맛을 확 끌어올리는 스파이시 무드의 시그니처 피자",
-    image: "/images/menu-4.png",
-    badge: "HOT",
-    priceRows: [
-      { size: "P", won: 18900 },
-      { size: "R", won: 25900 },
-      { size: "L", won: 32900 },
-    ],
-  },
-  {
-    id: 5,
-    category: "pizza",
-    featured: false,
-    eng: "Corn Shrimp Tomato",
-    name: "옥수수 새우 레드",
-    desc: "옥수수·새우와 토마토 소스의 담백한 조합",
-    image: "/images/menu-1.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 18900 },
-      { size: "R", won: 25900 },
-      { size: "L", won: 32900 },
-    ],
-  },
-  {
-    id: 6,
-    category: "pizza",
-    featured: false,
-    eng: "Super Combination",
-    name: "슈퍼 콤비네이션",
-    desc: "다양한 토핑으로 한 번에 즐기는 클래식",
-    image: "/images/menu-2.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 19900 },
-      { size: "R", won: 26900 },
-      { size: "L", won: 33900 },
-    ],
-  },
-  {
-    id: 7,
-    category: "pizza",
-    featured: false,
-    eng: "Sweet Potato Bacon",
-    name: "스윗포 베이컨",
-    desc: "달큰 고구마와 바삭한 베이컨",
-    image: "/images/menu-3.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 17900 },
-      { size: "R", won: 24900 },
-      { size: "L", won: 31900 },
-    ],
-  },
-  {
-    id: 8,
-    category: "pizza",
-    featured: false,
-    eng: "Pepperoni Classic",
-    name: "페페로니 클래식",
-    desc: "얇게 썬 페페로니와 모짜렐라 치즈",
-    image: "/images/menu-4.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 14900 },
-      { size: "R", won: 21900 },
-      { size: "L", won: 28900 },
-    ],
-  },
-  {
-    id: 9,
-    category: "pizza",
-    featured: false,
-    eng: "Quattro Cheese",
-    name: "콰트로 치즈",
-    desc: "네 가지 치즈의 깊은 풍미",
-    image: "/images/menu-1.png",
-    badge: null,
-    priceRows: [
-      { size: "P", won: 18900 },
-      { size: "R", won: 25900 },
-      { size: "L", won: 32900 },
-    ],
-  },
-  {
-    id: 10,
-    category: "pizza",
-    featured: false,
-    eng: "Half & Half",
-    name: "하프 앤 하프 피자",
-    desc: "원하는 두 가지 피자를 한 판에",
-    image: "/images/menu-2.png",
-    badge: "SET",
-    priceRows: [
-      { size: "P", won: null },
-      { size: "R", won: 27900 },
-      { size: "L", won: 35900 },
-    ],
-  },
-  {
-    id: 11,
-    category: "side",
-    featured: false,
-    eng: "Red Wings",
-    name: "레드 윙",
-    desc: "바삭한 치킨 윙, 소스 선택",
-    image: "/images/menu-3.png",
-    badge: null,
-    priceRows: [{ size: "", won: 9900 }],
-  },
-  {
-    id: 12,
-    category: "side",
-    featured: false,
-    eng: "Mozzarella Cheese Sticks",
-    name: "모짜렐라 치즈 스틱",
-    desc: "",
-    image: "/images/menu-4.png",
-    badge: null,
-    priceRows: [{ size: "", won: 7900 }],
-  },
-  {
-    id: 13,
-    category: "side",
-    featured: false,
-    eng: "Tomato Pasta",
-    name: "토마토 크림 파스타",
-    desc: "",
-    image: "/images/menu-1.png",
-    badge: null,
-    priceRows: [{ size: "", won: 12900 }],
-  },
-  {
-    id: 14,
-    category: "side",
-    featured: false,
-    eng: "Garden Salad",
-    name: "가든 샐러드",
-    desc: "",
-    image: "/images/menu-2.png",
-    badge: null,
-    priceRows: [{ size: "", won: 8900 }],
-  },
-  {
-    id: 15,
-    category: "side",
-    featured: false,
-    eng: "Cola Zero",
-    name: "콜라(제로)",
-    desc: "",
-    image: "/images/menu-3.png",
-    badge: null,
-    priceRows: [{ size: "", won: 2500 }],
-  },
+function buildMenuCatalogFromImages() {
+  /** @type {Array<Record<string, unknown>>} */
+  const items = [];
+  for (const g of MENU_IMAGE_GROUPS) {
+    g.files.forEach((file, idx) => {
+      items.push({
+        id: `${g.groupId}-${idx + 1}`,
+        menuGroup: g.groupId,
+        category: g.category,
+        eng: "",
+        name: menuNameFromImageFile(file),
+        desc: "",
+        image: menuAssetUrl(g.folder, file),
+        badge: null,
+        priceRows: priceRowsForCategory(g.category),
+      });
+    });
+  }
+  return items;
+}
+
+export const menuCatalog = buildMenuCatalogFromImages();
+
+export const menuPageTabs = [
+  ...MENU_IMAGE_GROUPS.map((g) => ({ id: g.groupId, label: g.tabLabel })),
+  { id: "all", label: "전체" },
 ];
 
 export const menuPageNotes = [
@@ -286,7 +217,7 @@ export const menuPageNotes = [
 ];
 
 export const signatureMenus = menuCatalog
-  .filter((item) => item.featured)
+  .filter((item) => item.menuGroup === "signature")
   .map(({ id, name, eng, desc, image }) => ({
     id,
     name,
