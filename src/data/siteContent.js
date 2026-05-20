@@ -324,3 +324,9 @@ export const franchisePoints = [
   "지속 가능한 메뉴 경쟁력",
   "상담부터 개설까지 체계적인 안내",
 ];
+
+/** 창업 문의 — 안내 전화 (표시 / tel 연결용) */
+export const franchiseInquiryHotline = {
+  display: "010-2016-0885",
+  telHref: "tel:+821020160885",
+};

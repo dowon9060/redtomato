@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { franchiseInquiryHotline } from "../data/siteContent";
 
 export default function FranchiseInquiryForm({ onDismiss }) {
   const [form, setForm] = useState({ name: "", phone: "", region: "" });
@@ -65,6 +66,12 @@ export default function FranchiseInquiryForm({ onDismiss }) {
 
   return (
     <form className="modal-form franchise-inline-form" onSubmit={handleSubmit}>
+      <p className="franchise-inquiry-hotline">
+        문의 전화{" "}
+        <a className="text-link" href={franchiseInquiryHotline.telHref}>
+          {franchiseInquiryHotline.display}
+        </a>
+      </p>
       <label className="form-field">
         <span>이름</span>
         <input

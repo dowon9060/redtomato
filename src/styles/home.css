@@ -1399,6 +1399,22 @@ img {
   gap: 18px;
 }
 
+.franchise-inquiry-hotline {
+  margin: 0;
+  font-size: 0.93rem;
+  color: var(--muted);
+}
+
+.franchise-inquiry-hotline .text-link {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary-dark);
+}
+
+.franchise-inquiry-hotline .text-link:hover {
+  color: var(--primary);
+}
+
 .form-submit-error {
   margin: -4px 0 0;
   padding: 12px 14px;
