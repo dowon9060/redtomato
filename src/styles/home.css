@@ -449,18 +449,6 @@ img {
   filter: drop-shadow(0 24px 50px rgba(0, 0, 0, 0.14));
 }
 
-.hero-badge {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-weight: 700;
-  font-size: 0.88rem;
-}
-
 .section {
   padding: 110px 0;
 }
