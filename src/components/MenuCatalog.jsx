@@ -155,5 +155,7 @@ function abbrTitle(size) {
   if (size === "P") return "퍼스널 소형";
   if (size === "R") return "레귤러 미디엄";
   if (size === "L") return "라지";
+  if (size === "1.25L") return "1.25L 병 또는 페트";
+  if (size === "500㎖") return "500ml 캔·페트";
   return size;
 }

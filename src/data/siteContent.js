@@ -205,6 +205,45 @@ const MENU_ITEM_OVERRIDES = {
     name: "피자+피자+콜라(1.25L) 리치골드",
     priceRows: [{ size: "L", won: menuWon(39.9) }],
   },
+
+  [menuKey("사이드메뉴", "치즈오븐스파게티.jpg")]: {
+    priceRows: [{ size: "", won: menuWon(6) }],
+  },
+  [menuKey("사이드메뉴", "웨지감자.jpg")]: {
+    name: "웨지감자(1인분)",
+    priceRows: [{ size: "", won: menuWon(4) }],
+  },
+  [menuKey("사이드메뉴", "치츠스틱.jpg")]: {
+    name: "치즈스틱(5p)",
+    priceRows: [{ size: "", won: menuWon(5) }],
+  },
+  [menuKey("사이드메뉴", "새우링.jpg")]: {
+    name: "새우링(4p)",
+    priceRows: [{ size: "", won: menuWon(4) }],
+  },
+  [menuKey("사이드메뉴", "해쉬브라운.jpg")]: {
+    name: "해시브라운(4p)",
+    priceRows: [{ size: "", won: menuWon(4) }],
+  },
+  [menuKey("사이드메뉴", "버팔로스틱.jpg")]: {
+    name: "버팔로스틱(5p)",
+    priceRows: [{ size: "", won: menuWon(5) }],
+  },
+
+  [menuKey("음료", "콜라.jpg")]: {
+    name: "콜라",
+    priceRows: [
+      { size: "1.25L", won: menuWon(2.5) },
+      { size: "500㎖", won: menuWon(1.5) },
+    ],
+  },
+  [menuKey("음료", "사이다.jpg")]: {
+    name: "스프라이트 또는 칠성사이다",
+    priceRows: [
+      { size: "1.25L", won: menuWon(2.5) },
+      { size: "500㎖", won: menuWon(1.5) },
+    ],
+  },
 };
 
 /**
@@ -311,6 +350,10 @@ export const MENU_IMAGE_GROUPS = [
       "치츠스틱.jpg",
       "해쉬브라운.jpg",
     ],
+    extras: [
+      { name: "크림스파게티", priceRows: [{ size: "", won: menuWon(7) }] },
+      { name: "로제스파게티", priceRows: [{ size: "", won: menuWon(6) }] },
+    ],
   },
   {
     groupId: "drink",
@@ -318,6 +361,15 @@ export const MENU_IMAGE_GROUPS = [
     tabLabel: "음료",
     category: "side",
     files: ["사이다.jpg", "얼음컵.jpg", "콜라.jpg"],
+    extras: [
+      {
+        name: "제로콜라",
+        priceRows: [
+          { size: "1.25L", won: menuWon(2.7) },
+          { size: "500㎖", won: menuWon(1.5) },
+        ],
+      },
+    ],
   },
 ];
 
