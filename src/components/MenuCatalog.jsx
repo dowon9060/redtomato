@@ -68,15 +68,24 @@ export default function MenuCatalog() {
         <ul className="menu-catalog-grid">
           {visible.map((item) => (
             <li key={item.id} className="menu-catalog-card">
-              <div className="menu-catalog-photo">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  loading="lazy"
-                />
-                {item.badge && (
-                  <span className="menu-catalog-badge">{item.badge}</span>
+              <div
+                className={`menu-catalog-photo${item.imagePending ? " menu-catalog-photo--pending" : ""}`}
+                role={item.imagePending ? "presentation" : undefined}
+              >
+                {item.imagePending ? (
+                  <span className="menu-catalog-photo-pending" aria-hidden="true">
+                    이미지 준비중
+                  </span>
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    loading="lazy"
+                  />
                 )}
+                {!item.imagePending && item.badge ? (
+                  <span className="menu-catalog-badge">{item.badge}</span>
+                ) : null}
               </div>
 
               <div className="menu-catalog-body">
@@ -142,6 +151,7 @@ export default function MenuCatalog() {
 }
 
 function abbrTitle(size) {
+  if (size === "M") return "미디엄";
   if (size === "P") return "퍼스널 소형";
   if (size === "R") return "레귤러 미디엄";
   if (size === "L") return "라지";

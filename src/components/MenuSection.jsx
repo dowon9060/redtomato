@@ -18,7 +18,20 @@ export default function MenuSection({ showCta = true }) {
           {signatureMenus.map((menu) => (
             <article className="menu-card" key={menu.id}>
               <div className="menu-image-wrap">
-                <img src={menu.image} alt={menu.name} className="menu-image" />
+                {menu.imagePending ? (
+                  <p
+                    className="menu-image menu-image-pending"
+                    role="presentation"
+                  >
+                    이미지 준비중
+                  </p>
+                ) : (
+                  <img
+                    src={menu.image}
+                    alt={menu.name}
+                    className="menu-image"
+                  />
+                )}
               </div>
               <div className="menu-content">
                 <h3>{menu.name}</h3>
