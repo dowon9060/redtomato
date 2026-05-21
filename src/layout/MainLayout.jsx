@@ -30,8 +30,14 @@ export default function MainLayout() {
       <header className="header">
         <div className="container header-inner">
           <Link to="/" className="logo">
-            <span className="logo-dot" />
-            빨간 토마토 피자
+            <img
+              src="/logo.jpg"
+              alt="빨간 토마토 피자"
+              className="logo-img"
+              width={1024}
+              height={389}
+              decoding="async"
+            />
           </Link>
 
           <nav className="nav" aria-label="주요 메뉴">

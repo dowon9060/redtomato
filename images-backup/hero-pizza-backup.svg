@@ -65,7 +65,7 @@
   
   <!-- Bell peppers -->
   <path d="M300 280 Q315 265 330 280 Q315 295 300 280" fill="#4CAF50"/>
-  <path d="M470 380 Q485 365 500 380 Q485 395 470 380" fill="#FF5722"/>
+  <path d="M470 380 Q485 365 500 380 Q485 395 470 380" fill="#ff5c5c"/>
   <path d="M360 380 Q375 365 390 380 Q375 395 360 380" fill="#FF9800"/>
   
   <!-- Large cheese strings -->
@@ -88,6 +88,6 @@
   <path d="M380 120 Q390 110 400 120 Q410 110 420 120" stroke="#FFF" stroke-width="4" fill="none" opacity="0.6"/>
   
   <!-- Text overlay -->
-  <text x="400" y="550" font-family="'Noto Sans KR', Arial, sans-serif" font-size="36" font-weight="700" fill="#DC143C" text-anchor="middle">빨간토마토피자</text>
+  <text x="400" y="550" font-family="'Noto Sans KR', Arial, sans-serif" font-size="36" font-weight="700" fill="#ff5c5c" text-anchor="middle">빨간토마토피자</text>
   <text x="400" y="580" font-family="'Noto Sans KR', Arial, sans-serif" font-size="18" fill="#666" text-anchor="middle">피자 장인이 만드는 진정한 맛</text>
 </svg>
