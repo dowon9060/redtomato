@@ -8,10 +8,13 @@
     "dev:vite-only": "vite",
     "dev:api-only": "node scripts/local-api.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cf:dev:retomato": "wrangler dev --config cloudflare/workers/retomato/wrangler.toml",
+    "cf:deploy:retomato": "wrangler deploy --config cloudflare/workers/retomato/wrangler.toml"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
+    "nodemailer": "^8.0.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-leaflet": "^5.0.0",
@@ -22,6 +25,8 @@
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
     "concurrently": "^9.2.1",
-    "vite": "^6.3.2"
+    "dotenv": "^17.4.2",
+    "vite": "^6.3.2",
+    "wrangler": "^4.86.0"
   }
 }

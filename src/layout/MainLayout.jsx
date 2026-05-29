@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { NavLink, Link, Outlet, useLocation } from "react-router-dom";
-import { mainNav } from "../data/siteContent";
+import { mainNav, businessName } from "../data/siteContent";
 import SiteFooter from "../components/SiteFooter";
 
 function ScrollToTopOnRoute() {
@@ -32,7 +32,7 @@ export default function MainLayout() {
           <Link to="/" className="logo">
             <img
               src="/logo.jpg"
-              alt="빨간 토마토 피자"
+              alt={businessName}
               className="logo-img"
               width={1024}
               height={389}

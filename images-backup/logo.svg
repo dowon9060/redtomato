@@ -26,9 +26,8 @@
   <circle cx="38" cy="32" r="1.5" fill="#FFF"/>
   
   <!-- Main text -->
-  <text x="85" y="32" font-family="'Noto Sans KR', Arial, sans-serif" font-size="20" font-weight="700" fill="#ff5c5c">빨간토마토</text>
-  <text x="85" y="55" font-family="'Noto Sans KR', Arial, sans-serif" font-size="20" font-weight="700" fill="#333">PIZZA</text>
+  <text x="85" y="38" font-family="'Noto Sans KR', Arial, sans-serif" font-size="17" font-weight="700" fill="#ff5c5c">빨간토마토피자</text>
   
   <!-- Tagline -->
-  <text x="85" y="70" font-family="'Noto Sans KR', Arial, sans-serif" font-size="10" fill="#666">피자 장인이 만드는 진정한 맛</text>
+  <text x="85" y="58" font-family="'Noto Sans KR', Arial, sans-serif" font-size="10" fill="#666">피자 장인이 만드는 진정한 맛</text>
 </svg>

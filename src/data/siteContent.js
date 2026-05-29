@@ -1,3 +1,6 @@
+/** 공식 상호명 */
+export const businessName = "빨간토마토피자";
+
 export const mainNav = [
   { label: "빨토 히스토리", path: "/bangto" },
   { label: "메뉴", path: "/menu" },
@@ -8,7 +11,7 @@ export const mainNav = [
 /** 빨토(브랜드) 페이지 — 창업·성장 타임라인 */
 export const bangtoHistoryIntro = {
   eyebrow: "Bangto Story",
-  title: "빨간 토마토 피자, 빨토",
+  title: `${businessName}, 빨토`,
   desc: "2002년 5월 창업부터 이어온 브랜드의 길을 연도별로 소개합니다. 지역과 함께 성장한 창업 히스토리입니다.",
 };
 

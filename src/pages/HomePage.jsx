@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { brandPoints, promos } from "../data/siteContent";
+import { brandPoints, promos, businessName } from "../data/siteContent";
 import { Reveal, StaggerGroup, SectionTitle } from "../components/pageMotion.jsx";
 import MenuSection from "../components/MenuSection.jsx";
 import FranchiseHighlight from "../components/FranchiseHighlight.jsx";
@@ -13,14 +13,14 @@ function Hero() {
       <div className="container hero-grid">
         <Reveal type="left" delay={0.1}>
           <div className="hero-copy">
-            <p className="eyebrow">RED TOMATO PIZZA</p>
+            <p className="eyebrow">{businessName}</p>
             <h1>
               RED MAKES
               <br />
               PIZZA BETTER
             </h1>
             <p className="hero-text">
-              이름처럼 선명한 맛, 빨간 토마토 피자.
+              이름처럼 선명한 맛, {businessName}.
               <br />
               토마토의 풍미를 가장 감각적으로 담은 한 판을 제안합니다.
             </p>
@@ -40,7 +40,7 @@ function Hero() {
           <div className="hero-visual">
             <img
               src="/1_메인화면_220715/메인1.jpg"
-              alt="빨간 토마토 피자 대표 비주얼"
+              alt={`${businessName} 대표 비주얼`}
               className="hero-image"
             />
           </div>
@@ -56,9 +56,9 @@ function BrandStory() {
       <div className="container brand-grid">
         <Reveal type="left">
           <SectionTitle
-            eyebrow="Why Red Tomato"
+            eyebrow="Brand Story"
             title="피자의 중심은 토마토"
-            desc="빨간 토마토 피자는 기본적인 맛의 완성도를 먼저 생각합니다."
+            desc={`${businessName}는 기본적인 맛의 완성도를 먼저 생각합니다.`}
           />
         </Reveal>
 
@@ -70,7 +70,7 @@ function BrandStory() {
               브랜드를 기억하게 만들고 싶습니다.
             </p>
             <p>
-              빨간 토마토 피자는 보기 좋은 피자가 더 먹고 싶어진다는 믿음으로,
+              {businessName}는 보기 좋은 피자가 더 먹고 싶어진다는 믿음으로,
               감각적인 비주얼과 편안한 맛의 균형을 함께 담습니다.
             </p>
           </div>
@@ -88,7 +88,7 @@ function BrandPoints() {
           <SectionTitle
             eyebrow="Brand Point"
             title="선명한 비주얼, 기분 좋은 한 입"
-            desc="빨간 토마토 피자가 추구하는 세 가지 기준"
+            desc={`${businessName}가 추구하는 세 가지 기준`}
             align="center"
           />
         </Reveal>

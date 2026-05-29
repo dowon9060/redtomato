@@ -1,6 +1,6 @@
 import { useState } from "react";
 import StoreMap from "./StoreMap";
-import { stores as storeData } from "../data/siteContent";
+import { stores as storeData, businessName } from "../data/siteContent";
 import { Reveal, StaggerGroup } from "./pageMotion.jsx";
 
 export default function StoreSection() {
@@ -18,7 +18,7 @@ export default function StoreSection() {
             <p className="eyebrow">Store & Order</p>
             <h2>가까운 매장에서 가장 맛있게</h2>
             <p className="store-text">
-              우리 동네 빨간 토마토 피자를 찾아 보세요.
+              우리 동네 {businessName}를 찾아 보세요.
               <br />
               매장 안내와 주문 정보를 쉽고 빠르게 확인할 수 있습니다.
             </p>

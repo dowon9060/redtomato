@@ -3,6 +3,7 @@ import {
   menuCatalog,
   menuPageNotes,
   menuPageTabs,
+  businessName,
 } from "../data/siteContent";
 
 function formatThousandDisplay(won) {
@@ -38,7 +39,7 @@ export default function MenuCatalog() {
             피자와 사이드를 한 곳에서
           </h2>
           <p className="menu-catalog-lead">
-            빨간 토마토 피자의 라인업과 매장별로 함께 즐길 수 있는 메뉴를
+            {businessName}의 라인업과 매장별로 함께 즐길 수 있는 메뉴를
             탭으로 골라 보세요.
           </p>
           <p className="menu-catalog-price-hint" role="note">

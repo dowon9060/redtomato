@@ -1,0 +1,12 @@
+name = "retomato"
+main = "src/worker.js"
+compatibility_date = "2025-03-04"
+
+[vars]
+FRANCHISE_NOTIFY_EMAIL = "redtomatopizza1@gmail.com"
+# 아래 주석을 해제하고 Resend에 인증된 발신 주소로 바꾸세요.
+# FRANCHISE_MAIL_FROM = "빨간토마토피자 <notify@yourdomain.com>"
+
+
+# ── 선택: 추가 CORS 출처(쉼표 구분). 기본: redtomato.kr, www, Vite 로컬
+# CORS_ALLOWED_ORIGINS = "https://staging.example.com"

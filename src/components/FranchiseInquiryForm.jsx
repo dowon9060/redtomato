@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { franchiseInquiryHotline } from "../data/siteContent";
+import { apiUrl } from "../lib/apiBase";
 
 export default function FranchiseInquiryForm({ onDismiss }) {
   const [form, setForm] = useState({ name: "", phone: "", region: "" });
@@ -17,7 +18,7 @@ export default function FranchiseInquiryForm({ onDismiss }) {
     setPending(true);
 
     try {
-      const res = await fetch("/api/franchise-inquiry", {
+      const res = await fetch(apiUrl("/api/franchise-inquiry"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

@@ -1,7 +1,8 @@
 /**
  * 로컬 개발: Vite 프록시 → 이 서버 (기본 3001)
- * 프로덕션은 Vercel /api/* 서버리스 사용
+ * 프로덕션은 Vercel `/api/*` 또는 `VITE_API_ORIGIN`(Cloudflare Worker) 중 선택
  */
+import "dotenv/config";
 import http from "node:http";
 import { handleFranchiseInquiryPOST } from "../server/franchise/http.js";
 

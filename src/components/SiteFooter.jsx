@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { businessName } from "../data/siteContent";
 import { Reveal } from "./pageMotion.jsx";
 
 export default function SiteFooter() {
@@ -7,7 +8,7 @@ export default function SiteFooter() {
       <footer className="footer">
         <div className="container footer-inner">
           <div>
-            <strong>빨간 토마토 피자</strong>
+            <strong>{businessName}</strong>
             <p>이름처럼 선명한 맛, 감각적인 한 판.</p>
           </div>
 
