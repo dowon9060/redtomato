@@ -1410,6 +1410,7 @@ img {
 
 /* Home entrance layer popups */
 .home-layer-popups {
+  --hp-font-scale: 1.3;
   position: fixed;
   top: 0;
   left: 0;
@@ -1499,7 +1500,7 @@ img {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
   color: var(--text);
-  font-size: 1.45rem;
+  font-size: calc(1.45rem * var(--hp-font-scale));
   line-height: 1;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -1552,7 +1553,7 @@ img {
   border-radius: 999px;
   background: #ffe566;
   color: #7a2e00;
-  font-size: 0.72rem;
+  font-size: calc(0.72rem * var(--hp-font-scale));
   font-weight: 800;
   letter-spacing: -0.02em;
 }
@@ -1564,7 +1565,7 @@ img {
 
 .home-opening-soon-line {
   display: block;
-  font-size: 1.85rem;
+  font-size: calc(1.85rem * var(--hp-font-scale));
   font-weight: 900;
   letter-spacing: 0.04em;
   text-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
@@ -1576,7 +1577,7 @@ img {
 
 .home-opening-hero-kicker {
   margin: 0;
-  font-size: 0.68rem;
+  font-size: calc(0.68rem * var(--hp-font-scale));
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1585,7 +1586,7 @@ img {
 
 .home-opening-hero-title {
   margin: 4px 0 0;
-  font-size: 1.05rem;
+  font-size: calc(1.05rem * var(--hp-font-scale));
   font-weight: 800;
   letter-spacing: -0.03em;
 }
@@ -1596,7 +1597,7 @@ img {
   border-radius: 10px;
   background: rgba(var(--primary-rgb), 0.06);
   color: var(--text);
-  font-size: 0.78rem;
+  font-size: calc(0.78rem * var(--hp-font-scale));
   font-weight: 700;
   text-align: center;
   line-height: 1.45;
@@ -1628,7 +1629,7 @@ img {
   border-radius: 0 0 10px 10px;
   background: var(--primary);
   color: #fff;
-  font-size: 0.62rem;
+  font-size: calc(0.62rem * var(--hp-font-scale));
   font-weight: 800;
   white-space: nowrap;
 }
@@ -1637,13 +1638,13 @@ img {
   display: block;
   margin: 2px auto 4px;
   color: var(--primary);
-  font-size: 0.45rem;
+  font-size: calc(0.45rem * var(--hp-font-scale));
   line-height: 1;
 }
 
 .home-opening-store-city {
   display: block;
-  font-size: 1.05rem;
+  font-size: calc(1.05rem * var(--hp-font-scale));
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.15;
@@ -1653,7 +1654,7 @@ img {
   display: block;
   margin-top: 2px;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: calc(0.72rem * var(--hp-font-scale));
   font-weight: 600;
 }
 
@@ -1683,6 +1684,7 @@ img {
 
 .home-popup-body .eyebrow {
   margin-bottom: 6px;
+  font-size: calc(0.82rem * var(--hp-font-scale));
 }
 
 .home-popup-card-actions {
@@ -1702,7 +1704,7 @@ img {
   color: var(--primary-dark);
   font: inherit;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: calc(0.82rem * var(--hp-font-scale));
   cursor: pointer;
   transition:
     background 0.18s ease,
@@ -1716,7 +1718,7 @@ img {
 
 .home-popup-title {
   margin: 0 0 8px;
-  font-size: 1.22rem;
+  font-size: calc(1.22rem * var(--hp-font-scale));
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.3;
@@ -1725,7 +1727,7 @@ img {
 .home-popup-desc {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: calc(0.9rem * var(--hp-font-scale));
   line-height: 1.57;
 }
 
@@ -1740,7 +1742,7 @@ img {
 .home-popup-perk {
   display: grid;
   gap: 2px;
-  font-size: 0.82rem;
+  font-size: calc(0.82rem * var(--hp-font-scale));
   line-height: 1.4;
 }
 
@@ -1771,12 +1773,12 @@ img {
 .home-popup-perk-free {
   color: var(--primary);
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: calc(0.9rem * var(--hp-font-scale));
 }
 
 .home-popup-perk-note {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: calc(0.75rem * var(--hp-font-scale));
 }
 
 @media (prefers-reduced-motion: reduce) {

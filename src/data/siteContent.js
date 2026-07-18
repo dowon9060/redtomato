@@ -475,7 +475,7 @@ export const promos = [
 export const stores = [
   {
     id: 1,
-    name: "효천점",
+    name: "빨간토마토피자 효천점",
     address: "광주광역시 남구 효천2로가길 21",
     phone: "062-651-0447",
     hours: "11:00 – 23:00",
@@ -565,7 +565,7 @@ export const stores = [
   },
   {
     id: 10,
-    name: "나주 혁신점 (본사 직영점)",
+    name: "나주 혁신점(본사 직영점)",
     address: "전라남도 나주시 빛가람동 203-4 (110호)",
     phone: "061-333-3706",
     hours: "11:00 – 23:00",
