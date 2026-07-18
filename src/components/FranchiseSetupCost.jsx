@@ -20,7 +20,15 @@ function AmountCell({ amount }) {
   return <span className="franchise-cost-amount">{amount}</span>;
 }
 
-export default function FranchiseSetupCost({ className = "" }) {
+export default function FranchiseSetupCost({
+  className = "",
+  planIds = null,
+  desc = "신규 창업과 업종 변경에 따른 비용 안내입니다. (금액 단위: 만원)",
+}) {
+  const plans = planIds
+    ? franchiseSetupCostPlans.filter((plan) => planIds.includes(plan.id))
+    : franchiseSetupCostPlans;
+
   return (
     <section
       className={`section section-soft franchise-cost-section${className ? ` ${className}` : ""}`}
@@ -31,13 +39,13 @@ export default function FranchiseSetupCost({ className = "" }) {
           <SectionTitle
             eyebrow="Cost"
             title="개설비용"
-            desc="신규 창업과 업종 변경에 따른 비용 안내입니다. (금액 단위: 만원)"
+            desc={desc}
             align="center"
           />
         </Reveal>
 
         <div className="franchise-cost-plans">
-          {franchiseSetupCostPlans.map((plan, planIdx) => (
+          {plans.map((plan, planIdx) => (
             <Reveal key={plan.id} type="up" delay={planIdx * 0.06}>
               <div className="franchise-cost-plan">
                 <h3

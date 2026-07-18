@@ -161,7 +161,10 @@ export default function HomePage() {
       <BrandStory />
       <div className="home-mobile-only">
         <BangtoHistorySection headingId="home-bangto-history-title" />
-        <FranchiseSetupCost />
+        <FranchiseSetupCost
+          planIds={["new"]}
+          desc="신규 창업 비용 안내입니다. (금액 단위: 만원)"
+        />
         <StoreSection />
       </div>
       <BrandPoints />
