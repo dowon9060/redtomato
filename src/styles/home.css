@@ -894,6 +894,10 @@ img {
   flex-wrap: wrap;
 }
 
+.hero-action-franchise {
+  display: none;
+}
+
 .hero-visual {
   position: relative;
   background: radial-gradient(circle at top, #ffe7df, #fff6f2 60%);
@@ -2295,6 +2299,18 @@ img {
 @media (max-width: 820px) {
   .container {
     width: min(var(--container), calc(100% - 28px));
+  }
+
+  .hero-action-menu {
+    display: none;
+  }
+
+  .hero-action-franchise {
+    display: inline-flex;
+  }
+
+  .home-menu-section {
+    display: none;
   }
 
   .page-hero {

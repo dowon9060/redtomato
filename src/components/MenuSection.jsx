@@ -2,9 +2,9 @@ import { signatureMenus } from "../data/siteContent";
 import { Link } from "react-router-dom";
 import { Reveal, StaggerGroup, SectionTitle } from "./pageMotion.jsx";
 
-export default function MenuSection({ showCta = true }) {
+export default function MenuSection({ showCta = true, className = "" }) {
   return (
-    <section className="section" id="menus">
+    <section className={`section${className ? ` ${className}` : ""}`} id="menus">
       <div className="container">
         <Reveal type="up">
           <SectionTitle

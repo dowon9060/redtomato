@@ -26,8 +26,11 @@ function Hero() {
             </p>
 
             <div className="hero-actions">
-              <Link to="/menu" className="btn btn-primary">
+              <Link to="/menu" className="btn btn-primary hero-action-menu">
                 대표 메뉴 보기
+              </Link>
+              <Link to="/franchise" className="btn btn-primary hero-action-franchise">
+                창업문의
               </Link>
               <Link to="/bangto" className="btn btn-light">
                 빨토 · 브랜드 소개
@@ -151,7 +154,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <MenuSection />
+      <MenuSection className="home-menu-section" />
       <BrandStory />
       <BrandPoints />
       <PromoSection />
