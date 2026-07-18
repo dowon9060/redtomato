@@ -529,8 +529,7 @@ export const homeLayerPopups = [
   },
   {
     id: "franchise-cost",
-    image: "/images/popup-franchise-cost.svg",
-    imageAlt: "창업 비용 프로모션",
+    hideMedia: true,
     kicker: "Franchise",
     title: "창업 비용",
     perks: [

@@ -67,7 +67,10 @@ export default function HomeLayerPopups() {
       <div className="home-layer-popups-inner">
         <div className="home-layer-popups-row">
           {visible.map((p) => (
-            <article key={p.id} className="home-popup-card">
+            <article
+              key={p.id}
+              className={`home-popup-card${p.hideMedia ? " home-popup-card--no-media" : ""}`}
+            >
               <button
                 type="button"
                 className="home-popup-close"
@@ -76,9 +79,11 @@ export default function HomeLayerPopups() {
               >
                 ×
               </button>
-              <div className="home-popup-media">
-                <img src={p.image} alt={p.imageAlt} loading="lazy" />
-              </div>
+              {!p.hideMedia && p.image ? (
+                <div className="home-popup-media">
+                  <img src={p.image} alt={p.imageAlt ?? ""} loading="lazy" />
+                </div>
+              ) : null}
               <div className="home-popup-body">
                 <p className="eyebrow">{p.kicker}</p>
                 <h3 className="home-popup-title">{p.title}</h3>

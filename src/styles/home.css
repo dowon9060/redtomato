@@ -1289,8 +1289,12 @@ img {
 }
 
 .home-popup-media {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 32 / 9;
   background: #eaeaea;
+}
+
+.home-popup-card--no-media .home-popup-body {
+  padding-top: 54px;
 }
 
 .home-popup-media img {
