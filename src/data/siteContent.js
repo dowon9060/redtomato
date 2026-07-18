@@ -829,6 +829,6 @@ export const franchiseSetupCostPlans = [
 
 /** 창업 문의 — 안내 전화 (표시 / tel 연결용) */
 export const franchiseInquiryHotline = {
-  display: "010-2016-0885",
-  telHref: "tel:+821020160885",
+  display: "1899-0964",
+  telHref: "tel:18990964",
 };
