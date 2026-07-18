@@ -485,7 +485,7 @@ export const stores = [
   },
   {
     id: 1,
-    name: "빨간토마토피자 효천점",
+    name: "효천점",
     address: "광주광역시 남구 효천2로가길 21",
     phone: "062-651-0447",
     hours: "11:00 – 23:00",
