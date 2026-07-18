@@ -3,7 +3,7 @@ import StoreMap from "./StoreMap";
 import { stores as storeData, businessName } from "../data/siteContent";
 import { Reveal, StaggerGroup } from "./pageMotion.jsx";
 
-export default function StoreSection() {
+export default function StoreSection({ className = "" }) {
   const [focusedStoreId, setFocusedStoreId] = useState(null);
 
   const toggleStoreFocus = (id) => {
@@ -11,7 +11,7 @@ export default function StoreSection() {
   };
 
   return (
-    <section className="section store-section">
+    <section className={`section store-section${className ? ` ${className}` : ""}`}>
       <div className="container store-layout">
         <Reveal type="left">
           <div className="store-left">

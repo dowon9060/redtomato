@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { brandPoints, promos, businessName } from "../data/siteContent";
 import { Reveal, StaggerGroup, SectionTitle } from "../components/pageMotion.jsx";
 import MenuSection from "../components/MenuSection.jsx";
+import BangtoHistorySection from "../components/BangtoHistorySection.jsx";
+import FranchiseSetupCost from "../components/FranchiseSetupCost.jsx";
+import StoreSection from "../components/StoreSection.jsx";
 import FranchiseHighlight from "../components/FranchiseHighlight.jsx";
 import FranchiseModal from "../components/FranchiseModal.jsx";
 import HomeLayerPopups from "../components/HomeLayerPopups.jsx";
@@ -156,6 +159,11 @@ export default function HomePage() {
       <Hero />
       <MenuSection className="home-menu-section" />
       <BrandStory />
+      <div className="home-mobile-only">
+        <BangtoHistorySection headingId="home-bangto-history-title" />
+        <FranchiseSetupCost />
+        <StoreSection />
+      </div>
       <BrandPoints />
       <PromoSection />
       <FranchiseHighlight

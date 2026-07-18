@@ -898,6 +898,10 @@ img {
   display: none;
 }
 
+.home-mobile-only {
+  display: none;
+}
+
 .hero-visual {
   position: relative;
   background: radial-gradient(circle at top, #ffe7df, #fff6f2 60%);
@@ -2316,6 +2320,22 @@ img {
   .home-brand-points-section,
   .home-promo-section {
     display: none;
+  }
+
+  .home-mobile-only {
+    display: block;
+  }
+
+  .home-mobile-only .bangto-timeline-section {
+    padding-top: 64px;
+  }
+
+  .home-mobile-only .franchise-cost-section {
+    padding-top: 64px;
+  }
+
+  .home-mobile-only .store-section {
+    padding-top: 64px;
   }
 
   .page-hero {

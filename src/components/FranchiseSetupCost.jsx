@@ -20,10 +20,10 @@ function AmountCell({ amount }) {
   return <span className="franchise-cost-amount">{amount}</span>;
 }
 
-export default function FranchiseSetupCost() {
+export default function FranchiseSetupCost({ className = "" }) {
   return (
     <section
-      className="section section-soft franchise-cost-section"
+      className={`section section-soft franchise-cost-section${className ? ` ${className}` : ""}`}
       aria-labelledby="franchise-cost-heading"
     >
       <div className="container franchise-cost-inner">
