@@ -1,124 +1,99 @@
-import { franchiseProcedureSteps } from "../data/siteContent";
+import { businessName, franchiseProcedureSteps } from "../data/siteContent";
 import { Reveal, SectionTitle } from "./pageMotion.jsx";
-
-const STEP_COLORS = [
-  "#1a2b56",
-  "#3488c4",
-  "#8f8f8f",
-  "#ff5c5c",
-  "#1a2b56",
-  "#3488c4",
-  "#161616",
-];
 
 function StepIcon({ index }) {
   const icons = [
-    /* 01 개설 상담 */
-    <svg key="0" viewBox="0 0 24 24" aria-hidden>
+    <svg key="0" viewBox="0 0 64 64" aria-hidden>
+      <circle cx="32" cy="24" r="10" fill="#ff5c5c" opacity="0.2" />
       <path
-        d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm0 6c-4.2 0-8-2.2-8-5.5S7.8 10 12 10s8 2.2 8 5.5S16.2 21 12 21Z"
-        fill="currentColor"
+        d="M22 42c0-8 4-14 10-14s10 6 10 14v4H22v-4Z"
+        fill="#ff5c5c"
       />
+      <rect x="28" y="14" width="8" height="16" rx="4" fill="#333" />
+      <path d="M24 18h16l-2 6H26l-2-6Z" fill="#555" />
     </svg>,
-    /* 02 사업설명 */
-    <svg key="1" viewBox="0 0 24 24" aria-hidden>
-      <path
-        d="M4 18V6h16v12H4Zm2-2h12V8H6v8Zm2-6h3v2H8v-2Zm0 3h8v2H8v-2Z"
-        fill="currentColor"
-      />
+    <svg key="1" viewBox="0 0 64 64" aria-hidden>
+      <rect x="14" y="22" width="16" height="28" rx="3" fill="#ffb4b4" />
+      <rect x="34" y="14" width="16" height="36" rx="3" fill="#ff5c5c" />
+      <circle cx="22" cy="46" r="4" fill="#333" />
     </svg>,
-    /* 03 계약 */
-    <svg key="2" viewBox="0 0 24 24" aria-hidden>
+    <svg key="2" viewBox="0 0 64 64" aria-hidden>
       <path
-        d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 1.5V9h4.5L13 4.5ZM9 13h6v2H9v-2Zm0 4h4v2H9v-2Z"
-        fill="currentColor"
+        d="M18 14h22l8 8v28a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V18a4 4 0 0 1 4-4Z"
+        fill="#fff"
+        stroke="#ff5c5c"
+        strokeWidth="3"
       />
+      <path d="M36 14v8h8" stroke="#ff5c5c" strokeWidth="3" fill="none" />
+      <path d="M22 34h20M22 42h14" stroke="#333" strokeWidth="3" strokeLinecap="round" />
     </svg>,
-    /* 04 설계·교육 */
-    <svg key="3" viewBox="0 0 24 24" aria-hidden>
-      <path
-        d="M5 5h14v3H5V5Zm0 5h9v2H5v-2Zm0 4h14v2H5v-2Zm0 4h9v2H5v-2Z"
-        fill="currentColor"
-      />
+    <svg key="3" viewBox="0 0 64 64" aria-hidden>
+      <rect x="12" y="16" width="40" height="28" rx="4" fill="#fff" stroke="#333" strokeWidth="2" />
+      <path d="M18 24h28M18 32h18" stroke="#ff5c5c" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="46" cy="40" r="8" fill="#ff5c5c" />
     </svg>,
-    /* 05 공사감리 */
-    <svg key="4" viewBox="0 0 24 24" aria-hidden>
-      <path
-        d="m14.7 6.3 3 3-9.4 9.4-4 1 1-4 9.4-9.4ZM16 4l4 4-1.4 1.4-4-4L16 4Z"
-        fill="currentColor"
-      />
+    <svg key="4" viewBox="0 0 64 64" aria-hidden>
+      <path d="M18 46 30 18l6 12 10-8 6 24H18Z" fill="#ffb4b4" />
+      <rect x="16" y="44" width="32" height="6" rx="2" fill="#8b5a3c" />
+      <path d="M34 20v18" stroke="#666" strokeWidth="3" strokeLinecap="round" />
     </svg>,
-    /* 06 오픈 준비 */
-    <svg key="5" viewBox="0 0 24 24" aria-hidden>
-      <path
-        d="M5 6h14v12H5V6Zm2 2v8h10V8H7Zm2 2h2v4H9v-4Zm3 0h4v2h-4v-2Z"
-        fill="currentColor"
-      />
+    <svg key="5" viewBox="0 0 64 64" aria-hidden>
+      <rect x="14" y="24" width="36" height="24" rx="4" fill="#fff" stroke="#333" strokeWidth="2" />
+      <path d="M20 32h24M20 38h16" stroke="#ff5c5c" strokeWidth="2" strokeLinecap="round" />
+      <rect x="22" y="16" width="20" height="8" rx="2" fill="#ff5c5c" />
     </svg>,
-    /* 07 개점 */
-    <svg key="6" viewBox="0 0 24 24" aria-hidden>
+    <svg key="6" viewBox="0 0 64 64" aria-hidden>
       <path
-        d="M4 10 12 4l8 6v10a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1V10Z"
-        fill="currentColor"
+        d="M14 30 32 16l18 14v22a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V30Z"
+        fill="#fff"
+        stroke="#ff5c5c"
+        strokeWidth="3"
       />
+      <rect x="26" y="36" width="12" height="14" rx="2" fill="#ff5c5c" />
+      <path d="M24 22h16" stroke="#ffe566" strokeWidth="4" strokeLinecap="round" />
     </svg>,
   ];
 
   return icons[index] ?? icons[0];
 }
 
-function ProcedureStep({ row, index, headingId }) {
-  const contentBelow = index % 2 === 0;
-  const color = STEP_COLORS[index];
+function ProcedureCard({ row, headingId }) {
   const stepNum = Number.parseInt(row.step, 10);
 
-  const content = (
-    <div className="franchise-procedure-step-content">
-      <h3
-        id={headingId}
-        className="franchise-procedure-step-title"
-        style={{ color }}
-      >
-        {row.title}
-      </h3>
-      <ul className="franchise-procedure-step-list">
-        {row.items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-
   return (
-    <article
-      className={`franchise-procedure-step${
-        contentBelow
-          ? " franchise-procedure-step--below"
-          : " franchise-procedure-step--above"
-      }`}
-    >
-      {!contentBelow ? content : null}
-
-      <div
-        className="franchise-procedure-step-icon"
-        style={{ "--step-color": color }}
-      >
-        <StepIcon index={index} />
+    <article className="franchise-procedure-card">
+      <div className="franchise-procedure-card-art">
+        <div className="franchise-procedure-card-icon">
+          <StepIcon index={stepNum - 1} />
+        </div>
+        <ul className="franchise-procedure-card-items">
+          {row.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
       </div>
-
-      <span
-        className="franchise-procedure-step-badge"
-        style={{ backgroundColor: color }}
-      >
-        {stepNum}
-      </span>
-
-      {contentBelow ? content : null}
+      <div className="franchise-procedure-card-label">
+        <h3 id={headingId}>
+          <span className="franchise-procedure-card-num">{stepNum}.</span> {row.title}
+        </h3>
+      </div>
     </article>
   );
 }
 
+function PathConnector() {
+  return (
+    <span className="franchise-procedure-connector" aria-hidden>
+      <span className="franchise-procedure-connector-dot">🍕</span>
+    </span>
+  );
+}
+
 export default function FranchiseProcedure() {
+  const row1 = franchiseProcedureSteps.slice(0, 3);
+  const row2 = franchiseProcedureSteps.slice(3, 6).reverse();
+  const row3 = franchiseProcedureSteps.slice(6);
+
   return (
     <section
       className="section franchise-procedure-section"
@@ -135,30 +110,50 @@ export default function FranchiseProcedure() {
         </Reveal>
 
         <Reveal type="up" delay={0.06}>
-          <div className="franchise-procedure-timeline">
+          <div className="franchise-procedure-board">
             <svg
-              className="franchise-procedure-rail"
-              viewBox="0 0 1400 200"
+              className="franchise-procedure-snake-path"
+              viewBox="0 0 960 680"
               preserveAspectRatio="none"
               aria-hidden
             >
-              <path
-                className="franchise-procedure-rail-line"
-                d="M 60 100 H 180 C 210 100 220 135 250 135 C 280 135 290 65 320 65 C 350 65 360 135 390 135 C 420 135 430 65 460 65 C 490 65 500 135 530 135 C 560 135 570 65 600 65 C 630 65 640 135 670 135 H 1340"
-              />
+              <path d="M 110 120 H 850 C 900 120 900 120 900 250 C 900 380 900 380 850 380 H 110 C 60 380 60 380 60 510 C 60 610 60 610 110 610 H 360" />
             </svg>
 
-            <div className="franchise-procedure-steps">
-              {franchiseProcedureSteps.map((row, idx) => (
-                <ProcedureStep
-                  key={row.step}
-                  row={row}
-                  index={idx}
-                  headingId={
-                    idx === 0 ? "franchise-procedure-heading" : undefined
-                  }
-                />
+            <div className="franchise-procedure-row">
+              {row1.map((row, idx) => (
+                <div key={row.step} className="franchise-procedure-row-segment">
+                  <ProcedureCard
+                    row={row}
+                    headingId={
+                      idx === 0 ? "franchise-procedure-heading" : undefined
+                    }
+                  />
+                  {idx < row1.length - 1 ? <PathConnector /> : null}
+                </div>
               ))}
+            </div>
+
+            <div className="franchise-procedure-row franchise-procedure-row--reverse">
+              {row2.map((row, idx) => (
+                <div key={row.step} className="franchise-procedure-row-segment">
+                  <ProcedureCard row={row} />
+                  {idx < row2.length - 1 ? <PathConnector /> : null}
+                </div>
+              ))}
+            </div>
+
+            <div className="franchise-procedure-row franchise-procedure-row--finale">
+              {row3.map((row) => (
+                <ProcedureCard key={row.step} row={row} />
+              ))}
+              <div className="franchise-procedure-finisher" aria-hidden>
+                <span className="franchise-procedure-finisher-emoji">🍅</span>
+                <p>
+                  Let&apos;s
+                  <strong>{businessName}!</strong>
+                </p>
+              </div>
             </div>
           </div>
         </Reveal>

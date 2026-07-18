@@ -338,142 +338,128 @@ img {
 }
 
 .franchise-procedure-section {
-  background: linear-gradient(180deg, #fff 0%, #fffaf6 100%);
+  --fp-font-scale: 1.2;
+  background: linear-gradient(180deg, #ff7347 0%, #ff5c3a 100%);
+  color: #fff;
+}
+
+.franchise-procedure-section .eyebrow {
+  color: #ffe566;
+}
+
+.franchise-procedure-section .section-title h2 {
+  color: #fff;
+}
+
+.franchise-procedure-section .section-title p:last-child {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .franchise-procedure-inner {
-  max-width: none;
+  max-width: 980px;
   width: 100%;
+  margin-inline: auto;
 }
 
-.franchise-procedure-timeline {
-  --fp-font-scale: 1.2;
+.franchise-procedure-board {
   position: relative;
-  margin: 40px auto 0;
-  padding: 12px 0 20px;
+  margin: 28px auto 0;
+  padding: 8px 0 12px;
 }
 
-.franchise-procedure-rail {
+.franchise-procedure-snake-path {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  inset: 0;
   width: 100%;
-  height: 120px;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
   overflow: visible;
 }
 
-.franchise-procedure-rail-line {
+.franchise-procedure-snake-path path {
   fill: none;
-  stroke: #d8d8d8;
-  stroke-width: 10;
+  stroke: #6b2418;
+  stroke-width: 12;
   stroke-linecap: round;
   stroke-linejoin: round;
+  opacity: 0.85;
 }
 
-.franchise-procedure-steps {
+.franchise-procedure-row {
   position: relative;
   z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: clamp(6px, 1.2vw, 14px);
-  align-items: stretch;
-  min-height: clamp(360px, 42vw, 430px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.5vw, 12px);
+  margin-bottom: clamp(24px, 4vw, 36px);
 }
 
-.franchise-procedure-step {
+.franchise-procedure-row-segment {
+  display: contents;
+}
+
+.franchise-procedure-row--finale {
+  justify-content: flex-start;
+  gap: clamp(12px, 2vw, 24px);
+  margin-bottom: 0;
+}
+
+.franchise-procedure-card {
+  flex: 1 1 0;
+  max-width: 220px;
+  min-width: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+}
+
+.franchise-procedure-card-art {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  min-width: 0;
-}
-
-.franchise-procedure-step--below {
-  justify-content: center;
-  padding-top: clamp(8px, 1.5vw, 18px);
-}
-
-.franchise-procedure-step--above {
-  justify-content: center;
-  flex-direction: column-reverse;
-  padding-bottom: clamp(8px, 1.5vw, 18px);
-}
-
-.franchise-procedure-step-icon {
-  width: clamp(68px, 7.5vw, 92px);
-  height: clamp(68px, 7.5vw, 92px);
-  border-radius: 50%;
+  gap: 10px;
+  min-height: clamp(148px, 20vw, 178px);
+  padding: clamp(14px, 2vw, 18px) clamp(12px, 1.6vw, 16px) 12px;
   background: #fff;
-  color: var(--step-color, var(--primary));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(0, 0, 0, 0.04);
 }
 
-.franchise-procedure-step-icon svg {
-  width: 42%;
-  height: 42%;
-}
-
-.franchise-procedure-step-badge {
-  width: clamp(34px, 3.6vw, 42px);
-  height: clamp(34px, 3.6vw, 42px);
-  margin: 10px 0;
-  border-radius: 50%;
-  border: 3px solid #fff;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(0.95rem * var(--fp-font-scale));
-  font-weight: 800;
-  line-height: 1;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+.franchise-procedure-card-icon {
+  width: clamp(56px, 8vw, 72px);
+  height: clamp(56px, 8vw, 72px);
   flex-shrink: 0;
 }
 
-.franchise-procedure-step-content {
+.franchise-procedure-card-icon svg {
   width: 100%;
-  max-width: 168px;
-  margin-inline: auto;
+  height: 100%;
 }
 
-.franchise-procedure-step-title {
-  margin: 0 0 8px;
-  font-size: calc(clamp(0.82rem, 1.2vw, 0.95rem) * var(--fp-font-scale));
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.35;
-}
-
-.franchise-procedure-step-list {
+.franchise-procedure-card-items {
   margin: 0;
   padding: 0;
   list-style: none;
-  color: var(--muted);
-  font-size: calc(clamp(0.68rem, 0.95vw, 0.78rem) * var(--fp-font-scale));
-  line-height: 1.5;
+  width: 100%;
+  color: #666;
+  font-size: calc(clamp(0.62rem, 0.9vw, 0.72rem) * var(--fp-font-scale));
+  line-height: 1.45;
   text-align: left;
 }
 
-.franchise-procedure-step-list li {
+.franchise-procedure-card-items li {
   position: relative;
-  padding-left: 0.7rem;
+  padding-left: 0.65rem;
 }
 
-.franchise-procedure-step-list li + li {
-  margin-top: 4px;
+.franchise-procedure-card-items li + li {
+  margin-top: 3px;
 }
 
-.franchise-procedure-step-list li::before {
+.franchise-procedure-card-items li::before {
   content: "•";
   position: absolute;
   left: 0;
@@ -481,25 +467,108 @@ img {
   font-weight: 700;
 }
 
-@media (max-width: 980px) {
-  .franchise-procedure-timeline {
+.franchise-procedure-card-label {
+  background: #161616;
+  color: #fff;
+  padding: clamp(10px, 1.4vw, 14px) 12px;
+}
+
+.franchise-procedure-card-label h3 {
+  margin: 0;
+  font-size: calc(clamp(0.82rem, 1.15vw, 0.95rem) * var(--fp-font-scale));
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.franchise-procedure-card-num {
+  color: #ffe566;
+}
+
+.franchise-procedure-connector {
+  flex: 0 0 clamp(28px, 5vw, 52px);
+  height: 10px;
+  border-radius: 999px;
+  background: #6b2418;
+  position: relative;
+  align-self: center;
+}
+
+.franchise-procedure-connector-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -58%);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.franchise-procedure-finisher {
+  flex: 1 1 0;
+  max-width: 220px;
+  min-height: clamp(148px, 20vw, 178px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.franchise-procedure-finisher-emoji {
+  font-size: clamp(2.4rem, 6vw, 3.2rem);
+  line-height: 1;
+}
+
+.franchise-procedure-finisher p {
+  margin: 0;
+  font-size: calc(clamp(1rem, 1.8vw, 1.25rem) * var(--fp-font-scale));
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.franchise-procedure-finisher strong {
+  display: block;
+  margin-top: 4px;
+  font-size: calc(clamp(0.92rem, 1.5vw, 1.08rem) * var(--fp-font-scale));
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 820px) {
+  .franchise-procedure-board {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 10px;
   }
 
-  .franchise-procedure-steps {
-    min-width: 980px;
+  .franchise-procedure-row,
+  .franchise-procedure-row--finale {
+    min-width: 720px;
+    justify-content: flex-start;
+    padding-inline: 8px;
   }
 
-  .franchise-procedure-step-content {
-    max-width: 132px;
+  .franchise-procedure-card,
+  .franchise-procedure-finisher {
+    flex: 0 0 190px;
+    max-width: 190px;
   }
 }
 
 @media (max-width: 520px) {
-  .franchise-procedure-steps {
-    min-width: 860px;
+  .franchise-procedure-row,
+  .franchise-procedure-row--finale {
+    min-width: 660px;
+  }
+
+  .franchise-procedure-card,
+  .franchise-procedure-finisher {
+    flex: 0 0 170px;
+    max-width: 170px;
   }
 }
 
