@@ -474,6 +474,16 @@ export const promos = [
 /** [매장찾기](http://redtomatopizza.co.kr/wp_2ds/02_01.html) 기준 */
 export const stores = [
   {
+    id: 10,
+    name: "나주 혁신점(본사 직영점)",
+    address: "전라남도 나주시 빛가람동 203-4 (110호)",
+    phone: "061-333-3706",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.01999,
+    lng: 126.78947,
+  },
+  {
     id: 1,
     name: "빨간토마토피자 효천점",
     address: "광주광역시 남구 효천2로가길 21",
@@ -562,16 +572,6 @@ export const stores = [
     holiday: "연중무휴",
     lat: 35.14321,
     lng: 126.91775,
-  },
-  {
-    id: 10,
-    name: "나주 혁신점(본사 직영점)",
-    address: "전라남도 나주시 빛가람동 203-4 (110호)",
-    phone: "061-333-3706",
-    hours: "11:00 – 23:00",
-    holiday: "연중무휴",
-    lat: 35.01999,
-    lng: 126.78947,
   },
   {
     id: 11,
