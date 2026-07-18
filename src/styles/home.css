@@ -1435,7 +1435,7 @@ img {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 14px;
   overflow-x: auto;
   overflow-y: visible;
@@ -1454,8 +1454,10 @@ img {
   position: relative;
   display: flex;
   flex-direction: column;
+  align-self: stretch;
   flex: 0 0 min(336px, 88vw);
   max-width: 360px;
+  min-height: 100%;
   background: var(--surface);
   border-radius: 20px;
   overflow: hidden;
@@ -1515,7 +1517,16 @@ img {
   background: #eaeaea;
 }
 
-.home-popup-card--no-media .home-popup-body {
+.home-popup-card:not(.home-popup-card--opening) .home-popup-media {
+  flex: 1 1 auto;
+  aspect-ratio: auto;
+  min-height: 140px;
+  max-height: 220px;
+}
+
+.home-popup-card--no-media:not(.home-popup-card--opening) .home-popup-body {
+  flex: 1 1 auto;
+  min-height: 0;
   padding-top: 40px;
 }
 
@@ -1661,6 +1672,13 @@ img {
 
 .home-popup-main {
   flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.home-popup-card:not(.home-popup-card--opening) .home-popup-main {
+  justify-content: flex-start;
 }
 
 .home-popup-body .eyebrow {
