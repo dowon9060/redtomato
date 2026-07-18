@@ -1570,6 +1570,68 @@ img {
   overflow-x: hidden;
 }
 
+.store-photo-marquee {
+  padding: 8px 0 28px;
+  overflow: hidden;
+}
+
+.store-photo-marquee-viewport {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+}
+
+.store-photo-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: max-content;
+  animation: storePhotoMarquee 36s linear infinite;
+  will-change: transform;
+}
+
+.store-photo-marquee-image {
+  display: block;
+  height: clamp(160px, 28vw, 240px);
+  width: auto;
+  max-width: none;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+@keyframes storePhotoMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .store-photo-marquee-viewport {
+    mask-image: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .store-photo-marquee-track {
+    animation: none;
+    padding-inline: max(16px, env(safe-area-inset-left));
+  }
+}
+
 .store-map-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
