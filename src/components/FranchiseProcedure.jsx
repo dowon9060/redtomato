@@ -82,11 +82,7 @@ function ProcedureCard({ row, headingId }) {
 }
 
 function PathConnector() {
-  return (
-    <span className="franchise-procedure-connector" aria-hidden>
-      <span className="franchise-procedure-connector-dot">🍕</span>
-    </span>
-  );
+  return <span className="franchise-procedure-connector" aria-hidden />;
 }
 
 function ProcedureRow({ children, last = false }) {

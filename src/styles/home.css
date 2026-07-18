@@ -502,17 +502,7 @@ img {
   height: 10px;
   border-radius: 999px;
   background: #6b2418;
-  position: relative;
   align-self: center;
-}
-
-.franchise-procedure-connector-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -58%);
-  font-size: 1rem;
-  line-height: 1;
 }
 
 @media (max-width: 820px) {
