@@ -6,24 +6,34 @@ const STORE_GALLERY_IMAGES = [
   { src: "/5.jpeg", alt: "빨간토마토피자 매장 사진 5" },
 ];
 
-export default function StorePhotoMarquee() {
-  const loopImages = [...STORE_GALLERY_IMAGES, ...STORE_GALLERY_IMAGES];
+function StorePhotoGroup({ images, ariaHidden = false }) {
+  return (
+    <div
+      className="store-photo-marquee-group"
+      aria-hidden={ariaHidden || undefined}
+    >
+      {images.map((image) => (
+        <img
+          key={image.src}
+          src={image.src}
+          alt={ariaHidden ? "" : image.alt}
+          className="store-photo-marquee-image"
+          loading="eager"
+          decoding="async"
+          draggable={false}
+        />
+      ))}
+    </div>
+  );
+}
 
+export default function StorePhotoMarquee() {
   return (
     <section className="store-photo-marquee" aria-label="매장 사진">
       <div className="store-photo-marquee-viewport">
         <div className="store-photo-marquee-track">
-          {loopImages.map((image, index) => (
-            <img
-              key={`${image.src}-${index}`}
-              src={image.src}
-              alt={image.alt}
-              className="store-photo-marquee-image"
-              loading="lazy"
-              decoding="async"
-              draggable={false}
-            />
-          ))}
+          <StorePhotoGroup images={STORE_GALLERY_IMAGES} />
+          <StorePhotoGroup images={STORE_GALLERY_IMAGES} ariaHidden />
         </div>
       </div>
     </section>

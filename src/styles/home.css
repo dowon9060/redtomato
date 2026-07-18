@@ -1649,16 +1649,23 @@ img {
 .store-photo-marquee-track {
   display: flex;
   align-items: center;
-  gap: 14px;
   width: max-content;
-  animation: storePhotoMarquee 36s linear infinite;
+  animation: storePhotoMarquee 40s linear infinite;
   will-change: transform;
+}
+
+.store-photo-marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  padding-right: 14px;
 }
 
 .store-photo-marquee-image {
   display: block;
   height: clamp(160px, 28vw, 240px);
-  width: auto;
+  width: clamp(220px, 34vw, 320px);
   max-width: none;
   border-radius: 18px;
   border: 1px solid var(--line);
