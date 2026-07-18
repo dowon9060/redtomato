@@ -1,5 +1,7 @@
 import { PageHero, Reveal, SectionTitle } from "../components/pageMotion.jsx";
 import FranchiseHighlight from "../components/FranchiseHighlight.jsx";
+import FranchiseProcedure from "../components/FranchiseProcedure.jsx";
+import FranchiseSetupCost from "../components/FranchiseSetupCost.jsx";
 import FranchiseInquiryForm from "../components/FranchiseInquiryForm.jsx";
 
 export default function FranchisePage() {
@@ -13,7 +15,11 @@ export default function FranchisePage() {
 
       <FranchiseHighlight />
 
-      <section className="section section-soft franchise-page-form-section">
+      <FranchiseProcedure />
+
+      <FranchiseSetupCost />
+
+      <section className="section franchise-page-form-section">
         <div className="container franchise-page-shell">
           <Reveal type="up">
             <SectionTitle

@@ -47,14 +47,27 @@ export default function StoreSection() {
                 <h4 className="store-card-name">{store.name}</h4>
                 <p className="store-card-address">{store.address}</p>
                 <div className="store-card-meta">
-                  <span>{store.hours}</span>
-                  <a
-                    href={`tel:${store.phone.replace(/[^\d]/g, "")}`}
-                    className="store-card-phone"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {store.phone}
-                  </a>
+                  <span>
+                    {store.hours}
+                    {store.holiday ? ` · ${store.holiday}` : ""}
+                  </span>
+                  {store.phone ? (
+                    <a
+                      href={`tel:${store.phone.replace(/[^\d]/g, "")}`}
+                      className="store-card-phone"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {store.phone}
+                    </a>
+                  ) : (
+                    <a
+                      href="tel:18990964"
+                      className="store-card-phone"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      1899-0964
+                    </a>
+                  )}
                 </div>
               </article>
             );

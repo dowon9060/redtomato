@@ -180,8 +180,13 @@ export default function StoreMap({ stores, focusedStoreId = null }) {
             <div className="store-map-popup">
               <strong>{store.name}</strong>
               <p>{store.address}</p>
-              <p className="store-map-popup-hours">{store.hours}</p>
-              <a href={telHref(store.phone)}>{store.phone}</a>
+              <p className="store-map-popup-hours">
+                {store.hours}
+                {store.holiday ? ` · ${store.holiday}` : ""}
+              </p>
+              <a href={telHref(store.phone || "1899-0964")}>
+                {store.phone || "1899-0964"}
+              </a>
             </div>
           </Popup>
         </Marker>

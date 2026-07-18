@@ -471,42 +471,147 @@ export const promos = [
   },
 ];
 
+/** [매장찾기](http://redtomatopizza.co.kr/wp_2ds/02_01.html) 기준 */
 export const stores = [
   {
     id: 1,
-    name: "광주 본점",
-    address: "광주광역시 남구 효천2로가길 21, 108호",
-    phone: "1899-0964",
-    hours: "11:00 – 22:00",
-    lat: 35.10427,
-    lng: 126.89468,
+    name: "빨간토마토피자 본점",
+    address: "광주광역시 남구 효천2로가길 21",
+    phone: "062-651-0447",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.10142,
+    lng: 126.87517,
   },
   {
     id: 2,
-    name: "광주 수완점",
-    address: "광주광역시 광산구 수완로 82",
-    phone: "062-955-0964",
-    hours: "11:00 – 22:00",
-    lat: 35.21038,
-    lng: 126.83912,
+    name: "광주서구점",
+    address: "광주광역시 서구 화정로85번길 11",
+    phone: "062-381-0444",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.14565,
+    lng: 126.86664,
   },
   {
     id: 3,
-    name: "광주 첨단점",
-    address: "광주광역시 광산구 첨단중앙로 120",
-    phone: "062-975-0964",
-    hours: "11:00 – 22:00",
-    lat: 35.21708,
-    lng: 126.83928,
+    name: "광주북구점",
+    address: "광주광역시 북구 자미로66번길 17",
+    phone: "062-512-4445",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.17161,
+    lng: 126.90562,
   },
   {
     id: 4,
-    name: "나주점",
-    address: "전라남도 나주시 빛가람로 640",
-    phone: "061-332-0964",
-    hours: "11:00 – 21:30",
-    lat: 35.02996,
-    lng: 126.7341,
+    name: "광주광산점",
+    address: "광주광역시 광산구 풍영로101번안길 3-1",
+    phone: "062-961-0083",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.18087,
+    lng: 126.81101,
+  },
+  {
+    id: 5,
+    name: "광주첨단점",
+    address: "광주광역시 북구 첨단연신로91번길 44",
+    phone: "062-574-5544",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.20627,
+    lng: 126.8625,
+  },
+  {
+    id: 6,
+    name: "화순점",
+    address: "전남 화순군 화순읍 자치샘로 60-1",
+    phone: "061-375-8245",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.0629,
+    lng: 126.98385,
+  },
+  {
+    id: 7,
+    name: "용인1호점",
+    address: "경기도 용인시 처인구 김량장동 516",
+    phone: "031-321-2915",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 37.23399,
+    lng: 127.20298,
+  },
+  {
+    id: 8,
+    name: "고흥점",
+    address: "전남 고흥군 봉래면 축정2길 79-3",
+    phone: "061-833-9981",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 34.45182,
+    lng: 127.47947,
+  },
+  {
+    id: 9,
+    name: "남동점",
+    address: "광주광역시 동구 금동 211-31 (1층)",
+    phone: "062-222-3706",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.14321,
+    lng: 126.91775,
+  },
+  {
+    id: 10,
+    name: "나주혁신점",
+    address: "전라남도 나주시 빛가람동 203-4 (110호)",
+    phone: "061-333-3706",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.01999,
+    lng: 126.78947,
+  },
+  {
+    id: 11,
+    name: "대촌점",
+    address: "광주광역시 남구 지석동 179-5 (1층)",
+    phone: "062-372-8505",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 35.08256,
+    lng: 126.83382,
+  },
+  {
+    id: 12,
+    name: "대전1호점",
+    address: "대전광역시 서구 갈마동 1211 1층 102호",
+    phone: "0508-8194-1714",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 36.34828,
+    lng: 127.37185,
+  },
+  {
+    id: 13,
+    name: "여천점",
+    address: "전라남도 여수시 신기동 129-1 (1층)",
+    phone: "061-681-2134",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 34.76291,
+    lng: 127.67833,
+  },
+  {
+    id: 14,
+    name: "목포1호점",
+    address: "전라남도 목포시 석현동 816-62 (1층)",
+    phone: "",
+    hours: "11:00 – 23:00",
+    holiday: "연중무휴",
+    lat: 34.82409,
+    lng: 126.42521,
   },
 ];
 
@@ -516,14 +621,13 @@ export const homeLayerPopups = [
     hideMedia: true,
     kicker: "Coming Soon",
     title: "신규 매장 오픈",
-    openingBadge: "5개! 신규 매장",
+    openingBadge: "4개! 신규 매장",
     openingSubtitle: "곧! 신규 매장 오픈 예정입니다",
     openingStores: [
-      { number: "10", city: "목포", name: "하당점" },
-      { number: "11", city: "순천", name: "순천점" },
-      { number: "12", city: "여수", name: "여수점" },
-      { number: "13", city: "광주", name: "남구점" },
-      { number: "14", city: "전주", name: "전주점" },
+      { number: "15", city: "목포", name: "목포점" },
+      { number: "16", city: "순천", name: "순천점" },
+      { number: "17", city: "여수", name: "여수점" },
+      { number: "18", city: "광주", name: "광주점" },
     ],
   },
   {
@@ -556,6 +660,161 @@ export const franchisePoints = [
   "운영 동선이 단순한 매장 구조",
   "지속 가능한 메뉴 경쟁력",
   "상담부터 개설까지 체계적인 안내",
+];
+
+/** 창업 절차 (01 → 07) */
+export const franchiseProcedureSteps = [
+  {
+    step: "01",
+    title: "개설 상담",
+    items: [
+      "가맹점 희망지역 확인",
+      "예비창업자 성향분석",
+      "점포유무 및 자금규모 확인",
+    ],
+  },
+  {
+    step: "02",
+    title: "사업설명 및 상권조사",
+    items: ["정보공개서 및 가맹계약서 공개", "입지조건 확인"],
+  },
+  {
+    step: "03",
+    title: "계약 체결",
+    items: [
+      "시공 및 개업일정 협의",
+      "계약금 및 계약서 작성",
+      "점포계약",
+    ],
+  },
+  {
+    step: "04",
+    title: "설계실측 및 교육",
+    items: [
+      "점포실측 및 별도 공사점검",
+      "경영교육 및 실습교육",
+      "최종 투자비 산출",
+    ],
+  },
+  {
+    step: "05",
+    title: "공사감리 및 확인",
+    items: [
+      "공사일정 확인",
+      "인테리어 매뉴얼 확인",
+      "주방기기, 집기, 비품 확인",
+    ],
+  },
+  {
+    step: "06",
+    title: "오픈 준비",
+    items: ["공사완료 확인 및 시설 인수인계", "초도상품 입고"],
+  },
+  {
+    step: "07",
+    title: `${businessName} 개점`,
+    items: [
+      "오픈 전 기기점검 및 테스트",
+      "슈퍼바이저 현장 파견",
+      "최종 리허설 진행",
+    ],
+  },
+];
+
+const franchiseFeeNote =
+  "배달용품·홍보물·유니폼 ▶ 개별구매 | 포스시스템 ▶ 월 이용 가맹점 부담 (무약정) | 보증금(계약이행·물품) ▶ 100만원 면제";
+
+/** [개설비용](http://redtomatopizza.co.kr/wp_2ds/03_04.html) — 금액 단위: 만원 */
+export const franchiseSetupCostFootnote =
+  "철거, 냉난방기, 내·외부닥트, 각종인허가 비용, 의탁자, 오토바이는 별도입니다.";
+
+export const franchiseSetupCostPlans = [
+  {
+    id: "new",
+    title: "신규창업비용",
+    totalAmount: "15,000,000 (10평 기준)",
+    rows: [
+      {
+        category: "가맹비",
+        content: "경영노하우, 상호 및 상표 사용, 매장관리",
+        amount: "200 면제",
+        note: franchiseFeeNote,
+      },
+      {
+        category: "교육비",
+        content: "7일간 이론교육 및 본점 매장 교육실시",
+        amount: "300",
+        note: "",
+      },
+      {
+        category: "주방기기",
+        content: "오븐 1대 + 45L 냉장고+ 쇼케이스등 주방기기 일체",
+        amount: "1,000(개별구매가능)",
+        note: "",
+      },
+      {
+        category: "주방기물",
+        content: "주방기물 일체",
+        amount: "200(개별구매가능)",
+        note: "",
+      },
+      {
+        category: "인테리어",
+        content: "평당 130(10평기준)",
+        amount: "개별설비 가능",
+        note: "",
+      },
+      {
+        category: "간판",
+        content: "전면 간판(4m 기준), 어닝, 메뉴판, 각종 사인물 등",
+        amount: "개별공사 가능",
+        note: "",
+      },
+    ],
+  },
+  {
+    id: "conversion",
+    title: "업종변경 창업비용",
+    totalAmount: "3,000,000 (10평 기준)",
+    rows: [
+      {
+        category: "가맹비",
+        content: "경영노하우, 상호 및 상표 사용, 매장관리",
+        amount: "200 면제",
+        note: franchiseFeeNote,
+      },
+      {
+        category: "교육비",
+        content: "7일간 이론교육 및 본점 매장 교육실시",
+        amount: "300",
+        note: "",
+      },
+      {
+        category: "주방기기",
+        content: "오븐 1대 + 45L 냉장고+ 쇼케이스등 주방기기 일체",
+        amount: "—",
+        note: "",
+      },
+      {
+        category: "주방기물",
+        content: "주방기물 일체",
+        amount: "—",
+        note: "",
+      },
+      {
+        category: "인테리어",
+        content: "평당 130(10평기준)",
+        amount: "—",
+        note: "",
+      },
+      {
+        category: "간판",
+        content: "전면 간판(4m 기준), 어닝, 메뉴판, 각종 사인물 등",
+        amount: "개별공사 가능",
+        note: "",
+      },
+    ],
+  },
 ];
 
 /** 창업 문의 — 안내 전화 (표시 / tel 연결용) */
