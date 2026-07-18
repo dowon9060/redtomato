@@ -475,7 +475,7 @@ export const promos = [
 export const stores = [
   {
     id: 1,
-    name: "빨간토마토피자 본점",
+    name: "효천점",
     address: "광주광역시 남구 효천2로가길 21",
     phone: "062-651-0447",
     hours: "11:00 – 23:00",
@@ -565,7 +565,7 @@ export const stores = [
   },
   {
     id: 10,
-    name: "나주혁신점",
+    name: "나주 혁신점 (본사 직영점)",
     address: "전라남도 나주시 빛가람동 203-4 (110호)",
     phone: "061-333-3706",
     hours: "11:00 – 23:00",
@@ -612,6 +612,16 @@ export const stores = [
     holiday: "연중무휴",
     lat: 34.82409,
     lng: 126.42521,
+  },
+  {
+    id: 15,
+    name: "홍은점",
+    address: "서울특별시 서대문구 거북골로 8-10 1층(홍은동)",
+    phone: "02-303-9122",
+    hours: "24시간",
+    holiday: "연중무휴",
+    lat: 37.57792,
+    lng: 126.9225,
   },
 ];
 
