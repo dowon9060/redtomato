@@ -2448,6 +2448,11 @@ img {
     padding-top: 64px;
   }
 
+  .home-mobile-only .store-map-bleed .store-map,
+  .home-mobile-only .store-map-bleed .store-map-shell {
+    height: clamp(200px, min(27vw, 32.5vh), 340px);
+  }
+
   .page-hero {
     padding: 36px 0 32px;
   }
