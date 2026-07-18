@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StoreMap from "./StoreMap";
 import { stores as storeData, businessName } from "../data/siteContent";
 import { Reveal, StaggerGroup } from "./pageMotion.jsx";
 
-export default function StoreSection({ className = "" }) {
+const MOBILE_BREAKPOINT = "(max-width: 820px)";
+
+export default function StoreSection({ className = "", mobileInitialCount = null }) {
   const [focusedStoreId, setFocusedStoreId] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showAllStores, setShowAllStores] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT);
+    const syncMobile = () => setIsMobile(mediaQuery.matches);
+    syncMobile();
+    mediaQuery.addEventListener("change", syncMobile);
+    return () => mediaQuery.removeEventListener("change", syncMobile);
+  }, []);
 
   const toggleStoreFocus = (id) => {
     setFocusedStoreId((prev) => (prev === id ? null : id));
   };
+
+  const shouldCollapse =
+    mobileInitialCount != null &&
+    isMobile &&
+    !showAllStores &&
+    storeData.length > mobileInitialCount;
+  const visibleStores = shouldCollapse
+    ? storeData.slice(0, mobileInitialCount)
+    : storeData;
 
   return (
     <section className={`section store-section${className ? ` ${className}` : ""}`}>
@@ -26,7 +47,7 @@ export default function StoreSection({ className = "" }) {
         </Reveal>
 
         <StaggerGroup className="store-cards" stagger={0.1} type="up">
-          {storeData.map((store) => {
+          {visibleStores.map((store) => {
             const expanded = focusedStoreId === store.id;
             return (
               <article
@@ -73,6 +94,19 @@ export default function StoreSection({ className = "" }) {
             );
           })}
         </StaggerGroup>
+
+        {shouldCollapse ? (
+          <div className="store-cards-expand-wrap">
+            <button
+              type="button"
+              className="btn btn-light store-cards-expand-btn"
+              aria-expanded={false}
+              onClick={() => setShowAllStores(true)}
+            >
+              전매장 보기
+            </button>
+          </div>
+        ) : null}
       </div>
 
       <Reveal type="up" delay={0.06}>
