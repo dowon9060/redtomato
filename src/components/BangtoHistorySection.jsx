@@ -1,12 +1,37 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { bangtoHistory } from "../data/siteContent";
 import { Reveal } from "./pageMotion.jsx";
+
+const MOBILE_BREAKPOINT = "(max-width: 820px)";
 
 export default function BangtoHistorySection({
   className = "",
   headingId = "bangto-history-title",
   showActions = false,
+  mobileInitialCount = null,
+  expandLabel = "펼쳐보기",
 }) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [showAllHistory, setShowAllHistory] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT);
+    const syncMobile = () => setIsMobile(mediaQuery.matches);
+    syncMobile();
+    mediaQuery.addEventListener("change", syncMobile);
+    return () => mediaQuery.removeEventListener("change", syncMobile);
+  }, []);
+
+  const shouldCollapse =
+    mobileInitialCount != null &&
+    isMobile &&
+    !showAllHistory &&
+    bangtoHistory.length > mobileInitialCount;
+  const visibleHistory = shouldCollapse
+    ? bangtoHistory.slice(0, mobileInitialCount)
+    : bangtoHistory;
+
   return (
     <section
       className={`section bangto-timeline-section${className ? ` ${className}` : ""}`}
@@ -23,7 +48,7 @@ export default function BangtoHistorySection({
         </Reveal>
 
         <ol className="bangto-timeline">
-          {bangtoHistory.map((row, idx) => (
+          {visibleHistory.map((row, idx) => (
             <li key={`${row.year}-${row.title}`} className="bangto-timeline-item">
               <Reveal type="up" delay={idx * 0.05} className="bangto-timeline-reveal">
                 <div className="bangto-timeline-grid">
@@ -42,6 +67,19 @@ export default function BangtoHistorySection({
             </li>
           ))}
         </ol>
+
+        {shouldCollapse ? (
+          <div className="bangto-timeline-expand-wrap">
+            <button
+              type="button"
+              className="bangto-timeline-expand-btn"
+              aria-expanded={false}
+              onClick={() => setShowAllHistory(true)}
+            >
+              {expandLabel}
+            </button>
+          </div>
+        ) : null}
 
         {showActions ? (
           <Reveal type="up" delay={0.12}>

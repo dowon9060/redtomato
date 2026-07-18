@@ -738,6 +738,20 @@ const franchiseFeeNote =
 export const franchiseSetupCostFootnote =
   "철거, 냉난방기, 내·외부닥트, 각종인허가 비용, 의탁자, 오토바이는 별도입니다.";
 
+/** 모바일 홈 — 신규 창업 비용 요약 */
+export const franchiseSetupCostMobileSummary = {
+  title: "신규사업 비용",
+  totalLabel: "총 비용",
+  totalAmount: "1,300만원",
+  items: [
+    { label: "가맹비", value: "면제", free: true },
+    { label: "교육비", value: "300만원" },
+    { label: "주방기기", value: "800만원" },
+    { label: "주방기물", value: "200만원" },
+    { label: "인테리어", value: "평당 130만원" },
+  ],
+};
+
 export const franchiseSetupCostPlans = [
   {
     id: "new",

@@ -160,10 +160,10 @@ export default function HomePage() {
       <MenuSection className="home-menu-section" />
       <BrandStory />
       <div className="home-mobile-only">
-        <BangtoHistorySection headingId="home-bangto-history-title" />
+        <BangtoHistorySection headingId="home-bangto-history-title" mobileInitialCount={3} />
         <FranchiseSetupCost
-          planIds={["new"]}
-          desc="신규 창업 비용 안내입니다. (금액 단위: 만원)"
+          simplified
+          desc="신규 창업 비용 안내입니다."
         />
         <StoreSection mobileInitialCount={3} />
       </div>

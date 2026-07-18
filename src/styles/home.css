@@ -254,6 +254,37 @@ img {
   justify-content: center;
 }
 
+.bangto-timeline-expand-wrap {
+  margin-top: 4px;
+  padding: 14px 16px 16px;
+  border-radius: 16px;
+  background: #ececec;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.bangto-timeline-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  background: #d8d8d8;
+  color: #444;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.bangto-timeline-expand-btn:hover {
+  background: #cfcfcf;
+  color: #222;
+}
+
 @media (max-width: 640px) {
   .bangto-timeline-grid {
     grid-template-columns: 1fr;
@@ -698,6 +729,82 @@ img {
   text-align: center;
 }
 
+.franchise-cost-simple {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.franchise-cost-simple-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 16px;
+  background: rgba(var(--primary-rgb), 0.06);
+  border-bottom: 1px solid var(--line);
+}
+
+.franchise-cost-simple-total-label {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.franchise-cost-simple-total-amount {
+  color: var(--primary-dark);
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.franchise-cost-simple-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.franchise-cost-simple-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.franchise-cost-simple-item:last-child {
+  border-bottom: none;
+}
+
+.franchise-cost-simple-label {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.franchise-cost-simple-value {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: right;
+}
+
+.franchise-cost-simple-value--free {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+@media (max-width: 820px) {
+  .franchise-cost-table thead th:nth-child(4),
+  .franchise-cost-table tbody td:nth-child(4) {
+    display: none;
+  }
+}
+
 @media (max-width: 720px) {
   .franchise-cost-inner {
     width: calc(100% - 24px);
@@ -763,10 +870,6 @@ img {
     content: "금액(만원)";
   }
 
-  .franchise-cost-table td:nth-child(4)::before {
-    content: "비고";
-  }
-
   .franchise-cost-total-row td[colspan] {
     font-size: 1.02rem;
   }
@@ -778,10 +881,6 @@ img {
   .franchise-cost-total-row td[colspan]::before {
     display: block;
     content: "합계 금액";
-  }
-
-  .franchise-cost-total-row td:last-child {
-    display: none;
   }
 
   .franchise-cost-total-row th,
