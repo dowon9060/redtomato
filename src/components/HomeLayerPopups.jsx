@@ -85,33 +85,35 @@ export default function HomeLayerPopups() {
                 </div>
               ) : null}
               <div className="home-popup-body">
-                <p className="eyebrow">{p.kicker}</p>
-                <h3 className="home-popup-title">{p.title}</h3>
-                {Array.isArray(p.perks) && p.perks.length > 0 ? (
-                  <ul className="home-popup-perks">
-                    {p.perks.map((item) => (
-                      <li key={item.label} className="home-popup-perk">
-                        <span className="home-popup-perk-label">{item.label}</span>
-                        <span className="home-popup-perk-values">
-                          {item.strike ? (
-                            <>
-                              <span className="home-popup-perk-strike">{item.strike}</span>
-                              <span className="home-popup-perk-arrow" aria-hidden>
-                                →
-                              </span>
-                            </>
+                <div className="home-popup-main">
+                  <p className="eyebrow">{p.kicker}</p>
+                  <h3 className="home-popup-title">{p.title}</h3>
+                  {Array.isArray(p.perks) && p.perks.length > 0 ? (
+                    <ul className="home-popup-perks">
+                      {p.perks.map((item) => (
+                        <li key={item.label} className="home-popup-perk">
+                          <span className="home-popup-perk-label">{item.label}</span>
+                          <span className="home-popup-perk-values">
+                            {item.strike ? (
+                              <>
+                                <span className="home-popup-perk-strike">{item.strike}</span>
+                                <span className="home-popup-perk-arrow" aria-hidden>
+                                  →
+                                </span>
+                              </>
+                            ) : null}
+                            <strong className="home-popup-perk-free">{item.value}</strong>
+                          </span>
+                          {item.note ? (
+                            <span className="home-popup-perk-note">({item.note})</span>
                           ) : null}
-                          <strong className="home-popup-perk-free">{item.value}</strong>
-                        </span>
-                        {item.note ? (
-                          <span className="home-popup-perk-note">({item.note})</span>
-                        ) : null}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="home-popup-desc">{p.desc}</p>
-                )}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="home-popup-desc">{p.desc}</p>
+                  )}
+                </div>
 
                 <div className="home-popup-card-actions">
                   <button
