@@ -1207,7 +1207,7 @@ img {
   flex-direction: column;
   align-items: stretch;
   gap: 0;
-  max-width: min(1600px, 100%);
+  max-width: min(1180px, 100%);
   pointer-events: none;
 }
 
@@ -1216,8 +1216,8 @@ img {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: stretch;
-  gap: 21px;
+  align-items: flex-start;
+  gap: 14px;
   overflow-x: auto;
   overflow-y: visible;
   max-width: 100%;
@@ -1235,11 +1235,10 @@ img {
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 0 0 min(444px, 92vw);
-  max-width: 480px;
-  min-height: 100%;
+  flex: 0 0 min(296px, 82vw);
+  max-width: 320px;
   background: var(--surface);
-  border-radius: 30px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow:
@@ -1270,16 +1269,16 @@ img {
 
 .home-popup-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   z-index: 2;
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border: none;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
   color: var(--text);
-  font-size: 1.65rem;
+  font-size: 1.45rem;
   line-height: 1;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -1293,12 +1292,151 @@ img {
 
 .home-popup-media {
   flex: 0 0 auto;
-  aspect-ratio: 32 / 9;
+  aspect-ratio: 16 / 9;
   background: #eaeaea;
 }
 
 .home-popup-card--no-media .home-popup-body {
-  padding-top: 48px;
+  padding-top: 40px;
+}
+
+.home-popup-card--opening {
+  flex: 0 0 min(336px, 88vw);
+  max-width: 360px;
+}
+
+.home-popup-card--opening.home-popup-card--no-media .home-popup-body {
+  padding-top: 18px;
+}
+
+.home-opening-hero {
+  position: relative;
+  padding: 22px 18px 16px;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.14), transparent 42%),
+    linear-gradient(165deg, #ff7676 0%, var(--primary) 52%, #d93f3f 100%);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+.home-opening-badge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #ffe566;
+  color: #7a2e00;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.home-opening-soon {
+  margin: 0 0 6px;
+  line-height: 0.95;
+}
+
+.home-opening-soon-line {
+  display: block;
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+}
+
+.home-opening-soon-accent {
+  color: #ffe566;
+}
+
+.home-opening-hero-kicker {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.home-opening-hero-title {
+  margin: 4px 0 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.home-opening-subtitle {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(var(--primary-rgb), 0.06);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.home-opening-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.home-opening-store-card {
+  position: relative;
+  min-height: 88px;
+  padding: 22px 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--primary-rgb), 0.12);
+  background: linear-gradient(180deg, #fff 0%, #fff8f8 100%);
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.home-opening-store-no {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 10px;
+  border-radius: 0 0 10px 10px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.home-opening-store-pin {
+  display: block;
+  margin: 2px auto 4px;
+  color: var(--primary);
+  font-size: 0.45rem;
+  line-height: 1;
+}
+
+.home-opening-store-city {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.home-opening-store-name {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.home-opening-grid .home-opening-store-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  margin-inline: auto;
+  width: 100%;
 }
 
 .home-popup-media img {
@@ -1311,8 +1449,7 @@ img {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  min-height: 190px;
-  padding: 20px 24px 22px;
+  padding: 18px 20px 20px;
 }
 
 .home-popup-main {
@@ -1325,7 +1462,7 @@ img {
 
 .home-popup-card-actions {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 14px;
   flex-shrink: 0;
   border-top: 1px dashed var(--line);
 }
@@ -1333,14 +1470,14 @@ img {
 .home-popup-hide-this-today {
   display: inline-block;
   width: 100%;
-  padding: 12px 14px;
-  border-radius: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
   border: 1px solid rgba(var(--primary-rgb), 0.28);
   background: rgba(var(--primary-rgb), 0.04);
   color: var(--primary-dark);
   font: inherit;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   cursor: pointer;
   transition:
     background 0.18s ease,
@@ -1353,8 +1490,8 @@ img {
 }
 
 .home-popup-title {
-  margin: 0 0 10px;
-  font-size: 1.35rem;
+  margin: 0 0 8px;
+  font-size: 1.22rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.3;
@@ -1363,8 +1500,8 @@ img {
 .home-popup-desc {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.57;
 }
 
 .home-popup-perks {
@@ -1372,14 +1509,14 @@ img {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .home-popup-perk {
   display: grid;
-  gap: 4px;
-  font-size: 0.92rem;
-  line-height: 1.45;
+  gap: 2px;
+  font-size: 0.82rem;
+  line-height: 1.4;
 }
 
 .home-popup-perk-label {
@@ -1409,12 +1546,12 @@ img {
 .home-popup-perk-free {
   color: var(--primary);
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
 }
 
 .home-popup-perk-note {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.75rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1432,7 +1569,7 @@ img {
   }
 
   .home-popup-card {
-    flex-basis: min(414px, 94vw);
+    flex-basis: min(276px, 88vw);
   }
 }
 

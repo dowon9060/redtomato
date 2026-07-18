@@ -69,7 +69,13 @@ export default function HomeLayerPopups() {
           {visible.map((p) => (
             <article
               key={p.id}
-              className={`home-popup-card${p.hideMedia ? " home-popup-card--no-media" : ""}`}
+              className={[
+                "home-popup-card",
+                p.hideMedia && "home-popup-card--no-media",
+                p.openingStores && "home-popup-card--opening",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               <button
                 type="button"
@@ -79,39 +85,77 @@ export default function HomeLayerPopups() {
               >
                 ×
               </button>
-              {!p.hideMedia && p.image ? (
+              {Array.isArray(p.openingStores) && p.openingStores.length > 0 ? (
+                <div className="home-opening-hero">
+                  {p.openingBadge ? (
+                    <span className="home-opening-badge">{p.openingBadge}</span>
+                  ) : null}
+                  <p className="home-opening-soon" aria-hidden>
+                    <span className="home-opening-soon-line">COMING</span>
+                    <span className="home-opening-soon-line home-opening-soon-accent">SOON!</span>
+                  </p>
+                  <p className="home-opening-hero-kicker">{p.kicker}</p>
+                  <h3 className="home-opening-hero-title">{p.title}</h3>
+                </div>
+              ) : !p.hideMedia && p.image ? (
                 <div className="home-popup-media">
                   <img src={p.image} alt={p.imageAlt ?? ""} loading="lazy" />
                 </div>
               ) : null}
               <div className="home-popup-body">
                 <div className="home-popup-main">
-                  <p className="eyebrow">{p.kicker}</p>
-                  <h3 className="home-popup-title">{p.title}</h3>
-                  {Array.isArray(p.perks) && p.perks.length > 0 ? (
-                    <ul className="home-popup-perks">
-                      {p.perks.map((item) => (
-                        <li key={item.label} className="home-popup-perk">
-                          <span className="home-popup-perk-label">{item.label}</span>
-                          <span className="home-popup-perk-values">
-                            {item.strike ? (
-                              <>
-                                <span className="home-popup-perk-strike">{item.strike}</span>
-                                <span className="home-popup-perk-arrow" aria-hidden>
-                                  →
-                                </span>
-                              </>
-                            ) : null}
-                            <strong className="home-popup-perk-free">{item.value}</strong>
-                          </span>
-                          {item.note ? (
-                            <span className="home-popup-perk-note">({item.note})</span>
-                          ) : null}
-                        </li>
-                      ))}
-                    </ul>
+                  {Array.isArray(p.openingStores) && p.openingStores.length > 0 ? (
+                    <>
+                      {p.openingSubtitle ? (
+                        <p className="home-opening-subtitle">{p.openingSubtitle}</p>
+                      ) : null}
+                      <div className="home-opening-grid" role="list">
+                        {p.openingStores.map((store) => (
+                          <article
+                            key={store.number}
+                            className="home-opening-store-card"
+                            role="listitem"
+                          >
+                            <span className="home-opening-store-no">{store.number}호점</span>
+                            <span className="home-opening-store-pin" aria-hidden>
+                              ●
+                            </span>
+                            <strong className="home-opening-store-city">{store.city}</strong>
+                            <span className="home-opening-store-name">{store.name}</span>
+                          </article>
+                        ))}
+                      </div>
+                    </>
                   ) : (
-                    <p className="home-popup-desc">{p.desc}</p>
+                    <>
+                      <p className="eyebrow">{p.kicker}</p>
+                      <h3 className="home-popup-title">{p.title}</h3>
+                      {Array.isArray(p.perks) && p.perks.length > 0 ? (
+                        <ul className="home-popup-perks">
+                          {p.perks.map((item) => (
+                            <li key={item.label} className="home-popup-perk">
+                              <span className="home-popup-perk-label">{item.label}</span>
+                              <span className="home-popup-perk-values">
+                                {item.strike ? (
+                                  <>
+                                    <span className="home-popup-perk-strike">{item.strike}</span>
+                                    <span className="home-popup-perk-arrow" aria-hidden>
+                                      →
+                                    </span>
+                                  </>
+                                ) : null}
+                                <strong className="home-popup-perk-free">{item.value}</strong>
+                              </span>
+                              {item.note ? (
+                                <span className="home-popup-perk-note">({item.note})</span>
+                              ) : null}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="home-popup-desc">{p.desc}</p>
+                      )}
+                    </>
                   )}
                 </div>
 

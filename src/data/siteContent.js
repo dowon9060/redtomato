@@ -513,11 +513,18 @@ export const stores = [
 export const homeLayerPopups = [
   {
     id: "opening",
-    image: "/images/popup-opening.svg",
-    imageAlt: "오픈 예정 매장 안내",
-    kicker: "Notice",
-    title: "오픈 예정 매장",
-    desc: "서울시 송파구, 6월 오픈 예정",
+    hideMedia: true,
+    kicker: "Coming Soon",
+    title: "신규 매장 오픈",
+    openingBadge: "5개! 신규 매장",
+    openingSubtitle: "곧! 신규 매장 오픈 예정입니다",
+    openingStores: [
+      { number: "10", city: "목포", name: "하당점" },
+      { number: "11", city: "순천", name: "순천점" },
+      { number: "12", city: "여수", name: "여수점" },
+      { number: "13", city: "광주", name: "남구점" },
+      { number: "14", city: "전주", name: "전주점" },
+    ],
   },
   {
     id: "award",
