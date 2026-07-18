@@ -1061,6 +1061,65 @@ img {
   gap: 22px;
 }
 
+.menu-marquee {
+  margin-top: 8px;
+}
+
+.menu-marquee-viewport {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+.menu-marquee-track {
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+  width: max-content;
+  padding: 4px max(16px, env(safe-area-inset-right)) 4px
+    max(16px, env(safe-area-inset-left));
+  animation: menuMarquee 48s linear infinite;
+  will-change: transform;
+}
+
+.menu-marquee-card {
+  flex: 0 0 clamp(240px, 22vw, 300px);
+  width: clamp(240px, 22vw, 300px);
+}
+
+.menu-marquee-card .menu-image-wrap {
+  min-height: 210px;
+}
+
+@keyframes menuMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-marquee-viewport {
+    mask-image: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .menu-marquee-track {
+    animation: none;
+  }
+}
+
 .menu-card {
   background: var(--surface);
   border: 1px solid var(--line);
