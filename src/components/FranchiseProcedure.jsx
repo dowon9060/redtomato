@@ -1,4 +1,4 @@
-import { businessName, franchiseProcedureSteps } from "../data/siteContent";
+import { franchiseProcedureSteps } from "../data/siteContent";
 import { Reveal, SectionTitle } from "./pageMotion.jsx";
 
 function StepIcon({ index }) {
@@ -89,10 +89,22 @@ function PathConnector() {
   );
 }
 
+function ProcedureRow({ children, last = false }) {
+  return (
+    <div
+      className={`franchise-procedure-row${
+        last ? " franchise-procedure-row--last" : ""
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function FranchiseProcedure() {
   const row1 = franchiseProcedureSteps.slice(0, 3);
   const row2 = franchiseProcedureSteps.slice(3, 6).reverse();
-  const row3 = franchiseProcedureSteps.slice(6);
+  const lastStep = franchiseProcedureSteps[6];
 
   return (
     <section
@@ -113,14 +125,14 @@ export default function FranchiseProcedure() {
           <div className="franchise-procedure-board">
             <svg
               className="franchise-procedure-snake-path"
-              viewBox="0 0 960 680"
+              viewBox="0 0 960 620"
               preserveAspectRatio="none"
               aria-hidden
             >
-              <path d="M 110 120 H 850 C 900 120 900 120 900 250 C 900 380 900 380 850 380 H 110 C 60 380 60 380 60 510 C 60 610 60 610 110 610 H 360" />
+              <path d="M 110 120 H 850 C 900 120 900 120 900 250 C 900 380 900 380 850 380 H 110 C 60 380 60 380 60 510 C 60 560 110 560 110 560" />
             </svg>
 
-            <div className="franchise-procedure-row">
+            <ProcedureRow>
               {row1.map((row, idx) => (
                 <div key={row.step} className="franchise-procedure-row-segment">
                   <ProcedureCard
@@ -132,29 +144,20 @@ export default function FranchiseProcedure() {
                   {idx < row1.length - 1 ? <PathConnector /> : null}
                 </div>
               ))}
-            </div>
+            </ProcedureRow>
 
-            <div className="franchise-procedure-row franchise-procedure-row--reverse">
+            <ProcedureRow>
               {row2.map((row, idx) => (
                 <div key={row.step} className="franchise-procedure-row-segment">
                   <ProcedureCard row={row} />
                   {idx < row2.length - 1 ? <PathConnector /> : null}
                 </div>
               ))}
-            </div>
+            </ProcedureRow>
 
-            <div className="franchise-procedure-row franchise-procedure-row--finale">
-              {row3.map((row) => (
-                <ProcedureCard key={row.step} row={row} />
-              ))}
-              <div className="franchise-procedure-finisher" aria-hidden>
-                <span className="franchise-procedure-finisher-emoji">🍅</span>
-                <p>
-                  Let&apos;s
-                  <strong>{businessName}!</strong>
-                </p>
-              </div>
-            </div>
+            <ProcedureRow last>
+              <ProcedureCard row={lastStep} />
+            </ProcedureRow>
           </div>
         </Reveal>
       </div>
