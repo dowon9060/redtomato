@@ -79,9 +79,9 @@ function menuNameFromImageFile(file) {
     .replace(/_/g, " ");
 }
 
-/** 가격 표에서 천 원 단위(예: 22.9) → 원 단위 */
+/** 가격 표에서 천 원 단위(예: 22.9) → 원 단위 (+2,000원 일괄 반영) */
 function menuWon(priceK) {
-  return Math.round(priceK * 1000);
+  return Math.round(priceK * 1000) + 2000;
 }
 
 function menuKey(folder, file) {
@@ -742,7 +742,7 @@ export const franchiseSetupCostPlans = [
   {
     id: "new",
     title: "신규창업비용",
-    totalAmount: "15,000,000 (10평 기준)",
+    totalAmount: "13,000,000 (10평 기준)",
     rows: [
       {
         category: "가맹비",
@@ -759,7 +759,7 @@ export const franchiseSetupCostPlans = [
       {
         category: "주방기기",
         content: "오븐 1대 + 45L 냉장고+ 쇼케이스등 주방기기 일체",
-        amount: "1,000(개별구매가능)",
+        amount: "800(개별구매가능)",
         note: "",
       },
       {
