@@ -2313,6 +2313,11 @@ img {
     display: none;
   }
 
+  .home-brand-points-section,
+  .home-promo-section {
+    display: none;
+  }
+
   .page-hero {
     padding: 36px 0 32px;
   }

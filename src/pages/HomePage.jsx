@@ -85,7 +85,7 @@ function BrandStory() {
 
 function BrandPoints() {
   return (
-    <section className="section section-soft">
+    <section className="section section-soft home-brand-points-section">
       <div className="container">
         <Reveal type="up">
           <SectionTitle
@@ -122,7 +122,7 @@ function BrandPoints() {
 
 function PromoSection() {
   return (
-    <section className="section" id="promo">
+    <section className="section home-promo-section" id="promo">
       <div className="container">
         <Reveal type="up">
           <SectionTitle
