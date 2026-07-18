@@ -76,11 +76,17 @@ export function StaggerGroup({ children, baseDelay = 0, stagger = 0.1, type = "u
   );
 }
 
-export function SectionTitle({ eyebrow, title, desc, align = "left" }) {
+export function SectionTitle({
+  eyebrow,
+  title,
+  desc,
+  align = "left",
+  titleId,
+}) {
   return (
     <div className={`section-title ${align}`}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h2>{title}</h2>
+      <h2 id={titleId}>{title}</h2>
       {desc && <p>{desc}</p>}
     </div>
   );
