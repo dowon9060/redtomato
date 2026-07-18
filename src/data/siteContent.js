@@ -528,12 +528,20 @@ export const homeLayerPopups = [
     desc: "고객의 선택에 감사드립니다.",
   },
   {
-    id: "new-menu",
-    image: "/images/popup-new-menu.svg",
-    imageAlt: "신 메뉴 출시",
-    kicker: "New menu",
-    title: "신 메뉴 출시",
-    desc: "새롭게 선보이는 한 판을 만나 보세요.",
+    id: "franchise-cost",
+    image: "/images/popup-franchise-cost.svg",
+    imageAlt: "창업 비용 프로모션",
+    kicker: "Franchise",
+    title: "창업 비용",
+    perks: [
+      { label: "가맹비", strike: "300만원", value: "무료" },
+      { label: "물류보증금", value: "무료" },
+      {
+        label: "배달어플 컨설팅",
+        value: "무료",
+        note: "전, 배민 본사 직원",
+      },
+    ],
   },
 ];
 
