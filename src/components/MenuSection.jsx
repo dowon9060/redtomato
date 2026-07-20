@@ -1,4 +1,4 @@
-import { signatureMenus } from "../data/siteContent";
+import { signatureMenus } from "../data/signatureMenus";
 import { Link } from "react-router-dom";
 import { Reveal, SectionTitle } from "./pageMotion.jsx";
 
@@ -11,7 +11,7 @@ function MenuCard({ menu }) {
             이미지 준비중
           </p>
         ) : (
-          <img src={menu.image} alt={menu.name} className="menu-image" />
+          <img src={menu.image} alt={menu.name} className="menu-image" loading="lazy" decoding="async" />
         )}
       </div>
       <div className="menu-content">

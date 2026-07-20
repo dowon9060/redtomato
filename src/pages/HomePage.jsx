@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Link } from "react-router-dom";
 import { brandPoints, promos, businessName } from "../data/siteContent";
+import { useDeferredMount } from "../hooks/usePerformance.js";
+import HomeMobileSections from "../components/HomeMobileSections.jsx";
 import { Reveal, StaggerGroup, SectionTitle } from "../components/pageMotion.jsx";
 import MenuSection from "../components/MenuSection.jsx";
-import BangtoHistorySection from "../components/BangtoHistorySection.jsx";
-import FranchiseSetupCost from "../components/FranchiseSetupCost.jsx";
-import StoreSection from "../components/StoreSection.jsx";
 import FranchiseHighlight from "../components/FranchiseHighlight.jsx";
-import FranchiseModal from "../components/FranchiseModal.jsx";
-import HomeLayerPopups from "../components/HomeLayerPopups.jsx";
+
+const HomeLayerPopups = lazy(() => import("../components/HomeLayerPopups.jsx"));
+const FranchiseModal = lazy(() => import("../components/FranchiseModal.jsx"));
 
 function Hero() {
   return (
@@ -48,6 +48,10 @@ function Hero() {
               src="/1_메인화면_220715/메인1.jpg"
               alt={`${businessName} 대표 비주얼`}
               className="hero-image"
+              width={1200}
+              height={900}
+              fetchPriority="high"
+              decoding="async"
             />
           </div>
         </Reveal>
@@ -153,20 +157,14 @@ function PromoSection() {
 
 export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const showDeferred = useDeferredMount();
 
   return (
     <>
       <Hero />
       <MenuSection className="home-menu-section" />
       <BrandStory />
-      <div className="home-mobile-only">
-        <BangtoHistorySection headingId="home-bangto-history-title" mobileInitialCount={3} />
-        <FranchiseSetupCost
-          simplified
-          desc="신규 창업 비용 안내입니다."
-        />
-        <StoreSection mobileInitialCount={3} />
-      </div>
+      <HomeMobileSections />
       <BrandPoints />
       <PromoSection />
       <FranchiseHighlight
@@ -184,8 +182,17 @@ export default function HomePage() {
         }
       />
 
-      <FranchiseModal open={modalOpen} onClose={() => setModalOpen(false)} />
-      <HomeLayerPopups />
+      {showDeferred ? (
+        <Suspense fallback={null}>
+          <HomeLayerPopups />
+        </Suspense>
+      ) : null}
+
+      {modalOpen ? (
+        <Suspense fallback={null}>
+          <FranchiseModal open={modalOpen} onClose={() => setModalOpen(false)} />
+        </Suspense>
+      ) : null}
     </>
   );
 }

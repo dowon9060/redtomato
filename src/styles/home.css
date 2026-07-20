@@ -1014,6 +1014,10 @@ img {
   overflow: hidden;
 }
 
+.route-loading {
+  min-height: 40vh;
+}
+
 .hero-image {
   width: 100%;
   max-width: 520px;

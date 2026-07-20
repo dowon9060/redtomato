@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
-import StoreMap from "./StoreMap";
+import { lazy, Suspense, useState } from "react";
 import { stores as storeData, businessName } from "../data/siteContent";
-import { Reveal, StaggerGroup } from "./pageMotion.jsx";
+import { useMediaQuery } from "../hooks/usePerformance.js";
+import { Reveal, StaggerGroup, useReveal } from "./pageMotion.jsx";
+
+const StoreMap = lazy(() => import("./StoreMap"));
 
 const MOBILE_BREAKPOINT = "(max-width: 820px)";
 
 export default function StoreSection({ className = "", mobileInitialCount = null }) {
   const [focusedStoreId, setFocusedStoreId] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [showAllStores, setShowAllStores] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT);
-    const syncMobile = () => setIsMobile(mediaQuery.matches);
-    syncMobile();
-    mediaQuery.addEventListener("change", syncMobile);
-    return () => mediaQuery.removeEventListener("change", syncMobile);
-  }, []);
+  const [mapRef, mapVisible] = useReveal(0.08);
+  const isMobile = useMediaQuery(MOBILE_BREAKPOINT);
 
   const toggleStoreFocus = (id) => {
     setFocusedStoreId((prev) => (prev === id ? null : id));
@@ -109,14 +104,22 @@ export default function StoreSection({ className = "", mobileInitialCount = null
         ) : null}
       </div>
 
-      <Reveal type="up" delay={0.06}>
-        <div className="store-map-bleed">
-          <div className="store-map-bleed-inner">
-            <p className="store-map-label eyebrow">매장 위치</p>
-            <StoreMap stores={storeData} focusedStoreId={focusedStoreId} />
+      <div ref={mapRef}>
+        <Reveal type="up" delay={0.06}>
+          <div className="store-map-bleed">
+            <div className="store-map-bleed-inner">
+              <p className="store-map-label eyebrow">매장 위치</p>
+              {mapVisible ? (
+                <Suspense fallback={<div className="store-map-shell" aria-hidden />}>
+                  <StoreMap stores={storeData} focusedStoreId={focusedStoreId} />
+                </Suspense>
+              ) : (
+                <div className="store-map-shell" aria-hidden />
+              )}
+            </div>
           </div>
-        </div>
-      </Reveal>
+        </Reveal>
+      </div>
     </section>
   );
 }

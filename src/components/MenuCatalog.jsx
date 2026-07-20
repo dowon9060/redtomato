@@ -3,8 +3,8 @@ import {
   menuCatalog,
   menuPageNotes,
   menuPageTabs,
-  businessName,
-} from "../data/siteContent";
+} from "../data/menuData";
+import { businessName } from "../data/siteContent";
 
 function formatThousandDisplay(won) {
   const t = won / 1000;
