@@ -6,7 +6,7 @@
 
 import { buildFranchiseInquiryMailContent } from "./franchiseMailTemplate.js";
 
-const DEFAULT_NOTIFY_TO = "redtomatopizza1@gmail.com";
+const DEFAULT_NOTIFY_TO = "jiras90@gmail.com";
 
 async function sendViaResend(to, subject, text, html) {
   const key = process.env.RESEND_API_KEY?.trim();

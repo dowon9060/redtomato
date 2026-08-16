@@ -75,7 +75,7 @@ function jsonResponse(status, body, originHeader, env) {
  * @param {{ RESEND_API_KEY?: string; FRANCHISE_MAIL_FROM?: string; FRANCHISE_NOTIFY_EMAIL?: string }} env
  */
 async function notifyResend(data, env) {
-  const to = (env.FRANCHISE_NOTIFY_EMAIL || "").trim() || "redtomatopizza1@gmail.com";
+  const to = (env.FRANCHISE_NOTIFY_EMAIL || "").trim() || "jiras90@gmail.com";
   const key = env.RESEND_API_KEY?.trim();
   const from = env.FRANCHISE_MAIL_FROM?.trim();
 
