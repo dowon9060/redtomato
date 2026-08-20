@@ -26,24 +26,20 @@ npx wrangler deploy
 배포 후 표시되는 `*.workers.dev` URL이 워커 오리진입니다.  
 예: `https://retomato.<계정>.workers.dev/api/franchise-inquiry`
 
-메일 발송을 쓰려면 **Resend API 키**를 시크릿으로 넣고, **발신 주소**는 `wrangler.toml`의 `[vars]`에 추가하거나 대시보드(Workers → retomato → Variables)에서 설정합니다.
+Slack 알림을 쓰려면 **Incoming Webhook URL**을 시크릿으로 넣습니다.
 
 ```bash
-npx wrangler secret put RESEND_API_KEY --config cloudflare/workers/retomato/wrangler.toml
+npx wrangler secret put FRANCHISE_SLACK_WEBHOOK_URL --config cloudflare/workers/retomato/wrangler.toml
 ```
 
-`FRANCHISE_MAIL_FROM` 예시는 `wrangler.toml` 주석을 참고하세요.
+Slack 앱 → **Incoming Webhooks** → 알림 받을 채널 선택 → URL 복사.
 
 ## 환경 변수
 
 | 변수 | 종류 | 설명 |
 |------|------|------|
-| `RESEND_API_KEY` | Secret | Resend API 키 (`wrangler secret put`) |
-| `FRANCHISE_MAIL_FROM` | `[vars]` 또는 대시보드 | Resend에 인증된 발신 주소 — 없으면 메일은 로그만 남김 |
-| `FRANCHISE_NOTIFY_EMAIL` | `wrangler.toml` [vars] 또는 vars | 수신 주소 (기본값은 `wrangler.toml` 참고) |
+| `FRANCHISE_SLACK_WEBHOOK_URL` | Secret (권장) 또는 `[vars]` | Slack Incoming Webhook URL |
 | `CORS_ALLOWED_ORIGINS` | `[vars]` 선택 | 허용 `Origin`을 쉼표로 추가(스테이징 URL 등). 기본 포함: **https://redtomato.kr**, **https://www.redtomato.kr**, Vite 로컬 호스트 |
-
-Workers에서는 SMTP보다 **Resend HTTPS API** 연동을 권장합니다.
 
 프로덕션 웹은 **https://redtomato.kr** 기준입니다. 브라우저 `Origin`이 위 도메인(및 `www`)이면 Worker로 크로스 오리진 요청 가능합니다(`worker.js`의 `BUILTIN_CORS_ORIGINS`).
 

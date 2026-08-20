@@ -3,9 +3,8 @@ main = "src/worker.js"
 compatibility_date = "2025-03-04"
 
 [vars]
-FRANCHISE_NOTIFY_EMAIL = "jiras90@gmail.com"
-# 아래 주석을 해제하고 Resend에 인증된 발신 주소로 바꾸세요.
-# FRANCHISE_MAIL_FROM = "빨간토마토피자 <notify@yourdomain.com>"
+# Slack Incoming Webhook URL — wrangler secret put FRANCHISE_SLACK_WEBHOOK_URL 권장
+# FRANCHISE_SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/..."
 
 
 # ── 선택: 추가 CORS 출처(쉼표 구분). 기본: redtomato.kr, www, Vite 로컬

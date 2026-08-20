@@ -6,7 +6,7 @@ import {
   ValidationError,
   parseFranchisePayload,
 } from "../../../../server/franchise/franchiseValidation.js";
-import { buildFranchiseInquiryMailContent } from "../../../../server/franchise/franchiseMailTemplate.js";
+import { sendFranchiseSlackNotify } from "../../../../server/franchise/slack.js";
 
 const JSON_HEADERS = {
   "Content-Type": "application/json; charset=utf-8",
@@ -71,49 +71,6 @@ function jsonResponse(status, body, originHeader, env) {
 }
 
 /**
- * @param {{ name: string; phone: string; region: string }} data
- * @param {{ RESEND_API_KEY?: string; FRANCHISE_MAIL_FROM?: string; FRANCHISE_NOTIFY_EMAIL?: string }} env
- */
-async function notifyResend(data, env) {
-  const to = (env.FRANCHISE_NOTIFY_EMAIL || "").trim() || "jiras90@gmail.com";
-  const key = env.RESEND_API_KEY?.trim();
-  const from = env.FRANCHISE_MAIL_FROM?.trim();
-
-  if (!key || !from) {
-    console.info(
-      "[retomato] 메일 미발송 — RESEND_API_KEY(비밀) 및 FRANCHISE_MAIL_FROM(vars) 필요"
-    );
-    return;
-  }
-
-  const { subject, text, html } = buildFranchiseInquiryMailContent(data);
-
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      subject,
-      text,
-      html,
-    }),
-  });
-
-  const out = await res.json().catch(() => ({}));
-
-  if (!res.ok) {
-    console.error("[retomato] Resend 오류", res.status, out);
-    return;
-  }
-
-  console.info("[retomato] 메일 발송", { id: out?.id ?? null });
-}
-
-/**
  * @param {Request} request
  * @param {Record<string, string | undefined>} env
  */
@@ -138,7 +95,10 @@ async function handleFranchise(request, env) {
       ...data,
       at: new Date().toISOString(),
     });
-    await notifyResend(data, env);
+    const slack = await sendFranchiseSlackNotify(data, env);
+    if (!slack.ok && !slack.skipped) {
+      console.error("[retomato] Slack 알림 실패", slack);
+    }
     return jsonResponse(
       200,
       { ok: true, receivedAt: new Date().toISOString() },

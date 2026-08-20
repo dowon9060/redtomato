@@ -1,6 +1,14 @@
 /** 공식 상호명 */
 export const businessName = "빨간토마토피자";
 
+/** 사업자등록증 기준 법적 표기 (푸터 등) */
+export const businessLegal = {
+  tradeName: "빨간토마토피자(나주혁신점)",
+  representative: "심영찬",
+  registrationNumber: "206-32-50282",
+  address: "전라남도 나주시 상야4길 16-10, 110호(빛가람동)",
+};
+
 export const mainNav = [
   { label: "빨토 히스토리", path: "/bangto" },
   { label: "메뉴", path: "/menu" },

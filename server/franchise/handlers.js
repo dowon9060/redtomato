@@ -3,6 +3,7 @@
  */
 
 import { sendFranchiseNotifyEmail } from "./email.js";
+import { sendFranchiseSlackNotify } from "./slack.js";
 import { ValidationError, parseFranchisePayload } from "./franchiseValidation.js";
 
 export { ValidationError, parseFranchisePayload } from "./franchiseValidation.js";
@@ -22,12 +23,23 @@ export async function processFranchiseInquiry(data) {
   }
 
   try {
-    const mail = await sendFranchiseNotifyEmail(data);
-    if (!mail.ok && !mail.skipped) {
-      console.error("[franchise-inquiry] 메일 알림 실패", mail);
+    const slack = await sendFranchiseSlackNotify(data);
+    if (!slack.ok && !slack.skipped) {
+      console.error("[franchise-inquiry] Slack 알림 실패", slack);
     }
   } catch (e) {
-    console.error("[franchise-inquiry] 메일 알림 예외", e);
+    console.error("[franchise-inquiry] Slack 알림 예외", e);
+  }
+
+  if (process.env.FRANCHISE_NOTIFY_VIA_EMAIL === "1") {
+    try {
+      const mail = await sendFranchiseNotifyEmail(data);
+      if (!mail.ok && !mail.skipped) {
+        console.error("[franchise-inquiry] 메일 알림 실패", mail);
+      }
+    } catch (e) {
+      console.error("[franchise-inquiry] 메일 알림 예외", e);
+    }
   }
 
   /* 예: 문자 수신번호 (설정만 해두고 실제 발송 연동 전 단계에서 사용)
