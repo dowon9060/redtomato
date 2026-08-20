@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { franchiseInquiryHotline } from "../data/siteContent";
+import {
+  franchiseInquiryHotline,
+  franchiseInquiryPrivacyConsent,
+} from "../data/siteContent";
 import { apiUrl } from "../lib/apiBase";
 
 export default function FranchiseInquiryForm({ onDismiss }) {
   const [form, setForm] = useState({ name: "", phone: "", region: "" });
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
   const [submitError, setSubmitError] = useState(null);
@@ -15,13 +19,19 @@ export default function FranchiseInquiryForm({ onDismiss }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError(null);
+
+    if (!privacyConsent) {
+      setSubmitError("개인정보 수집·이용에 동의해 주세요.");
+      return;
+    }
+
     setPending(true);
 
     try {
       const res = await fetch(apiUrl("/api/franchise-inquiry"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, privacyConsent: true }),
       });
 
       const data = await res.json().catch(() => ({}));
@@ -106,9 +116,39 @@ export default function FranchiseInquiryForm({ onDismiss }) {
         />
       </label>
 
+      <div className="form-consent">
+        <label className="form-consent-check">
+          <input
+            type="checkbox"
+            name="privacyConsent"
+            checked={privacyConsent}
+            onChange={(e) => setPrivacyConsent(e.target.checked)}
+            disabled={pending}
+            required
+          />
+          <span>{franchiseInquiryPrivacyConsent.checkboxLabel}</span>
+        </label>
+
+        <details className="form-consent-details">
+          <summary>개인정보 수집·이용 안내</summary>
+          <dl className="form-consent-list">
+            {franchiseInquiryPrivacyConsent.details.map((item) => (
+              <div key={item.title} className="form-consent-item">
+                <dt>{item.title}</dt>
+                <dd>{item.body}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+      </div>
+
       {submitError ? <p className="form-submit-error">{submitError}</p> : null}
 
-      <button type="submit" className="btn btn-primary modal-submit" disabled={pending}>
+      <button
+        type="submit"
+        className="btn btn-primary modal-submit"
+        disabled={pending || !privacyConsent}
+      >
         {pending ? "접수 중…" : "문의 등록"}
       </button>
 

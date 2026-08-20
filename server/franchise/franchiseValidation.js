@@ -39,5 +39,9 @@ export function parseFranchisePayload(raw) {
     throw new ValidationError("연락처 형식을 확인해 주세요.");
   }
 
+  if (o.privacyConsent !== true) {
+    throw new ValidationError("개인정보 수집·이용에 동의해 주세요.");
+  }
+
   return { name, phone, region };
 }
