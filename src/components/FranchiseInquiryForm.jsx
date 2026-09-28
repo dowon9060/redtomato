@@ -1,8 +1,6 @@
 import { useState } from "react";
-import {
-  franchiseInquiryHotline,
-  franchiseInquiryPrivacyConsent,
-} from "../data/siteContent";
+import { franchiseInquiryHotline } from "../data/siteContent";
+import { franchiseInquiryPrivacyConsent } from "../data/franchiseInquiryPrivacyConsent.js";
 import { apiUrl } from "../lib/apiBase";
 
 export default function FranchiseInquiryForm({ onDismiss }) {
