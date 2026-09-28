@@ -90,11 +90,6 @@ export default function HomeLayerPopups() {
                   {p.openingBadge ? (
                     <span className="home-opening-badge">{p.openingBadge}</span>
                   ) : null}
-                  <p className="home-opening-soon" aria-hidden>
-                    <span className="home-opening-soon-line">COMING</span>
-                    <span className="home-opening-soon-line home-opening-soon-accent">SOON!</span>
-                  </p>
-                  <p className="home-opening-hero-kicker">{p.kicker}</p>
                   <h3 className="home-opening-hero-title">{p.title}</h3>
                 </div>
               ) : !p.hideMedia && p.image ? (

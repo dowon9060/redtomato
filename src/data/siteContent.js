@@ -261,7 +261,6 @@ export const homeLayerPopups = [
   {
     id: "opening",
     hideMedia: true,
-    kicker: "Coming Soon",
     title: "신규 매장 오픈",
     openingBadge: "4개! 신규 매장",
     openingSubtitle: "곧! 신규 매장 오픈 예정입니다",
