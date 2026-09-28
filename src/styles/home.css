@@ -599,31 +599,100 @@ img {
   }
 
   .home-layer-popups {
-    --hp-font-scale: 1.05;
+    --hp-font-scale: 0.95;
   }
 
   .home-popup-card {
     flex: 0 1 auto;
     flex-basis: auto;
-    width: min(100%, 320px);
-    max-width: min(320px, calc(100vw - 28px));
+    width: min(100%, 284px);
+    max-width: min(284px, calc(100vw - 32px));
     margin-inline: auto;
-    max-height: min(68dvh, 480px);
+    max-height: min(58dvh, 400px);
+    min-height: 0;
     overflow: hidden;
   }
 
   .home-popup-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    padding: 12px 14px 12px;
+  }
+
+  .home-popup-main {
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
 
-  .home-popup-card:not(.home-popup-card--opening) .home-popup-media {
-    min-height: 88px;
-    max-height: 140px;
+  .home-popup-card-actions {
+    flex-shrink: 0;
+    padding-top: 10px;
+    margin-top: 8px;
+    background: var(--surface);
+  }
+
+  .home-popup-card--opening .home-opening-hero {
+    flex-shrink: 0;
+    padding: 12px 10px 10px;
+  }
+
+  .home-popup-card--opening .home-popup-body {
+    padding-top: 10px;
+  }
+
+  .home-opening-badge {
+    margin-bottom: 6px;
+    padding: 4px 10px;
+    font-size: calc(0.66rem * var(--hp-font-scale));
   }
 
   .home-opening-soon-line {
-    font-size: calc(1.45rem * var(--hp-font-scale));
+    font-size: calc(1.15rem * var(--hp-font-scale));
+  }
+
+  .home-opening-hero-kicker {
+    font-size: calc(0.62rem * var(--hp-font-scale));
+  }
+
+  .home-opening-hero-title {
+    font-size: calc(0.9rem * var(--hp-font-scale));
+  }
+
+  .home-opening-subtitle {
+    margin-bottom: 8px;
+    padding: 6px 8px;
+    font-size: calc(0.72rem * var(--hp-font-scale));
+  }
+
+  .home-opening-grid {
+    gap: 6px;
+  }
+
+  .home-opening-store-card {
+    min-height: 68px;
+    padding: 18px 6px 8px;
+    border-radius: 12px;
+  }
+
+  .home-opening-store-city {
+    font-size: calc(0.82rem * var(--hp-font-scale));
+  }
+
+  .home-opening-store-name {
+    font-size: calc(0.66rem * var(--hp-font-scale));
+  }
+
+  .home-popup-hide-this-today {
+    padding: 8px 10px;
+    font-size: calc(0.76rem * var(--hp-font-scale));
+  }
+
+  .home-popup-card:not(.home-popup-card--opening) .home-popup-media {
+    min-height: 72px;
+    max-height: 112px;
   }
 }
 
@@ -2116,12 +2185,14 @@ img {
   padding-top: 40px;
 }
 
-.home-popup-card--opening.home-popup-card--no-media .home-popup-body {
-  padding-top: 18px;
+.home-popup-card--opening .home-popup-body {
+  padding-top: 14px;
+  min-height: 0;
 }
 
 .home-opening-hero {
   position: relative;
+  flex-shrink: 0;
   padding: 22px 18px 16px;
   background:
     radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.14), transparent 42%),
@@ -2686,65 +2757,70 @@ img {
 
   .modal {
     width: 100%;
-    max-width: min(400px, 100%);
-    max-height: min(88dvh, 640px);
+    max-width: min(360px, 100%);
+    max-height: min(80dvh, 520px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     margin: 0 auto;
-    padding: 20px 18px max(16px, env(safe-area-inset-bottom));
-    border-radius: 20px 20px 0 0;
+    padding: 16px 14px max(12px, env(safe-area-inset-bottom));
+    border-radius: 18px 18px 0 0;
     box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.2);
   }
 
   .modal-close {
-    top: 12px;
-    right: 14px;
-    font-size: 1.45rem;
+    top: 10px;
+    right: 12px;
+    font-size: 1.35rem;
   }
 
   .modal-header {
-    margin-bottom: 16px;
-    padding-right: 28px;
+    margin-bottom: 12px;
+    padding-right: 26px;
   }
 
   .modal-header h3 {
-    font-size: 1.28rem;
+    font-size: 1.12rem;
   }
 
   .modal-desc {
-    margin-top: 6px;
-    font-size: 0.86rem;
-    line-height: 1.5;
+    margin-top: 4px;
+    font-size: 0.82rem;
+    line-height: 1.45;
   }
 
   .modal-form {
-    gap: 14px;
+    gap: 12px;
   }
 
   .modal .form-field input {
-    padding: 12px 14px;
+    padding: 11px 12px;
     font-size: 16px;
   }
 
   .modal .form-consent {
-    padding: 12px 14px;
+    padding: 10px 12px;
   }
 
   .modal .form-consent-check {
-    font-size: 0.84rem;
+    font-size: 0.8rem;
+  }
+
+  .modal .form-consent-details {
+    font-size: 0.78rem;
   }
 
   .modal .franchise-inquiry-hotline-card {
-    padding: 14px 16px;
+    padding: 12px 14px;
   }
 
   .modal .franchise-inquiry-hotline-card-phone {
-    font-size: 1.2rem;
+    font-size: 1.08rem;
   }
 
   .modal-submit {
-    min-height: 48px;
-    margin-top: 2px;
+    min-height: 46px;
+    margin-top: 0;
+    font-size: 0.95rem;
   }
 
   .modal-success {
