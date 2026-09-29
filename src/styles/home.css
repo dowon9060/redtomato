@@ -588,79 +588,38 @@ img {
     font-size: calc(0.95rem * var(--fp-font-scale));
   }
 
-  .home-layer-popups-row {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    overflow-x: visible;
-    scroll-snap-type: none;
-    gap: 12px;
-    padding: 4px 0 2px;
+  .home-banner-strip {
+    --hp-font-scale: 0.92;
   }
 
-  .home-layer-popups {
-    --hp-font-scale: 0.95;
+  .home-banner-item {
+    min-height: 70px;
+    padding-right: 52px;
   }
 
-  .home-popup-card {
-    flex: 0 1 auto;
-    flex-basis: auto;
-    width: min(100%, 284px);
-    max-width: min(284px, calc(100vw - 32px));
-    margin-inline: auto;
-    max-height: min(58dvh, 400px);
-    min-height: 0;
-    overflow: hidden;
+  .home-banner-item-hint {
+    font-size: calc(0.78rem + 3px);
   }
 
-  .home-popup-body {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: hidden;
-    padding: 12px 14px 12px;
+  .home-banner-dots {
+    padding: 6px 0 8px;
   }
 
-  .home-popup-main {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  .home-popup-detail-modal {
+    max-height: min(82dvh, 520px);
   }
 
-  .home-popup-card-actions {
-    flex-shrink: 0;
-    padding-top: 10px;
-    margin-top: 8px;
-    background: var(--surface);
+  .home-popup-detail-scroll {
+    padding: 32px 16px 10px;
   }
 
-  .home-popup-card--opening .home-opening-hero {
-    flex-shrink: 0;
-    padding: 12px 10px 10px;
+  .home-opening-hero--detail {
+    margin: -32px -16px 12px;
   }
 
-  .home-popup-card--opening .home-popup-body {
-    padding-top: 10px;
-  }
-
-  .home-opening-badge {
-    margin-bottom: 6px;
-    padding: 4px 10px;
-    font-size: calc(0.66rem * var(--hp-font-scale));
-  }
-
-  .home-opening-hero-title {
-    font-size: calc(1.05rem * var(--hp-font-scale));
-  }
-
-  .home-opening-subtitle {
-    margin-bottom: 8px;
-    padding: 6px 8px;
-    font-size: calc(0.72rem * var(--hp-font-scale));
-  }
-
-  .home-opening-grid {
-    gap: 6px;
+  .home-popup-media--detail {
+    margin: -32px -16px 12px;
+    max-height: 160px;
   }
 
   .home-opening-store-card {
@@ -680,11 +639,6 @@ img {
   .home-popup-hide-this-today {
     padding: 8px 10px;
     font-size: calc(0.76rem * var(--hp-font-scale));
-  }
-
-  .home-popup-card:not(.home-popup-card--opening) .home-popup-media {
-    min-height: 72px;
-    max-height: 112px;
   }
 }
 
@@ -2054,7 +2008,195 @@ img {
   text-decoration: underline;
 }
 
-/* Home entrance layer popups */
+/* Home top banner + detail modal */
+.home-banner-strip {
+  --hp-font-scale: 1;
+  position: relative;
+  z-index: 18;
+  width: 100%;
+  background: linear-gradient(90deg, #ff6b57 0%, var(--primary) 52%, #d93f3f 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.home-banner-carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-banner-carousel-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.home-banner-slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+}
+
+.home-banner-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 78px;
+  padding: 16px 52px 16px clamp(16px, 4vw, 24px);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: filter 0.18s ease;
+}
+
+.home-banner-item:hover {
+  filter: brightness(1.05);
+}
+
+.home-banner-item-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.home-banner-item-eyebrow {
+  font-size: calc(0.72rem + 3px);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffe566;
+}
+
+.home-banner-item-title {
+  font-size: clamp(calc(1rem + 3px), calc(2.8vw + 3px), calc(1.2rem + 3px));
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.home-banner-item-hint {
+  flex-shrink: 0;
+  font-size: calc(0.86rem + 3px);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+}
+
+.home-banner-dismiss {
+  position: absolute;
+  top: 50%;
+  right: clamp(10px, 2.5vw, 16px);
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.home-banner-dismiss:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.home-banner-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0 10px;
+  background: transparent;
+}
+
+.home-banner-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.home-banner-dot--active {
+  transform: scale(1.25);
+  background: #ffe566;
+}
+
+.home-popup-detail-overlay {
+  z-index: 140;
+}
+
+.home-popup-detail-modal {
+  display: flex;
+  flex-direction: column;
+  max-width: min(420px, 100%);
+  max-height: min(86dvh, 620px);
+  padding: 0;
+  overflow: hidden;
+}
+
+.home-popup-detail-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 36px 20px 12px;
+}
+
+.home-popup-detail-body {
+  padding: 0;
+}
+
+.home-popup-detail-actions {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 12px 20px 20px;
+  border-top: 1px dashed var(--line);
+  background: var(--surface);
+}
+
+.home-opening-hero--detail {
+  margin: -36px -20px 14px;
+  border-radius: 0;
+}
+
+.home-popup-media--detail {
+  margin: -36px -20px 14px;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.home-popup-media--detail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-banner-carousel-track {
+    transition: none;
+  }
+}
+
+/* Legacy popup card styles (detail modal) */
 .home-layer-popups {
   --hp-font-scale: 1.3;
   position: fixed;

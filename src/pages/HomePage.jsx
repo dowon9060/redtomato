@@ -161,6 +161,12 @@ export default function HomePage() {
 
   return (
     <>
+      {showDeferred ? (
+        <Suspense fallback={null}>
+          <HomeLayerPopups />
+        </Suspense>
+      ) : null}
+
       <Hero />
       <MenuSection className="home-menu-section" />
       <BrandStory />
@@ -181,12 +187,6 @@ export default function HomePage() {
           </>
         }
       />
-
-      {showDeferred ? (
-        <Suspense fallback={null}>
-          <HomeLayerPopups />
-        </Suspense>
-      ) : null}
 
       {modalOpen ? (
         <Suspense fallback={null}>
