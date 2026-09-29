@@ -47,14 +47,17 @@ export function HomeRenewalHero({ onInquiryClick }) {
 
         <Reveal type="right" delay={0.3}>
           <div className="hero-visual">
-            <img
+            <video
+              className="hero-image hero-video"
               src={homeHeroVisual.src}
-              alt={`${businessName} 대표 비주얼`}
-              className="hero-image"
               width={homeHeroVisual.width}
               height={homeHeroVisual.height}
-              fetchPriority="high"
-              decoding="async"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-label={`${businessName} 피자 제작 영상`}
             />
           </div>
         </Reveal>

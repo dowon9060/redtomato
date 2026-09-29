@@ -1,9 +1,9 @@
 import { publicAssetUrl } from "../lib/publicAssetUrl.js";
 import { businessName, franchiseInquiryHotline } from "./siteContent.js";
 
-/** 홈 히어로 — public/images/home/hero-visual.jpg (한글 경로는 Vite 정적 서빙 불가) */
+/** 홈 히어로 — public/pizzamade.mp4 */
 export const homeHeroVisual = {
-  src: "/images/home/hero-visual.jpg",
+  src: "/pizzamade.mp4",
   width: 1200,
   height: 900,
 };
