@@ -1,6 +1,20 @@
+import { publicAssetUrl } from "../lib/publicAssetUrl.js";
+
+/** 시그니처 — ASCII 경로 (로컬 dev·preview에서도 안정) */
+const SIGNATURE_ASCII_IMAGES = {
+  "베이컨쉬프림피자.jpg": "/images/signature/bacon-shrimp.jpg",
+  "쉬프림큐브스테이크피자.jpg": "/images/signature/shrimp-cube-steak.jpg",
+  "스윗고구마무스피자.jpg": "/images/signature/sweet-potato.jpg",
+  "체다치즈프라이피자.jpg": "/images/signature/cheddar-fries.jpg",
+  "핫칠리쉬프림올인피자.jpg": "/images/signature/hot-chili-shrimp.jpg",
+};
+
 /** public 하위 디렉터리·파일명(한글·공백 포함) URL */
-function menuAssetUrl(directory, filename) {
-  return `/${encodeURIComponent(directory)}/${encodeURIComponent(filename)}`;
+function menuAssetUrl(directory, filename, groupId) {
+  if (groupId === "signature" && SIGNATURE_ASCII_IMAGES[filename]) {
+    return SIGNATURE_ASCII_IMAGES[filename];
+  }
+  return publicAssetUrl(directory, filename);
 }
 
 function menuNameFromImageFile(file) {
@@ -319,7 +333,7 @@ function buildMenuCatalogFromImages() {
         eng: "",
         name: menuNameFromImageFile(file),
         desc: "",
-        image: menuAssetUrl(g.folder, file),
+        image: menuAssetUrl(g.folder, file, g.groupId),
         badge: null,
         priceRows: priceRowsForCategory(g.category),
         imagePending: false,

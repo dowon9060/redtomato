@@ -136,10 +136,16 @@ export const homeInterviews = {
   gallery: [
     { src: publicAssetUrl("3.jpeg"), alt: "매장 내부 전경" },
     { src: publicAssetUrl("1.jpeg"), alt: "매장 운영 모습" },
-    { src: "/images/home/gallery-pizza-cooking.jpg", alt: "피자 조리 컷" },
+    {
+      src: publicAssetUrl("반반피자 네가지피자", "네가지_스페셜피자.jpg"),
+      alt: "피자 조리 컷",
+    },
     { src: publicAssetUrl("2.jpeg"), alt: "깔끔한 주방·매장 환경" },
     { src: publicAssetUrl("3.jpeg"), alt: "피자 픽업·포장" },
-    { src: "/images/home/gallery-signature-menu.jpg", alt: "시그니처 메뉴" },
+    {
+      src: publicAssetUrl("반반피자 네가지피자", "네가지_오리지널피자.jpg"),
+      alt: "시그니처 메뉴",
+    },
   ],
 };
 
