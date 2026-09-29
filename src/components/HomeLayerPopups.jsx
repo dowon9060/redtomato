@@ -1,32 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { homeLayerPopups } from "../data/siteContent";
-
-const STORAGE_PREFIX = "rt_home_popup_hide_";
-
-function localDateKey(d = new Date()) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-
-function getInitialOpenIds() {
-  const today = localDateKey();
-  const ids = new Set();
-  try {
-    if (typeof localStorage === "undefined") {
-      homeLayerPopups.forEach((p) => ids.add(p.id));
-      return ids;
-    }
-    for (const p of homeLayerPopups) {
-      const saved = localStorage.getItem(STORAGE_PREFIX + p.id);
-      if (saved !== today) ids.add(p.id);
-    }
-  } catch {
-    homeLayerPopups.forEach((p) => ids.add(p.id));
-  }
-  return ids;
-}
 
 function bannerEyebrow(p) {
   if (p.openingBadge) return p.openingBadge;
@@ -106,55 +79,19 @@ function HomePopupDetailBody({ p }) {
 }
 
 export default function HomeLayerPopups() {
-  const [open, setOpen] = useState(() => getInitialOpenIds());
   const [detailId, setDetailId] = useState(null);
   const [slideIndex, setSlideIndex] = useState(0);
 
-  const closeOnce = useCallback((id) => {
-    setOpen((prev) => {
-      const next = new Set(prev);
-      next.delete(id);
-      return next;
-    });
-    setDetailId((current) => (current === id ? null : current));
-  }, []);
-
-  const closeTodayOnly = useCallback(
-    (id) => {
-      try {
-        localStorage.setItem(STORAGE_PREFIX + id, localDateKey());
-      } catch (_) {}
-      closeOnce(id);
-    },
-    [closeOnce]
-  );
-
-  const visible = useMemo(
-    () => homeLayerPopups.filter((p) => open.has(p.id)),
-    [open]
-  );
-
-  const detailPopup = detailId ? visible.find((p) => p.id === detailId) : null;
-
-  const visibleKey = visible.map((p) => p.id).join(",");
+  const banners = homeLayerPopups;
+  const detailPopup = detailId ? banners.find((p) => p.id === detailId) : null;
 
   useEffect(() => {
-    setSlideIndex(0);
-  }, [visibleKey]);
-
-  useEffect(() => {
-    if (visible.length <= 1 || detailId) return;
+    if (banners.length <= 1 || detailId) return;
     const id = window.setInterval(() => {
-      setSlideIndex((i) => (i + 1) % visible.length);
+      setSlideIndex((i) => (i + 1) % banners.length);
     }, 4500);
     return () => window.clearInterval(id);
-  }, [visible.length, visibleKey, detailId]);
-
-  useEffect(() => {
-    if (slideIndex >= visible.length) {
-      setSlideIndex(0);
-    }
-  }, [slideIndex, visible.length]);
+  }, [banners.length, detailId]);
 
   useEffect(() => {
     if (!detailId) return;
@@ -165,20 +102,15 @@ export default function HomeLayerPopups() {
     return () => window.removeEventListener("keydown", onKey);
   }, [detailId]);
 
-  if (visible.length === 0) return null;
-
   return (
     <>
       <aside className="home-banner-strip" aria-label="주요 안내 배너">
-        <div
-          className="home-banner-carousel"
-          aria-live="polite"
-        >
+        <div className="home-banner-carousel" aria-live="polite">
           <div
             className="home-banner-carousel-track"
             style={{ transform: `translateX(-${slideIndex * 100}%)` }}
           >
-            {visible.map((p) => (
+            {banners.map((p) => (
               <div key={p.id} className="home-banner-slide">
                 <button
                   type="button"
@@ -191,22 +123,14 @@ export default function HomeLayerPopups() {
                   </span>
                   <span className="home-banner-item-hint">자세히 보기 →</span>
                 </button>
-                <button
-                  type="button"
-                  className="home-banner-dismiss"
-                  aria-label={`${p.title} 배너 닫기`}
-                  onClick={() => closeOnce(p.id)}
-                >
-                  ×
-                </button>
               </div>
             ))}
           </div>
         </div>
 
-        {visible.length > 1 ? (
+        {banners.length > 1 ? (
           <div className="home-banner-dots" role="tablist" aria-label="배너 선택">
-            {visible.map((p, index) => (
+            {banners.map((p, index) => (
               <button
                 key={p.id}
                 type="button"
@@ -253,16 +177,6 @@ export default function HomeLayerPopups() {
                 {detailPopup.title}
               </h2>
               <HomePopupDetailBody p={detailPopup} />
-            </div>
-
-            <div className="home-popup-card-actions home-popup-detail-actions">
-              <button
-                type="button"
-                className="home-popup-hide-this-today"
-                onClick={() => closeTodayOnly(detailPopup.id)}
-              >
-                오늘 하루 열지 않기
-              </button>
             </div>
           </div>
         </div>
