@@ -3,8 +3,12 @@ import { franchiseInquiryHotline } from "../data/siteContent";
 import { franchiseInquiryPrivacyConsent } from "../data/franchiseInquiryPrivacyConsent.js";
 import { apiUrl } from "../lib/apiBase";
 
-export default function FranchiseInquiryForm({ onDismiss }) {
-  const [form, setForm] = useState({ name: "", phone: "", region: "" });
+export default function FranchiseInquiryForm({
+  onDismiss,
+  showMessageField = false,
+  showHotlineCard = true,
+}) {
+  const [form, setForm] = useState({ name: "", phone: "", region: "", message: "" });
   const [privacyConsent, setPrivacyConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
@@ -114,6 +118,20 @@ export default function FranchiseInquiryForm({ onDismiss }) {
         />
       </label>
 
+      {showMessageField ? (
+        <label className="form-field">
+          <span>문의 사항</span>
+          <textarea
+            name="message"
+            rows={4}
+            placeholder="궁금하신 점을 자유롭게 남겨 주세요."
+            value={form.message}
+            onChange={handleChange}
+            disabled={pending}
+          />
+        </label>
+      ) : null}
+
       <div className="form-consent">
         <label className="form-consent-check">
           <input
@@ -150,13 +168,15 @@ export default function FranchiseInquiryForm({ onDismiss }) {
         {pending ? "접수 중…" : "문의 등록"}
       </button>
 
-      <div className="franchise-inquiry-hotline-card">
-        <p className="franchise-inquiry-hotline-card-kicker">연락처</p>
-        <a className="franchise-inquiry-hotline-card-phone" href={franchiseInquiryHotline.telHref}>
-          {franchiseInquiryHotline.display}
-        </a>
-        <p className="franchise-inquiry-hotline-card-hint">번호를 누르면 전화로 연결됩니다.</p>
-      </div>
+      {showHotlineCard ? (
+        <div className="franchise-inquiry-hotline-card">
+          <p className="franchise-inquiry-hotline-card-kicker">연락처</p>
+          <a className="franchise-inquiry-hotline-card-phone" href={franchiseInquiryHotline.telHref}>
+            {franchiseInquiryHotline.display}
+          </a>
+          <p className="franchise-inquiry-hotline-card-hint">번호를 누르면 전화로 연결됩니다.</p>
+        </div>
+      ) : null}
     </form>
   );
 }

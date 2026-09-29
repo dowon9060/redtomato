@@ -1,163 +1,31 @@
-import { lazy, Suspense, useState } from "react";
-import { Link } from "react-router-dom";
-import { brandPoints, promos, businessName } from "../data/siteContent";
+import { lazy, Suspense, useCallback, useState } from "react";
 import { useDeferredMount } from "../hooks/usePerformance.js";
-import HomeMobileSections from "../components/HomeMobileSections.jsx";
-import { Reveal, StaggerGroup, SectionTitle } from "../components/pageMotion.jsx";
-import MenuSection from "../components/MenuSection.jsx";
-import FranchiseHighlight from "../components/FranchiseHighlight.jsx";
+import {
+  HomeBrandStorySection,
+  HomeCompetitiveEdgeSection,
+  HomeCostRevenueSection,
+  HomeFranchiseBenefitsSection,
+  HomeInquirySection,
+  HomeInterviewsSection,
+  HomeRenewalHero,
+  HomeRoadmapSection,
+} from "../components/HomeFranchiseSections.jsx";
 
 const HomeLayerPopups = lazy(() => import("../components/HomeLayerPopups.jsx"));
 const FranchiseModal = lazy(() => import("../components/FranchiseModal.jsx"));
 
-function Hero() {
-  return (
-    <section className="hero" id="top">
-      <div className="container hero-grid">
-        <Reveal type="left" delay={0.1}>
-          <div className="hero-copy">
-            <p className="eyebrow">{businessName}</p>
-            <h1>
-              RED MAKES
-              <br />
-              PIZZA BETTER
-            </h1>
-            <p className="hero-text">
-              이름처럼 선명한 맛, {businessName}.
-              <br />
-              토마토의 풍미를 가장 감각적으로 담은 한 판을 제안합니다.
-            </p>
-
-            <div className="hero-actions">
-              <Link to="/menu" className="btn btn-primary hero-action-menu">
-                대표 메뉴 보기
-              </Link>
-              <Link to="/franchise" className="btn btn-primary hero-action-franchise">
-                창업문의
-              </Link>
-              <Link to="/bangto" className="btn btn-light">
-                빨토 · 브랜드 소개
-              </Link>
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal type="right" delay={0.3}>
-          <div className="hero-visual">
-            <img
-              src="/1_메인화면_220715/메인1.jpg"
-              alt={`${businessName} 대표 비주얼`}
-              className="hero-image"
-              width={1200}
-              height={900}
-              fetchPriority="high"
-              decoding="async"
-            />
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function BrandStory() {
-  return (
-    <section className="section brand-section" id="brand">
-      <div className="container brand-grid">
-        <Reveal type="left">
-          <SectionTitle
-            eyebrow="Brand Story"
-            title="피자의 중심은 토마토"
-            desc={`${businessName}는 기본적인 맛의 완성도를 먼저 생각합니다.`}
-          />
-        </Reveal>
-
-        <Reveal type="right" delay={0.15}>
-          <div className="brand-copy">
-            <p>
-              토마토는 피자의 첫인상을 만듭니다. 선명한 색감, 산뜻한 풍미,
-              자꾸 생각나는 밸런스. 우리는 화려한 설명보다 한 조각의 완성도로
-              브랜드를 기억하게 만들고 싶습니다.
-            </p>
-            <p>
-              {businessName}는 보기 좋은 피자가 더 먹고 싶어진다는 믿음으로,
-              감각적인 비주얼과 편안한 맛의 균형을 함께 담습니다.
-            </p>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function BrandPoints() {
-  return (
-    <section className="section section-soft home-brand-points-section">
-      <div className="container">
-        <Reveal type="up">
-          <SectionTitle
-            eyebrow="Brand Point"
-            title="선명한 비주얼, 기분 좋은 한 입"
-            desc={`${businessName}가 추구하는 세 가지 기준`}
-            align="center"
-          />
-        </Reveal>
-
-        <StaggerGroup className="point-grid" stagger={0.15} type="scale">
-          {brandPoints.map((point) => (
-            <article className="point-card" key={point.title}>
-              <span className="point-index">{point.title}</span>
-              <p>{point.desc}</p>
-            </article>
-          ))}
-        </StaggerGroup>
-
-        <Reveal type="up" delay={0.12}>
-          <div className="section-cta center home-subpage-link">
-            <Link to="/store" className="btn btn-primary">
-              매장 찾기
-            </Link>
-            <Link to="/menu" className="btn btn-light">
-              메뉴 보기
-            </Link>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function PromoSection() {
-  return (
-    <section className="section home-promo-section" id="promo">
-      <div className="container">
-        <Reveal type="up">
-          <SectionTitle
-            eyebrow="Promotion"
-            title="더 맛있게 즐기는 방법"
-            desc="프로모션과 추천 구성을 한눈에 확인해 보세요."
-          />
-        </Reveal>
-
-        <StaggerGroup className="promo-grid" stagger={0.15} type="up">
-          {promos.map((promo) => (
-            <article className="promo-card" key={promo.title}>
-              <h3>{promo.title}</h3>
-              <p>{promo.desc}</p>
-              <a href="/event" className="text-link">
-                자세히 보기 →
-              </a>
-            </article>
-          ))}
-        </StaggerGroup>
-      </div>
-    </section>
-  );
-}
-
 export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const showDeferred = useDeferredMount();
+
+  const openInquiry = useCallback(() => {
+    const el = document.getElementById("inquiry");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    setModalOpen(true);
+  }, []);
 
   return (
     <>
@@ -167,26 +35,16 @@ export default function HomePage() {
         </Suspense>
       ) : null}
 
-      <Hero />
-      <MenuSection className="home-menu-section" />
-      <BrandStory />
-      <HomeMobileSections />
-      <BrandPoints />
-      <PromoSection />
-      <FranchiseHighlight
-        footer={
-          <>
-            <button type="button" className="btn btn-primary btn-xl" onClick={() => setModalOpen(true)}>
-              가맹 문의하기
-            </button>
-            <p className="franchise-home-nudge">
-              <Link className="text-link franchise-home-nudge-link" to="/franchise">
-                창업 안내 페이지로 이동 →
-              </Link>
-            </p>
-          </>
-        }
-      />
+      <div className="home-renewal">
+        <HomeRenewalHero onInquiryClick={openInquiry} />
+        <HomeBrandStorySection />
+        <HomeCompetitiveEdgeSection />
+        <HomeFranchiseBenefitsSection />
+        <HomeRoadmapSection />
+        <HomeCostRevenueSection />
+        <HomeInterviewsSection />
+        <HomeInquirySection />
+      </div>
 
       {modalOpen ? (
         <Suspense fallback={null}>

@@ -6,7 +6,7 @@ export const franchiseInquiryPrivacyConsent = {
   details: [
     {
       title: "수집 항목",
-      body: "이름, 연락처, 희망 지역",
+      body: "이름, 연락처, 희망 지역, 문의 사항(선택)",
     },
     {
       title: "수집·이용 목적",

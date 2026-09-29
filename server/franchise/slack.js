@@ -13,11 +13,22 @@ function escapeSlackMrkdwn(s) {
  * @param {string} [receivedAt] ISO 8601
  */
 export function buildFranchiseInquirySlackPayload(data, receivedAt = new Date().toISOString()) {
-  const fallback = [
+  const fallbackLines = [
     `[${BUSINESS_NAME}] 창업 문의 — ${data.name}`,
     `연락처: ${data.phone}`,
     `희망 지역: ${data.region}`,
-  ].join("\n");
+  ];
+  if (data.message) fallbackLines.push(`문의: ${data.message}`);
+  const fallback = fallbackLines.join("\n");
+
+  const fields = [
+    { type: "mrkdwn", text: `*이름*\n${escapeSlackMrkdwn(data.name)}` },
+    { type: "mrkdwn", text: `*연락처*\n${escapeSlackMrkdwn(data.phone)}` },
+    { type: "mrkdwn", text: `*희망 지역*\n${escapeSlackMrkdwn(data.region)}` },
+  ];
+  if (data.message) {
+    fields.push({ type: "mrkdwn", text: `*문의 사항*\n${escapeSlackMrkdwn(data.message)}` });
+  }
 
   return {
     text: fallback,
@@ -28,11 +39,7 @@ export function buildFranchiseInquirySlackPayload(data, receivedAt = new Date().
       },
       {
         type: "section",
-        fields: [
-          { type: "mrkdwn", text: `*이름*\n${escapeSlackMrkdwn(data.name)}` },
-          { type: "mrkdwn", text: `*연락처*\n${escapeSlackMrkdwn(data.phone)}` },
-          { type: "mrkdwn", text: `*희망 지역*\n${escapeSlackMrkdwn(data.region)}` },
-        ],
+        fields,
       },
       {
         type: "context",

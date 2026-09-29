@@ -12,10 +12,11 @@ export class ValidationError extends Error {
 }
 
 const MAX_FIELD = 200;
+const MAX_MESSAGE = 2000;
 
 /**
  * @param {unknown} raw
- * @returns {{ name: string; phone: string; region: string }}
+ * @returns {{ name: string; phone: string; region: string; message?: string }}
  */
 export function parseFranchisePayload(raw) {
   if (raw == null || typeof raw !== "object") {
@@ -25,6 +26,7 @@ export function parseFranchisePayload(raw) {
   const name = String(o.name ?? "").trim();
   const phone = String(o.phone ?? "").trim();
   const region = String(o.region ?? "").trim();
+  const messageRaw = o.message == null ? "" : String(o.message).trim();
 
   if (!name) throw new ValidationError("이름을 입력해 주세요.");
   if (!phone) throw new ValidationError("연락처를 입력해 주세요.");
@@ -32,6 +34,10 @@ export function parseFranchisePayload(raw) {
 
   if (name.length > MAX_FIELD || phone.length > MAX_FIELD || region.length > MAX_FIELD) {
     throw new ValidationError("입력 길이가 너무 깁니다.", 413);
+  }
+
+  if (messageRaw.length > MAX_MESSAGE) {
+    throw new ValidationError("문의 내용이 너무 깁니다.", 413);
   }
 
   const digits = phone.replace(/\D/g, "");
@@ -43,5 +49,7 @@ export function parseFranchisePayload(raw) {
     throw new ValidationError("개인정보 수집·이용에 동의해 주세요.");
   }
 
-  return { name, phone, region };
+  const result = { name, phone, region };
+  if (messageRaw) result.message = messageRaw;
+  return result;
 }
