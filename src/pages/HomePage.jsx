@@ -5,6 +5,7 @@ import {
   HomeCompetitiveEdgeSection,
   HomeCostRevenueSection,
   HomeFranchiseBenefitsSection,
+  HomeFounderStorySection,
   HomeInquirySection,
   HomeInterviewsSection,
   HomeRenewalHero,
@@ -37,6 +38,7 @@ export default function HomePage() {
 
       <div className="home-renewal">
         <HomeRenewalHero onInquiryClick={openInquiry} />
+        <HomeFounderStorySection />
         <HomeBrandStorySection />
         <HomeCompetitiveEdgeSection />
         <HomeFranchiseBenefitsSection />

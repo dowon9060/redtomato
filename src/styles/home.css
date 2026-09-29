@@ -134,6 +134,33 @@ img {
   max-width: min(640px, 100%);
 }
 
+.founder-story-section {
+  scroll-margin-top: 88px;
+}
+
+.founder-story-prose .founder-story-lead {
+  font-size: 1.12rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.founder-story-quote {
+  margin: 28px 0 32px;
+  padding: 24px 28px;
+  border: none;
+  border-left: 4px solid var(--primary);
+  border-radius: 0 20px 20px 0;
+  background: rgba(var(--primary-rgb), 0.06);
+}
+
+.founder-story-quote p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text);
+  font-weight: 700;
+}
+
 .bangto-timeline-section {
   background: linear-gradient(180deg, #fffaf6 0%, #fff 48%);
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import FranchiseInquiryForm from "./FranchiseInquiryForm.jsx";
 import FranchiseSetupCost from "./FranchiseSetupCost.jsx";
+import { homeFounderStory } from "../data/founderStoryContent.js";
 import {
   homeBrandStory,
   homeCompetitiveEdge,
@@ -55,6 +56,38 @@ export function HomeRenewalHero({ onInquiryClick }) {
               fetchPriority="high"
               decoding="async"
             />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+export function HomeFounderStorySection() {
+  const { eyebrow, title, subtitle, intro, quote, paragraphs } = homeFounderStory;
+
+  return (
+    <section className="section section-soft founder-story-section" id="founder-story">
+      <div className="container brand-grid">
+        <Reveal type="left">
+          <SectionTitle eyebrow={eyebrow} title={title} desc={subtitle} />
+        </Reveal>
+
+        <Reveal type="right" delay={0.15}>
+          <div className="brand-copy founder-story-prose">
+            {intro.map((line) => (
+              <p key={line} className="founder-story-lead">
+                {line}
+              </p>
+            ))}
+
+            <blockquote className="founder-story-quote">
+              <p>{quote}</p>
+            </blockquote>
+
+            {paragraphs.map((p) => (
+              <p key={p.slice(0, 32)}>{p}</p>
+            ))}
           </div>
         </Reveal>
       </div>

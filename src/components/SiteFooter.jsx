@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { businessLegal, businessName, franchiseInquiryHotline } from "../data/siteContent";
+import { businessLegal, businessName, franchiseInquiryHotline, mainNav } from "../data/siteContent";
 import { Reveal } from "./pageMotion.jsx";
 
 export default function SiteFooter() {
@@ -15,10 +15,11 @@ export default function SiteFooter() {
           </div>
 
           <div className="footer-links">
-            <Link to="/bangto">빨토 히스토리</Link>
-            <Link to="/menu">메뉴</Link>
-            <Link to="/franchise">창업 문의</Link>
-            <Link to="/store">매장</Link>
+            {mainNav.map((item) => (
+              <Link key={item.path} to={item.path}>
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
 
