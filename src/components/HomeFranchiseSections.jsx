@@ -64,7 +64,7 @@ export function HomeRenewalHero({ onInquiryClick }) {
 }
 
 export function HomeFounderStorySection() {
-  const { eyebrow, title, subtitle, intro, quote, paragraphs } = homeFounderStory;
+  const { eyebrow, title, subtitle, intro, quote } = homeFounderStory;
 
   return (
     <section className="section section-soft founder-story-section" id="founder-story">
@@ -84,10 +84,6 @@ export function HomeFounderStorySection() {
             <blockquote className="founder-story-quote">
               <p>{quote}</p>
             </blockquote>
-
-            {paragraphs.map((p) => (
-              <p key={p.slice(0, 32)}>{p}</p>
-            ))}
           </div>
         </Reveal>
       </div>
