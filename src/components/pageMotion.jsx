@@ -84,10 +84,13 @@ export function SectionTitle({
   desc,
   align = "left",
   titleId,
+  eyebrowEn = false,
 }) {
   return (
     <div className={`section-title ${align}`}>
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      {eyebrow && (
+        <p className={eyebrowEn ? "eyebrow eyebrow--en" : "eyebrow"}>{eyebrow}</p>
+      )}
       <h2 id={titleId}>{title}</h2>
       {desc && <p>{desc}</p>}
     </div>

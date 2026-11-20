@@ -8,7 +8,7 @@ export default function FranchisePage() {
   return (
     <>
       <PageHero
-        eyebrow="Franchise"
+        eyebrow="가맹 안내"
         title="창업 문의"
         desc="브랜드 성장과 매장 운영을 함께 만들어 가고 싶은 분들을 위해 상담을 받고 있습니다."
       />
@@ -24,6 +24,7 @@ export default function FranchisePage() {
           <Reveal type="up">
             <SectionTitle
               eyebrow="Inquiry"
+              eyebrowEn
               title="문의 남기기"
               desc="내용 접수 후 담당자 배정까지 하루~이틀이 소요될 수 있습니다."
               align="center"

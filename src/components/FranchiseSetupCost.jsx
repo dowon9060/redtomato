@@ -141,7 +141,7 @@ export default function FranchiseSetupCost({
     >
       <div className="container franchise-cost-inner">
         <Reveal type="up">
-          <SectionTitle eyebrow="Cost" title="개설비용" desc={desc} align="center" />
+          <SectionTitle eyebrow="비용" title="개설비용" desc={desc} align="center" />
         </Reveal>
         {body}
       </div>

@@ -7,7 +7,7 @@ export default function FranchiseHighlight({ footer = null }) {
       <div className="container franchise-grid">
         <Reveal type="left">
           <div>
-            <p className="eyebrow light">Franchise</p>
+            <p className="eyebrow light">가맹</p>
             <h2>함께 성장할 매장을 찾습니다</h2>
             <p className="franchise-text">
               브랜드 경쟁력과 운영 효율을 함께 갖춘 피자 창업.

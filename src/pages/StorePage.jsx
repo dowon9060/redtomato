@@ -7,7 +7,7 @@ export default function StorePage() {
   return (
     <>
       <PageHero
-        eyebrow="Store"
+        eyebrow="매장 안내"
         title="매장 안내"
         desc={`전국 ${businessName} 매장 정보와 오시는 길을 확인해 보세요.`}
       />

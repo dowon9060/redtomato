@@ -20,7 +20,7 @@ export const homeHero = {
 };
 
 export const homeBrandStory = {
-  eyebrow: "Brand Story",
+  eyebrow: "브랜드 이야기",
   title: "이름에 철학을 담았습니다. 빨간토마토피자",
   paragraphs: [
     "자극적인 소스와 조미료로 승부하는 피자 시장 속에서, 우리는 본질인 신선한 토마토 소스에 집중했습니다.",
@@ -30,7 +30,7 @@ export const homeBrandStory = {
 };
 
 export const homeCompetitiveEdge = {
-  eyebrow: "Why Red Tomato",
+  eyebrow: "선택 이유",
   title: "예비 점주님이 빨간토마토피자를 선택하는 이유",
   points: [
     {
@@ -52,7 +52,7 @@ export const homeCompetitiveEdge = {
 };
 
 export const homeFranchiseBenefits = {
-  eyebrow: "Franchise Benefits",
+  eyebrow: "본사 혜택",
   title: "성공적인 첫걸음을 돕는 본사 동행 혜택",
   items: [
     "가맹비·교육비 면제 (선착순 한정)",
@@ -97,12 +97,12 @@ export const homeRoadmapSteps = [
 ];
 
 export const homeRoadmap = {
-  eyebrow: "Process",
+  eyebrow: "오픈 절차",
   title: "문의부터 오픈까지, 함께하는 성공 프로세스",
 };
 
 export const homeCostSection = {
-  eyebrow: "Investment",
+  eyebrow: "창업 비용",
   title: "투명하고 거품 없는 창업 비용",
   desc: "평수별 인테리어·주방 집기·간판·초도 물품 비용을 항목별로 공개합니다. (단위: 만원)",
   revenueTitle: "배달 전문점 월 예상 손익 (10평형 예시)",
@@ -119,7 +119,7 @@ export const homeCostSection = {
 };
 
 export const homeInterviews = {
-  eyebrow: "Owner Story",
+  eyebrow: "점주 이야기",
   title: "먼저 시작한 사장님들의 솔직한 이야기",
   items: [
     {

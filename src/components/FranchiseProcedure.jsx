@@ -51,7 +51,7 @@ export default function FranchiseProcedure() {
       <div className="container franchise-procedure-inner">
         <Reveal type="up">
           <SectionTitle
-            eyebrow="Process"
+            eyebrow="절차"
             title="창업 절차"
             desc="상담부터 개점까지, 단계별로 함께 진행합니다."
             align="center"

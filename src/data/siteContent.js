@@ -18,7 +18,7 @@ export const mainNav = [
 
 /** 빨토(브랜드) 페이지 — 창업·성장 타임라인 */
 export const bangtoHistoryIntro = {
-  eyebrow: "Bangto Story",
+  eyebrow: "빨토 이야기",
   title: `${businessName}, 빨토`,
   desc: "2002년 5월 창업부터 이어온 브랜드의 길을 연도별로 소개합니다. 지역과 함께 성장한 창업 히스토리입니다.",
 };
@@ -275,14 +275,14 @@ export const homeLayerPopups = [
     id: "award",
     image: "/brand_tro.jpeg",
     imageAlt: "소비자 브랜드 대상 수상",
-    kicker: "Award",
+    kicker: "수상",
     title: "소비자 브랜드 대상",
     desc: "고객의 선택에 감사드립니다.",
   },
   {
     id: "franchise-cost",
     hideMedia: true,
-    kicker: "Franchise",
+    kicker: "가맹",
     title: "창업 비용",
     perks: [
       { label: "가맹비", strike: "300만원", value: "무료" },

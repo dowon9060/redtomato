@@ -280,6 +280,7 @@ export function HomeInquirySection() {
         <Reveal type="up">
           <SectionTitle
             eyebrow={homeInquirySection.eyebrow}
+            eyebrowEn
             title={homeInquirySection.title}
             desc={homeInquirySection.desc}
             align="center"

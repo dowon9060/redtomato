@@ -30,14 +30,13 @@ export default function HomePage() {
 
   return (
     <>
-      {showDeferred ? (
-        <Suspense fallback={null}>
-          <HomeLayerPopups />
-        </Suspense>
-      ) : null}
-
       <div className="home-renewal">
         <HomeRenewalHero onInquiryClick={openInquiry} />
+        {showDeferred ? (
+          <Suspense fallback={null}>
+            <HomeLayerPopups />
+          </Suspense>
+        ) : null}
         <HomeFounderStorySection />
         <HomeBrandStorySection />
         <HomeCompetitiveEdgeSection />

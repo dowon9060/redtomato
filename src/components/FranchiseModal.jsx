@@ -18,7 +18,7 @@ export default function FranchiseModal({ open, onClose }) {
         </button>
 
         <div className="modal-header">
-          <p className="eyebrow">Franchise Inquiry</p>
+          <p className="eyebrow eyebrow--en">Franchise Inquiry</p>
           <h3 id="franchise-modal-title">가맹 문의하기</h3>
           <p className="modal-desc">
             아래 정보를 입력해 주시면 담당자가 연락드립니다.

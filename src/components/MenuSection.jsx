@@ -31,7 +31,7 @@ export default function MenuSection({ showCta = true, className = "" }) {
       <div className="container">
         <Reveal type="up">
           <SectionTitle
-            eyebrow="Best Menu"
+            eyebrow="인기 메뉴"
             title="지금 가장 인기 있는 메뉴"
             desc="처음 주문해도 만족도가 높은 시그니처 메뉴부터 만나 보세요."
           />

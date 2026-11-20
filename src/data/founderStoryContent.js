@@ -2,7 +2,7 @@ import { businessName } from "./siteContent.js";
 
 /** 홈 2번째 섹션 — 대표 창업 스토리 */
 export const homeFounderStory = {
-  eyebrow: "Founder Story",
+  eyebrow: "대표 이야기",
   title: "평범한 회사원, 피자에 미치다",
   subtitle: "내가 가장 사랑하는 음식으로 시작한 진심, 맛의 깊이가 되다",
   intro: [

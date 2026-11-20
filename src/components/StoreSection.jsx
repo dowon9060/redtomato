@@ -31,7 +31,7 @@ export default function StoreSection({ className = "", mobileInitialCount = null
       <div className="container store-layout">
         <Reveal type="left">
           <div className="store-left">
-            <p className="eyebrow">Store & Order</p>
+            <p className="eyebrow">매장 안내</p>
             <h2>가까운 매장에서 가장 맛있게</h2>
             <p className="store-text">
               우리 동네 {businessName}를 찾아 보세요.

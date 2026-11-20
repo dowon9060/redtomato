@@ -32,7 +32,7 @@ export default function MenuCatalog() {
     <section className="menu-catalog-section section" aria-label="메뉴 목록">
       <div className="container menu-catalog-shell">
         <header className="menu-catalog-heading">
-          <p className="eyebrow">Menu</p>
+          <p className="eyebrow">메뉴</p>
           <h2 className="menu-catalog-title">
             이름처럼 선명한 토마토,
             <br />
